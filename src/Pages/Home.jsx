@@ -119,7 +119,7 @@ const Home = () => {
               <img
                 src={room}
                 alt=""
-                className="  w-full h-full object-contain"
+                className=" w-full h-full object-contain"
               />
             </div>
           </div>
@@ -257,7 +257,7 @@ const Home = () => {
             elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
             eget habitasse in velit fringilla feugiat senectus in.
           </p>
-          <div className="flex  md:w-[80%] mx-auto flex-col md:flex-row  gap-10 md:gap-0 mt-10 rounded-4xl">
+          {/* <div className="flex  md:w-[80%] mx-auto flex-col md:flex-row  gap-10 md:gap-0 mt-10 rounded-4xl">
             <div className="   ">
               <div className=" h-[500px] w-[400px] overflow-hidden">
                 <img
@@ -290,7 +290,44 @@ const Home = () => {
                 </NavLink>
               </div>
             </div>
-          </div>
+          </div> */}
+
+<div className="flex flex-col md:flex-row md:h-[600px] w-full md:w-[90%] mx-auto mt-10 rounded-4xl overflow-hidden shadow-lg">
+  {/* Image Section */}
+  <div className="w-full md:w-1/2 h-[300px] md:h-full">
+    <img
+      src={h}
+      alt="Pearson VUE"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {/* Text Section */}
+  <div className="w-full md:w-1/2 bg-[#F6982817] p-6 md:p-10 flex flex-col justify-between">
+    <h2 className="text-2xl md:text-4xl font-bold mb-6">Discover our History</h2>
+    <p className="text-sm md:text-base leading-relaxed mb-6">
+      Opal Institute was founded in 2003 with the aim to help thousands of
+      students achieve their goals. We have expanded our operations and work
+      globally in multiple countries. Opal Institute was founded in 2003 with
+      the aim to help thousands of students achieve their goals. We have
+      expanded our operations and work globally in multiple countries.
+      <br />
+      <br />
+      Opal Institute was founded in 2003 with the aim to help thousands of
+      students achieve their goals. We have expanded our operations and work
+      globally in multiple countries.
+    </p>
+    <div>
+      <NavLink
+        to="/about"
+        className="bg-primary text-white px-6 py-3 rounded-md text-center inline-block"
+      >
+        Explore more
+      </NavLink>
+    </div>
+  </div>
+</div>
+
           <div className="py-10">
             <MediaGallery />
           </div>
