@@ -44,7 +44,7 @@ const About = () => {
     ],
   };
   return (
-    <div className="  w-full poppins relative">
+    <div className="mt-24  w-full poppins relative">
       <div className="relative">
         <img src={bg} alt="" className="-z-30  w-full hidden md:block" />
         <div className="flex flex-col md:flex-row items-end md:absolute bottom-0 md:ps-20 ">
