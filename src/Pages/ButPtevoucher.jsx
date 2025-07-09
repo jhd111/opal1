@@ -42,7 +42,7 @@ const ButPtevoucher = () => {
 
   const { data: Deals, isLoading: Deals_loading, isError: Deals_error } = Our_Deals()
   const filteredDeals = Deals?.slice(3);
-  console.log("Deals",Deals.length)
+  
   console.log("filteredDeals",filteredDeals)
 
   const phoneNumber = "+923258603436";
