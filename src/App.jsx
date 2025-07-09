@@ -21,6 +21,9 @@ import CheckoutSelfUs from "./Pages/CheckoutSelfUs";
 import Otp from "./Components/Otp";
 import Successfullpayment from "./Pages/Successfullpayment";
 import WhatsAppFloatButton from "./Components/FloatingWhatsapp";import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsAndConditions from "./Pages/Termsconditions";
+import RefundPolicy from "./Pages/Refund";
 
 const queryClient = new QueryClient();
 const ScrollToTop = () => {
@@ -58,6 +61,10 @@ const App = () => {
             <Route path="/checkout-pte-user" element={<CheckoutSelfUs />} />
             <Route path="/otp" element={<Otp />} />
             <Route path="/success" element={<Successfullpayment />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+            <Route path="/terms-conditions" element={<TermsAndConditions/>}/>
+
+            <Route path="/refund-policy" element={<RefundPolicy/>}/>
           </Routes>
         </main>
         <MainFooter />

@@ -96,6 +96,24 @@ const Header = () => {
                       >
                         Testing Services
                       </NavLink>
+                      <NavLink
+                        to="/privacy-policy"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Privacy Policy
+                      </NavLink>
+                      <NavLink
+                        to="/terms-conditions"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Terms and Condition
+                      </NavLink>
+                      <NavLink
+                        to="/refund-policy"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Refund Policy
+                      </NavLink>
                     </div>
                   )}
                 </li>
