@@ -41,7 +41,9 @@ const ButPtevoucher = () => {
   const { data: Pearson_Scored_Practice_Mock, isLoading: Pearson_Scored_Practice_Mock_loading, isError: Pearson_Scored_Practice_Mock_error } = Score_Practice_Mock_Test()
 
   const { data: Deals, isLoading: Deals_loading, isError: Deals_error } = Our_Deals()
-  const filteredDeals = Deals?.filter((deal) => deal.id >= 4);
+  const filteredDeals = Deals?.slice(3);
+  console.log("Deals",Deals.length)
+  console.log("filteredDeals",filteredDeals)
 
   const phoneNumber = "+923258603436";
   const message = "hi";

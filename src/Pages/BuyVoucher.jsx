@@ -49,7 +49,7 @@ console.log(object)
           <div className="flex gap-5 mt-5">
             <div className=" flex items-center gap-5 rounded-3xl px-4 py-3 bg-slate-100">
               <span className="text-xs">
-                <FaMinus onClick={() => setcount((e) => e - 1)} />
+                <FaMinus  onClick={() => setcount((e) => (e > 0 ? e - 1 : e))} />
               </span>
               {count}
               <span className="text-xs">
