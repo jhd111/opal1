@@ -13,10 +13,10 @@ const Resultsrow = () => {
   return (
     <div>
       <div className=" space-y-4 mb-10 p-4 ">
-        <p className=" text-2xl  md:text-3xl be-vietnam font-semibold">
+        <p className=" text-xl font-semibold lg:text-3xl lg:font-bold be-vietnam ">
           See Our Student’s Results
         </p>
-        <p className="plus-jakarta">
+        <p className="text-xs lg:text-sm plus-jakarta">
           Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
           elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget
           habitasse in velit fringilla feugiat senectus in.
@@ -28,7 +28,7 @@ const Resultsrow = () => {
           Results?.data?.map((val, i) => (
             <div key={i} className="border bg-white rounded-md">
               <div className="px-4 md:px-10 py-4">
-                <p className="font-bold my-4 text-gray-700 text-2xl">
+                <p className="text-xl font-semibold lg:text-3xl lg:font-bold my-4 text-gray-700 ">
                   Overall Score: {val.overall_score /* Example dynamic content */}
                 </p>
                 <div className="flex my-2">

@@ -46,7 +46,7 @@ const Results = () => {
       <div className="">
         <div className="bg-zinc-50 text-center relative space-y-4 rounded-3xl p-12 overflow-hidden">
           <img src={el} alt="" className="absolute -top-72 -left-20" />
-          <p className="text-4xl font-bold "> OUR RESULTS</p>
+          <p className="text-2xl lg:text-4xl font-bold "> OUR RESULTS</p>
           <p>DREAMS TURNED INTO REALITITES</p>
         </div>
 
@@ -55,9 +55,9 @@ const Results = () => {
         </div>
       </div>
 
-      <div className="w-[90%] md:w-[80%] mx-auto">
+      <div className="w-[95%] md:w-[80%] mx-auto">
         {/* Detail Section */}
-        <div className="py-20 w-[90%] md:w-[80%] mx-auto plus-jakarta flex gap-10">
+        <div className="py-20 w-[90%] md:w-[80%] mx-auto plus-jakarta flex flex-col lg:flex-row gap-10">
           <div className="w-full space-y-9">
             <p className="text-2xl text-primary font-semibold plus-jakarta">
               Our Highest Scorer in PTE
@@ -72,7 +72,7 @@ const Results = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <div className="space-y-2">
                 <div className="w-20 h-20 rounded-full border-2 relative border-black">
                   <p className="text-xl font-bold absolute top-1/3 left-1/3">
@@ -134,7 +134,7 @@ const Results = () => {
                 <span className="text-gray-500">{selectedResult.instructor}</span>
               </div>
             </div>
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-wrap gap-4 mt-4">
               <NavLink
                 to="/buy-pte-voucher"
                 className="bg-primary text-white rounded-full px-8 py-3"
@@ -156,7 +156,7 @@ const Results = () => {
 
         {/* Results List Section */}
         <div className="space-y-4">
-          <p className="text-3xl be-vietnam font-semibold">Our Results</p>
+          <p className="text-2xl lg:text-3xl be-vietnam font-semibold">Our Results</p>
           <p className="plus-jakarta">
             Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
             elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
@@ -171,7 +171,7 @@ const Results = () => {
           </select>
         </div>
 
-        <div className="grid md:grid-cols-2 be-vietnam gap-10">
+        <div className="grid md:grid-cols-2 be-vietnam gap-7">
           {Results &&
             Results?.data?.map((val, i) => (
               <div 

@@ -96,7 +96,7 @@ const Header = () => {
                       >
                         Testing Services
                       </NavLink>
-                      <NavLink
+                      {/* <NavLink
                         to="/privacy-policy"
                         className="block px-4 py-2 hover:bg-gray-100"
                       >
@@ -113,7 +113,7 @@ const Header = () => {
                         className="block px-4 py-2 hover:bg-gray-100"
                       >
                         Refund Policy
-                      </NavLink>
+                      </NavLink> */}
                     </div>
                   )}
                 </li>
@@ -163,6 +163,40 @@ const Header = () => {
                     Scored Practice Mock Test
                   </NavLink>
                 </li>
+                <li> 
+                  <NavLink
+                        to="/about"
+                        
+                      >
+                        About Us
+                      </NavLink>
+                      </li>
+               
+                     <li>
+                     <NavLink
+                        to="/results"
+                        
+                      >
+                        Our Results
+                      </NavLink>
+                     </li>
+                      <li>
+                      <NavLink
+                        to="/contact"
+                        
+                      >
+                        Contact Us
+                      </NavLink>
+                      </li>
+                      <li>
+                      <NavLink
+                        to="/testing-services"
+                       
+                      >
+                        Testing Services
+                      </NavLink>
+                      </li>
+                      
               </ul>
             </nav>
             <div className=" mt-4">

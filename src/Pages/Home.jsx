@@ -85,20 +85,20 @@ const Home = () => {
       </div>
       <section id="mocktest" className="w-[90%] md:w-[80%] mx-auto">
         <div className="">
-          <p className="text-2xl md:text-5xl text-center inter mt-20 font-semibold">
+          <p className="text-xl font-semibold lg:text-3xl lg:font-bold text-center inter mt-20 ">
             Take your preparation a step further
           </p>
         </div>
-        <div className="flex  flex-col md:flex-row items-center gap-10">
+        <div className="flex  flex-col md:flex-row items-center mt-2 gap-10">
           <div className="w-full space-y-6">
-            <div className=" text-xl md:text-4xl font-semibold">
+            <div className=" text-xl font-semibold lg:text-3xl lg:font-bold">
               <p className="plus-jakarta">
                 Give <span className="text-primary">Practice Tests</span> in
                 Real Exam Like Environment
               </p>
             </div>
             <div className=" space-y-6">
-              <p className="plus-jakarta">
+              <p className="plus-jakarta text-xs lg:text-sm">
                 At Opal Institute, we offer real exam environment to our
                 students to practice PTE Tests to gain confidence and be fully
                 prepared for their big exam. We have very limited spots and take
@@ -129,7 +129,7 @@ const Home = () => {
             <img src={img} alt="" className="w-full md:w-3/4" />
           </div>
           <div className="w-full space-y-6">
-            <div className="text-2xl md:text-4xl font-semibold">
+            <div className="text-xl font-semibold lg:text-3xl lg:font-bold">
               <p className="plus-jakarta">
                 Get
                 <span className="text-primary px-1">
@@ -139,7 +139,7 @@ const Home = () => {
               </p>
             </div>
             <div className=" space-y-6">
-              <p className="plus-jakarta">
+              <p className="plus-jakarta text-xs lg:text-sm">
                 At Opal Institute, we offer practice mock tests as well as pte
                 and apeuni portals access to our students so they can prepare
                 for their big day and be a step ahead in their exam preparation.
@@ -160,10 +160,10 @@ const Home = () => {
         <div className=" relative">
           <div className="flex bg-blue-star flex-col md:flex-row md:h-screen">
             <div className="md:w-[60%] text-white p-5 md:p-20  mt-20 space-y-9">
-              <p className="text-2xl md:text-5xl plus-jakarta font-semibold">
+              <p className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta ">
                 PEARSON VUE AUTHORISED TESTING CENTER
               </p>
-              <p className="text-2xl">
+              <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
                 Opal Institute is a Pearson VUE Authorised Testing Center
               </p>
               <div className="flex gap-4">
@@ -222,14 +222,14 @@ const Home = () => {
         <div className="w-[90%] md:w-[70%] mx-auto py-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="w-full space-y-6">
-              <div className=" text-2xl md:text-4xl font-semibold">
+              <div className="  text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
                 <p className="plus-jakarta">
                   Buy <span className="text-primary">IT EXAM VOUCHERS</span>{" "}
                   &nbsp; From Us Give
                 </p>
               </div>
               <div className=" space-y-6">
-                <p className="plus-jakarta">
+                <p className="plus-jakarta text-xs lg:text-sm">
                   At Opal Institute, we offer Authentic IT Exam Vouchers from a
                   Number of Different Vendors at Discounted Prices. Order your
                   required Exam Voucher Now.
@@ -249,10 +249,10 @@ const Home = () => {
           </div>
         </div>
         <div className="w-[90%] md:w-[80%] mx-auto">
-          <p className="text-4xl font-serif be-vietnam font-semibold">
+          <p className="text-xl  lg:font-bold lg:text-4xl font-serif be-vietnam font-semibold">
             About Us
           </p>
-          <p className="mt-2 be-vietnam">
+          <p className="mt-2 be-vietnam text-xs lg:text-sm">
             Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
             elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
             eget habitasse in velit fringilla feugiat senectus in.

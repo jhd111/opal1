@@ -54,7 +54,7 @@ const Sliders = () => {
   };
   return (
     <div className="">
-      <div className="text-3xl poppins my-10 text-center font-semibold">
+      <div className="text-xl font-semibold lg:text-3xl lg:font-bold poppins my-5 lg:my-10 text-center ">
         CERTIFICATIONS & AWARDS
       </div>
       <div className="w-[80%] mx-auto">

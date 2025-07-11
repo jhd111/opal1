@@ -104,10 +104,10 @@ const Hero = () => {
           </div>
           <div className="w-full md:w-[30%] md:pt-20">
             <div
-              className="space-y-5 lg:space-y-14 border p-6 bg-slate-100  py-10 relative md:right-52 md:w-[600px] 
+              className="space-y-14 border p-6 bg-slate-100  py-10 relative md:right-52 md:w-[600px] 
                 bg-white/50 backdrop-blur-sm backdrop-saturate-50 rounded shadow-md"
             >
-              <p className="text-xl font-bold md:text-5xl lg:font-semibold leading-snug">
+              <p className="text-2xl md:text-5xl font-semibold leading-snug">
                 Top Pearson Testing Center in Pakistan
               </p>
               <p className="text-[#909090]">
@@ -147,9 +147,9 @@ const Hero = () => {
           <img
             src={h1}
             alt=""
-            className="absolute h-20 top-10  hidden md:block -right-20"
+            className="absolute h-20 top-1  hidden md:block -right-20"
           />
-          <div className="flex flex-col md:flex-row py-10 md:py-20 gap-5">
+          {/* <div className="flex flex-col md:flex-row py-10 md:py-20 gap-5">
             {data.map((val, i) => {
               return (
                 <NavLink to={val.link}>
@@ -165,7 +165,7 @@ const Hero = () => {
                 </NavLink>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -36,11 +36,11 @@ console.log(object)
         </div>
         <div className="w-full">
           <div className=" space-y-8 border-b pb-4">
-            <p className="text-3xl dm-sans">
+            <p className="text-xl font-semibold lg:text-3xl lg:font-bold dm-sans">
               {object.name}
             </p>
             <p className="text-2xl font-semibold text-[#39B856] poppins">
-            RS {""} {object.price}
+            RS {""} {Math.floor(object.price)}
             </p>
           </div>
           <p className="text-xs  poppins py-4 ">
@@ -57,7 +57,8 @@ console.log(object)
               </span>
             </div>
             <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out">Proceed to Checkout</NavLink>
+              <NavLink to="/check-out" state={{ name: object }}
+              >Proceed to Checkout</NavLink>
             </div>
           </div>
           <div className="flex items-center text-xs gap-2 mt-6 poppins font-medium">

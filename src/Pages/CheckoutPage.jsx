@@ -39,19 +39,20 @@ const CheckoutPage = () => {
       </p>
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="w-full">
-          <img src={deal?.score_practice?.image_url} alt="" />
+          <img src={deal?.main_image} alt="" />
         </div>
         <div className="w-full">
           <div className="space-y-4  ">
-            <p className="text-2xl font-semibold ">
+            <p className="text-xl font-semibold lg:text-3xl lg:font-bold ">
              {deal.name}
             </p>
             <p className="text-2xl  font-semibold text-green-500">
-            RS {deal.price}
+            RS {Math.floor(deal.price)}
             </p>
             <div className="">
               <NavLink
                 to="/checkout-pte-user"
+                state={{ name: deal }}
                 className="bg-primary rounded-full block text-center text-white w-full py-3 p-2"
               >
                 Proceed to Checkout

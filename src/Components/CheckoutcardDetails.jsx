@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import img from "../assets/logo-2.png";
 import { useLocation } from "react-router-dom";
 
-const CheckoutcardDetails = () => {
-
+const CheckoutcardDetails = ({name}) => {
+console.log("name",name)
   const location = useLocation();
   const path = location.pathname;
 
@@ -20,7 +20,7 @@ const CheckoutcardDetails = () => {
           <img src={img} alt="" width={100} />
         </div>
         <div className="  my-4 text-2xl font-semibold">
-          CompTIA Fundamentals ITF+ Exam Voucher - FCO -U61
+          {name}
         </div>
         <div className="">
           <p className="font-medium mb-4">Order Summary</p>
@@ -31,12 +31,12 @@ const CheckoutcardDetails = () => {
             </div>
             <div className="flex justify-between">
               <p>Price</p>
-              <p>${selectedPrice}</p>
+              <p>RS {Math.floor(selectedPrice)}</p>
             </div>
           </div>
           <div className="mt-4 flex justify-between  bg-white p-6 rounded-md">
             <p className="font-semibold text-gray-800">Total</p>
-            <p className="text-lime-400 font-semibold">${(quantity || 1) * selectedPrice}
+            <p className="text-lime-400 font-semibold">RS {Math.floor(quantity || 1) * selectedPrice}
 </p>
           </div>
         </div>

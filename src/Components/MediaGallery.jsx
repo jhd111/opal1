@@ -226,7 +226,7 @@ const MediaGallery = () => {
   if (galleryLoading) {
     return (
       <div>
-        <div className="text-2xl md:text-4xl poppins my-10 text-center font-semibold">
+        <div className="text-xl font-semibold lg:text-3xl lg:font-bold poppins my-5 lg:my-10 text-center ">
           MEDIA GALLERY
         </div>
         <div className="my-10 text-center">

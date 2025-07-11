@@ -44,7 +44,7 @@ const About = () => {
     ],
   };
   return (
-    <div className="mt-24  w-full poppins relative">
+    <div className="lg:mt-24  w-full poppins relative">
       <div className="relative">
         <img src={bg} alt="" className="-z-30  w-full hidden md:block" />
         <div className="flex flex-col md:flex-row items-end md:absolute bottom-0 md:ps-20 ">
@@ -54,11 +54,11 @@ const About = () => {
             </p>
           </div>
           <div className="md:w-2/5 ">
-            <div className="bg-white  relative top-10 z-10  p-10 pb-32 space-y-4">
-              <p className="text-4xl font-semibold">
+            <div className="bg-white  lg:relative top-10 z-10  p-10 lg:pb-32  space-y-4">
+              <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
                 Pearson VUE Authorised Test Center
               </p>
-              <p className="text-gray-500">
+              <p className="text-gray-500 text-xs lg:text-sm">
                 Opal Institute is a Pearson VUE Authorised Testing Center which
                 was established in 2021 and only deal PTE. We are a Pearson VUE
                 Authorised Test Center for PVTC, PVTC-SELECT. Opal Institute has
@@ -66,7 +66,7 @@ const About = () => {
                 Pakistan.
               </p>
             </div>
-            <div className="flex bg-primary z-20 relative text-white p-6 md:w-[80%] md:ms-auto">
+            <div className= "flex bg-primary z-20  lg:relative text-white p-6 md:w-[80%] md:ms-auto">
               <div className="text-center border-r border-white">
                 <p className="text-4xl">#1</p>
                 <p className="text-lg">in Punjab Province</p>
@@ -83,9 +83,9 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="space-y-6 py-20 w-[90%] md:w-[80%] mx-auto">
-        <p className="text-5xl font-semibold">About Opal Institute</p>
-        <p>
+      <div className="space-y-6 py-10 lg:py-20 w-[90%] md:w-[80%] mx-auto">
+        <p className="text-xl font-semibold lg:text-3xl lg:font-bold">About Opal Institute</p>
+        <p className="text-xs lg:text-sm">
           Established in 2021, our PTE Training Institute has quickly become a
           leading name in the field of English proficiency test preparation. As
           a proud Platinum Partner of PTE, we are committed to delivering the
@@ -96,7 +96,7 @@ const About = () => {
           take the first step toward your success in the PTE exam!
         </p>
       </div>
-      <div className="flex  flex-col md:flex-row gap-20 w-[90%] md:w-[80%] mb-10 mx-auto">
+      <div className="flex  flex-col md:flex-row gap-10 lg:gap-20 w-[90%] md:w-[80%] mb-10 mx-auto">
         <div className="w-full flex flex-col text-center items-center justify-center">
           <img src={ceo} alt="" width="400px" height="400px" />
           <div className="text-center  mt-4 plus-jakarta space-y-2 w-full">
@@ -114,7 +114,7 @@ const About = () => {
           >
             CEO Message
           </p>
-          <p className="text-xl Poppins text-gray-500">
+          <p className="textt-xs text-xl Poppins text-gray-500">
             I firmly believe that education is the key to unlocking countless
             opportunities, and at our institute, we are here to guide and
             support you every step of the way. We are proud of the achievements
@@ -131,7 +131,7 @@ const About = () => {
           At Opal Institute, we are proud of our accomplishments. Together we
           can shape the way how English Test Preparation is done.
         </p>
-        <div className="flex items-center justify-center">
+        <div className="hidden lg:flex  items-center justify-center">
           <div className="mx-auto -bottom-10 flex  items-center absolute">
             <div className="h-32 w-40 shadow bg-white"></div>
             <div className="h-36 w-40 shadow bg-white"></div>
@@ -145,7 +145,7 @@ const About = () => {
         <MediaGallery />
       </div>
       <div className="">
-        <div className="slider-container about mt-32  w-[80%] mx-auto text-center ">
+        <div className="slider-container about mt-10 lg:mt-32  w-[80%] mx-auto text-center ">
           <Sliders />
         </div>
       </div>

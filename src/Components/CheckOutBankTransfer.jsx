@@ -15,7 +15,7 @@ import { BankTransferDetail } from "../Services/BankTransfer_IT";
 import { usePostPaymentDetails } from "../Services/BankTransferAmount";
 import toast  from "react-hot-toast";
 
-const CheckOutBankTransfer = ({ set }) => {
+const CheckOutBankTransfer = ({ set,name }) => {
   const [block, setblock] = useState(1);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -190,7 +190,7 @@ const handleSubmit = (e) => {
                 <div className="">
                   <p className="font-semibold">Policy</p>
                   <p className="text-xs">
-                    {BankDetail?.data?.[0]?.policy}
+                  Please take the screenshot of the payment receipt and upload it on our website or send us on whatsapp.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -314,7 +314,7 @@ const handleSubmit = (e) => {
               </p>
             </div>
             
-            <div className="flex gap-8">
+            <div className="flex gap-2">
               <button 
                 type="button"
                 className="px-6 py-2 border border-gray-400 text-gray-500 rounded-md"
@@ -326,7 +326,7 @@ const handleSubmit = (e) => {
                 disabled={mutation.isPending}
                 className="bg-primary w-full py-2 text-white rounded-md disabled:opacity-50"
               >
-                {mutation.isPending ? "Submitting..." : "Submit & Continue"}
+                {mutation.isPending ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>
@@ -336,7 +336,7 @@ const handleSubmit = (e) => {
       {block === 2 && (
         <div className="w-full bg-white p-4 rounded-md">
           <BookExamWithUs />
-          <div className="flex my-4 gap-8">
+          <div className="flex flex-col my-4 gap-8">
             <button 
               type="button"
               className="px-6 py-2 border border-gray-400 text-gray-500 rounded-md"
@@ -366,7 +366,7 @@ const handleSubmit = (e) => {
       )}
       
       <div className="w-full hidden lg:block">
-        <CheckoutcardDetails />
+        <CheckoutcardDetails name={name} />
       </div>
     </div>
   );

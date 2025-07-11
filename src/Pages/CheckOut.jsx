@@ -243,11 +243,15 @@ import CheckoutcardDetails from "../Components/CheckoutcardDetails";
 import Successfullpayment from "./Successfullpayment";
 
 import { usePostPaymentDetails } from "../Services/Payment_debit";
+import { useLocation } from "react-router-dom";
 import toast  from "react-hot-toast";
 
 const CheckOut = () => {
   const [selectedPayment, setSelectedPayment] = useState("card");
 
+  const location = useLocation();
+  const { name } = location.state || {}; // Retrieve the passed object
+console.log("object checout",name)
   // Initialize the mutation hook
   const mutation = usePostPaymentDetails();
   
@@ -378,7 +382,7 @@ const CheckOut = () => {
         {selectedPayment === "card" && (
           <div className="flex">
             <div className="w-full">
-              <div className="w-[80%]">
+              <div className="w-[100%] lg:w-[80%]">
                 <form
                   className="bg-white p-8 rounded-lg space-y-3"
                   onSubmit={handleSubmit}
@@ -520,12 +524,12 @@ const CheckOut = () => {
               </div>
             </div>
             <div className="w-full hidden lg:block">
-              <CheckoutcardDetails />
+              <CheckoutcardDetails name={name.name} />
             </div>
           </div>
         )}
         {selectedPayment === "bank" && (
-          <CheckOutBankTransfer set={setSelectedPayment} />
+          <CheckOutBankTransfer name={name.name} set={setSelectedPayment} />
         )}
         {selectedPayment === 2 && (
           <Successfullpayment

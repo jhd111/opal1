@@ -102,20 +102,20 @@ const BuyVouchers = () => {
       :
     
     <div className="w-[90%] md:w-[80%] mx-auto">
-      <div className="mt-10">
+      <div className="mt-5">
         <div className="text-center inter">
-          <p className="text-4xl font-semibold ">Buy IT Exam Vouchers</p>
-          <p className="text-lg mt-3 text-[#55595F]">
+          <p className="text-xl font-semibold lg:text-3xl lg:font-bold ">Buy IT Exam Vouchers</p>
+          <p className="text-sm lg:text-lg mt-3 text-[#55595F]">
             We offer authentic vouchers for Exams
           </p>
-          <p className="text-lg mt-10 text-[#55595F]">
+          <p className="text-sm lg:text-lg mt-5 text-[#55595F]">
             Please select the vendor. We offer a large variety of Authentic Exam
             vouchers from a number of different vendors.
           </p>
         </div>
       </div>
-      <div className="mx-auto  mt-10 w-[90%]">
-        <div className="flex flex-wrap gap-10   ">
+      <div className="mx-auto  mt-10 w-[100%]">
+        <div className="flex flex-col md:flex-row gap-5">
           {Vouchers?.map((val, i) => {
             return (
               <div className=" flex flex-col justify-between p-4 shadow">
@@ -128,7 +128,7 @@ const BuyVouchers = () => {
                     to={{
                     pathname: "/all-vouchers",
                   }}
-                  state={{ object: val.id }} // Pass the full object here
+                  state={{ object: val }} // Pass the full object here
                   className="bg-[#F1F1F3]  text-center rounded-md py-2 px-10 font-semibold"
                 >
                   View Voucher

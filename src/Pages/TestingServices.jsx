@@ -169,8 +169,8 @@ const TestingServices = () => {
   return (
     <div className="w-[90%] mx-auto">
       <div className="text-center py-10 space-y-4">
-        <p className="text-6xl font-semibold">TESTING SERVICES</p>
-        <p className="text-2xl text-[#55595F] leading-10">
+        <p className="text-3xl lg:text-6xl font-semibold">TESTING SERVICES</p>
+        <p className="text-xl lg:text-2xl text-[#55595F] leading-10">
           We offer more than 300 testing services
         </p>
       </div>

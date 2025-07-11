@@ -11,8 +11,8 @@ const ComptiaVouchers = () => {
 
    const location = useLocation();
   const { object } = location.state || {}; // Retrieve the passed object
-
-  const category_id = object ; // Fallback to 1 if `object.id` is undefined
+console.log("object",object)
+  const category_id = object?.id ; // Fallback to 1 if `object.id` is undefined
 
    const { data: Vouchers, isLoading, error } = VoucherDetails(category_id);
 
@@ -30,9 +30,9 @@ const ComptiaVouchers = () => {
       <div className="w-[80%] mx-auto">
         <div className="mt-10">
           <div className="text-center inter">
-            <p className="text-4xl font-semibold ">CompTIA Exam Vouchers</p>
+            <p className="text-xl font-semibold lg:text-3xl lg:font-bold ">{object?.name}</p>
 
-            <p className="text-lg mt-10 text-[#55595F]">
+            <p className="text-xs lg:text-lg mt-10 text-[#55595F]">
               Welcome to our CompTIA Exam Vouchers store, your one-stop solution
               for discounted and reliable voucher codes for all CompTIA
               certification exams.

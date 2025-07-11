@@ -111,8 +111,26 @@ const MainFooter = () => {
             <div className="border-t border-gray-200 my-8"></div>
 
             {/* Copyright */}
-            <div className="text-center text-gray-500">
+            <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-center gap-2 text-center text-gray-500">
               <p>© 2025 Opalinstitute. All rights reserved.</p>
+              <NavLink
+                        to="/privacy-policy"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Privacy Policy
+                      </NavLink>
+                      <NavLink
+                        to="/terms-conditions"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Terms and Condition
+                      </NavLink>
+                      <NavLink
+                        to="/refund-policy"
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Refund Policy
+                      </NavLink>
             </div>
           </div>
         </footer>
