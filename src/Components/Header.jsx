@@ -39,7 +39,7 @@ const Header = () => {
         <div className="flex align-center justify-between w-[100%] mx-auto p-5">
           <div className="flex justify-between items-center gap-6">
             {" "}
-            <img src={logo} alt="" className="w-[20%]"/>
+            <img src={logo} alt="" className="w-[20%]" />
             <nav>
               <ul className="flex items-center   be-vietnam">
                 <li>
@@ -49,7 +49,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink className="p-4 px-5" to="/buy-pte-voucher">
-                    Buy PTE Vouchers
+                    Vouchers Store
                   </NavLink>
                 </li>
                 <li>
@@ -125,7 +125,7 @@ const Header = () => {
               to="/buy-pte-voucher"
               className="bg-primary block text-white px-8 py-3 rounded-md"
             >
-              Book Now
+              Buy Now
             </NavLink>
           </div>
         </div>
@@ -150,58 +150,61 @@ const Header = () => {
             <nav>
               <ul className="flex flex-col  gap-8 be-vietnam">
                 <li>
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/" onClick={() => setnav(false)}>Home</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/buy-pte-voucher">Book PTE Exam</NavLink>
+                  <NavLink to="/buy-pte-voucher" onClick={() => setnav(false)}> Vouchers Store</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/buy-it-vouchers">Buy IT Vouchers</NavLink>
+                  <NavLink to="/buy-it-vouchers" onClick={() => setnav(false)}>Buy IT Vouchers</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/practice-mock-test">
+                  <button onClick={() => {
+                    scrollToMockTest();
+                    setnav(false);
+                  }}>
                     Scored Practice Mock Test
+                  </button>
+                </li>
+                <li>
+                  <NavLink
+                    to="/about"
+                    onClick={() => setnav(false)}
+                  >
+                    About Us
                   </NavLink>
                 </li>
-                <li> 
+
+                <li>
                   <NavLink
-                        to="/about"
-                        
-                      >
-                        About Us
-                      </NavLink>
-                      </li>
-               
-                     <li>
-                     <NavLink
-                        to="/results"
-                        
-                      >
-                        Our Results
-                      </NavLink>
-                     </li>
-                      <li>
-                      <NavLink
-                        to="/contact"
-                        
-                      >
-                        Contact Us
-                      </NavLink>
-                      </li>
-                      <li>
-                      <NavLink
-                        to="/testing-services"
-                       
-                      >
-                        Testing Services
-                      </NavLink>
-                      </li>
-                      
+                    to="/results"
+                    onClick={() => setnav(false)}
+                  >
+                    Our Results
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/contact"
+                    onClick={() => setnav(false)}
+                  >
+                    Contact Us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/testing-services"
+                    onClick={() => setnav(false)}
+                  >
+                    Testing Services
+                  </NavLink>
+                </li>
+
               </ul>
             </nav>
             <div className=" mt-4">
-              <button className="bg-primary text-white px-8 py-3 rounded-md">
-                Book Now
+              <button className="bg-primary text-white px-8 py-3 rounded-md" onClick={() => setnav(false)}>
+                Buy Now
               </button>
             </div>
           </div>

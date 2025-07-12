@@ -9,7 +9,7 @@ import p1 from "../assets/images/home/p1.png";
 import p2 from "../assets/images/home/p2.png";
 import p3 from "../assets/images/home/p3.png";
 import p4 from "../assets/images/home/p4.png";
-import p5 from "../assets/images/home/p5.png";
+import comptia from "../assets/images/home/comptia.png";
 import h from "../assets/images/pictures/Artboard 5.png";
 
 import onee from "../assets/images/home/1.svg";
@@ -20,11 +20,13 @@ import ContactForm from "../Components/ContactForm";
 import Sliders from "../Components/Slider";
 import Hero from "../Components/Hero";
 import MediaGallery from "../Components/MediaGallery";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { fetchResults } from "../Services/HomeResults";
 const Home = () => {
 
     const { data: Results, isLoading, error } = fetchResults();
+
+    const navigate = useNavigate();
 
   const OPTIONS = { loop: true };
   const SLIDE_COUNT = 5;
@@ -36,6 +38,17 @@ const Home = () => {
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
   )}`;
+
+   const scrollToMockTest = () => {
+    navigate("/buy-pte-voucher");
+    setTimeout(() => {
+      const element = document.getElementById("practicemocktests");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 1000);
+  };
+
   return (
     <>
       <Hero />
@@ -75,12 +88,12 @@ const Home = () => {
             <span>Explore Exam Prep Materials</span>
           </p>
           <br />
-          <NavLink
-            to="/buy-pte-voucher"
+          <a
+            href={whatsappLink}
             className="bg-white rounded-md text-primary px-8 py-3 font-semibold"
           >
             Book Your Exam
-          </NavLink>
+          </a>
         </div>
       </div>
       <section id="mocktest" className="w-[90%] md:w-[80%] mx-auto">
@@ -145,12 +158,15 @@ const Home = () => {
                 for their big day and be a step ahead in their exam preparation.
               </p>
               <br />
-              <a
-                href={whatsappLink}
+              {/* <NavLink
+                to="/buy-pte-voucher"
                 className="px-8 py-3 bg-primary rounded-3xl text-white"
               >
-                Reserve your Spot Now
-              </a>
+                Buy Now
+              </NavLink> */}
+              <button onClick={scrollToMockTest} className="px-8 py-3 bg-primary rounded-3xl text-white">
+                    Buy Now
+                  </button>
             </div>
           </div>
         </div>
@@ -167,14 +183,14 @@ const Home = () => {
                 Opal Institute is a Pearson VUE Authorised Testing Center
               </p>
               <div className="flex gap-4">
-                <NavLink
-                  to="/buy-pte-voucher"
+                <a
+                  href={whatsappLink}
                   className="bg-white text-black px-8 py-3 rounded-md"
                 >
                   Book Exams
-                </NavLink>
+                </a>
                 <NavLink
-                  to="/buy-it-vouchers"
+                  to="/buy-pte-voucher"
                   className="flex items-center gap-2 text-white"
                 >
                   Buy Vouchers <MdOutlineArrowRightAlt />
@@ -191,9 +207,9 @@ const Home = () => {
             </div>
           </div>
           <div className="w-[90%] md:w-[80%] bg-white relative  md:absolute   rounded-md  md:left-[10%]   mt-10   bottom-1 grid grid-cols-3  md:grid-cols-5  gap-4 shadow-md mx-auto">
-            {[p1, p4, p2, p3, p5].map((val, i) => (
+            {[p1, p4, p2, p3, comptia].map((val, i) => (
               <div className="">
-                <img src={val} alt="" />
+                <img src={val} alt="" className="w-[140px]"/>
               </div>
             ))}
           </div>

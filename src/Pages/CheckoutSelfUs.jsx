@@ -75,7 +75,7 @@
 //       toast.error("Please upload a payment screenshot.", {
 //         position: "top-center",
 //       });
-      
+
 //       return;
 //     }
 
@@ -174,7 +174,7 @@
 //                       </span>
 //                       <div>
 //                         <p className="font-medium">
-                          
+
 //                         {bank.iban_number?.slice(0, 6)}<br />
 //   {bank.iban_number?.slice(6, 24)}
 //   {/* {bank.iban_number?.slice(6, 24)} */}
@@ -365,10 +365,10 @@
 //                         // onClick={() => setselect(2)}
 //                          disabled={mutation.isPending}
 //                         className="bg-primary w-full py-2  text-white rounded-md"
-                        
+
 //                       >
 //                          {mutation.isPending ? "Submitting..." : "Submit & Continue"}
-                        
+
 //                       </button>
 //                     </div>
 //                   </form>
@@ -462,7 +462,7 @@
 //     });
 //   };
 
-  
+
 
 //   return (
 //     <div className="bg-slate-50   pb-20">
@@ -618,7 +618,7 @@
 //                     type="submit"
 //                       onClick={() => setSelectedPayment(2)}
 //                       className="bg-primary w-full py-2  text-white rounded-md"
-                      
+
 //                     >
 //                       Pay Now
 //                     </button>
@@ -659,17 +659,34 @@ import Successfullpayment from "./Successfullpayment";
 
 import { usePostPaymentDetails } from "../Services/Payment_debit";
 import { useLocation } from "react-router-dom";
-import toast  from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const CheckOut = () => {
   const [selectedPayment, setSelectedPayment] = useState("card");
+  const [orderID,setorderID]=useState("")
 
   const location = useLocation();
-  const { name } = location.state || {}; // Retrieve the passed object
-console.log("object checout",name)
+
+   const path = location.pathname;
+  const { name, SelectedTYPE } = location.state || {};
+
+  console.log("object checout", name)
+
+  const quantity = localStorage.getItem("count")
+  const ItemPrice = localStorage.getItem("price")
+
+  const ptevoucher = localStorage.getItem('price1')
+
+  const selectedPrice = path.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
+
+  // product_name: name?.name,
+  //   product_price: selectedPrice,
+  //   product_quantity: quantity,
+  //   product_type: SelectedTYPE
+
   // Initialize the mutation hook
   const mutation = usePostPaymentDetails();
-  
+
   // Debug the mutation
   console.log("Mutation object:", mutation);
   console.log("Mutation type:", typeof mutation);
@@ -684,6 +701,10 @@ console.log("object checout",name)
     card_number: "",
     expiration_date: "",
     cvv: "",
+    product_name: name?.name,
+    product_price: selectedPrice,
+    product_quantity: quantity,
+    product_type: SelectedTYPE
   });
 
   const handleChange = (e) => {
@@ -696,15 +717,15 @@ console.log("object checout",name)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     console.log("Form submitted!", formData);
-    
+
     // Basic validation
-    if (!formData.full_name || !formData.email || !formData.phone_number || 
-        !formData.card_holder_name || !formData.card_number || 
-        !formData.expiration_date || !formData.cvv) {
-      toast.error("Please fill in all required fields.",{
-        position:"top-center"
+    if (!formData.full_name || !formData.email || !formData.phone_number ||
+      !formData.card_holder_name || !formData.card_number ||
+      !formData.expiration_date || !formData.cvv) {
+      toast.error("Please fill in all required fields.", {
+        position: "top-center"
       });
       return;
     }
@@ -712,8 +733,8 @@ console.log("object checout",name)
     // Check if mutation is available
     if (!mutation || typeof mutation.mutate !== 'function') {
       console.error("Mutation is not properly initialized");
-      toast.error("Payment service is not available. Please try again.",{
-        position:"top-center"
+      toast.error("Payment service is not available. Please try again.", {
+        position: "top-center"
       });
       return;
     }
@@ -722,22 +743,23 @@ console.log("object checout",name)
       mutation.mutate(formData, {
         onSuccess: (data) => {
           console.log("Payment details submitted successfully:", data);
-          toast.success("Payment processed successfully!",{
-            position:"top-center"
+          toast.success("Payment processed successfully!", {
+            position: "top-center"
           });
+          setorderID(data.order_id)
           setSelectedPayment(2); // Show success page
         },
         onError: (error) => {
           console.error("Error submitting payment details:", error);
-          toast.error("Failed to process payment.",{
-            position:"top-center"
+          toast.error("Failed to process payment.", {
+            position: "top-center"
           });
         },
       });
     } catch (error) {
       console.error("Error calling mutation:", error);
-      toast.error("An error occurred. Please try again.",{
-        position:"top-center"
+      toast.error("An error occurred. Please try again.", {
+        position: "top-center"
       });
     }
   };
@@ -754,11 +776,10 @@ console.log("object checout",name)
         <div className="mb-10">
           <div className="gap-2 text-[10px] font-semibold flex items-center">
             <div
-              className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${
-                selectedPayment === "bank"
+              className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${selectedPayment === "bank"
                   ? "border-primary"
                   : "border-gray-200"
-              }`}
+                }`}
               onClick={() => setSelectedPayment("bank")}
             >
               <div className="flex items-center gap-2">
@@ -774,11 +795,10 @@ console.log("object checout",name)
             </div>
 
             <div
-              className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${
-                selectedPayment === "card"
+              className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${selectedPayment === "card"
                   ? "border-primary"
                   : "border-gray-200"
-              }`}
+                }`}
               onClick={() => setSelectedPayment("card")}
             >
               <div className="flex items-center gap-2">
@@ -921,7 +941,7 @@ console.log("object checout",name)
                     You will receive an email shortly.
                   </div>
                   <div className="flex gap-8">
-                    <button 
+                    <button
                       type="button"
                       className="px-6 py-2 border border-gray-400 text-gray-500 rounded-md"
                     >
@@ -944,12 +964,12 @@ console.log("object checout",name)
           </div>
         )}
         {selectedPayment === "bank" && (
-          <CheckOutBankTransfer name={name.name} set={setSelectedPayment} />
+          <CheckOutBankTransfer name1={name.name} setorderID1={setorderID} set={setSelectedPayment} />
         )}
         {selectedPayment === 2 && (
           <Successfullpayment
             Message={"You'll receive an email shortly."}
-            orderid={"Your Order ID: 154678912"}
+            orderid={`Your Order ID: ${orderID}`}
           />
         )}
       </div>

@@ -47,7 +47,7 @@ const MainFooter = () => {
                         to="/buy-pte-voucher"
                         className="hover:text-gray-700"
                       >
-                        Buy PTE Vouchers
+                        Vouchers Store
                       </NavLink>
                     </li>
                     <li>

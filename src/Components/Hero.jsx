@@ -7,12 +7,13 @@ import {
   IoMdArrowDropright,
 } from "react-icons/io";
 import { MdOutlineArrowOutward } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate} from "react-router-dom";
 import Slider from "react-slick";
 
 import { useHomeTopImages } from "../Services/HomeImages";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const data = [
     {
       title: "Testing Services",
@@ -73,8 +74,25 @@ const Hero = () => {
     ],
   };
 
+  const scrollToMockTest = () => {
+    navigate("/buy-pte-voucher");
+    setTimeout(() => {
+      const element = document.getElementById("practicemocktests");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 1000);
+  };
 
-  const { data:ImagesData, isLoading, error } = useHomeTopImages();
+  const transformedData = data.map((item) =>
+    item.link === "#mocktest"
+      ? { ...item, link: scrollToMockTest }
+      : item
+  );
+
+  console.log("transformedData", transformedData)
+
+  const { data: ImagesData, isLoading, error } = useHomeTopImages();
 
   console.log(ImagesData)
 
@@ -91,14 +109,14 @@ const Hero = () => {
                   </div>
                 );
               })} */}
-                   {ImagesData &&
-        ImagesData.map((val, i) => {
-          return (
-            <div key={i} className="    ">
-              <img src={val.image_url} alt="" className="w-full" />
-            </div>
-          );
-        })}
+              {ImagesData &&
+                ImagesData.map((val, i) => {
+                  return (
+                    <div key={i} className="    ">
+                      <img src={val.image_url} alt="" className="w-full" />
+                    </div>
+                  );
+                })}
             </Slider>
             {/* <img src={hero} alt="" /> */}
           </div>
@@ -150,21 +168,32 @@ const Hero = () => {
             className="absolute h-20 top-10  hidden md:block -right-20"
           />
           <div className="flex flex-col md:flex-row py-10 md:py-20 gap-5">
-            {data.map((val, i) => {
-              return (
-                <NavLink to={val.link}>
-                  <div className="bg-[#F7F7F880] py-8 px-6  shadow-md hover:border hover:shadow-lg duration-200  rounded-lg">
-                    <p className="text-2xl font-semibold mb-4">{val.title}</p>
-                    <p className="text-sm text-[#909090]">{val.des}</p>
-                    <div className="flex justify-end">
-                      <button className="bg-slate-100 rounded-md p-2 mt-4">
-                        <MdOutlineArrowOutward />
-                      </button>
-                    </div>
+            {transformedData.map((val, i) => {
+              const isFunctionLink = typeof val.link === "function";
+
+              const content = (
+                <div className="bg-[#F7F7F880] py-8 px-6 shadow-md hover:border hover:shadow-lg duration-200 rounded-lg">
+                  <p className="text-2xl font-semibold mb-4">{val.title}</p>
+                  <p className="text-sm text-[#909090]">{val.des}</p>
+                  <div className="flex justify-end">
+                    <button className="bg-slate-100 rounded-md p-2 mt-4">
+                      <MdOutlineArrowOutward />
+                    </button>
                   </div>
+                </div>
+              );
+
+              return isFunctionLink ? (
+                <div key={i} onClick={val.link} className="cursor-pointer">
+                  {content}
+                </div>
+              ) : (
+                <NavLink to={val.link} key={i}>
+                  {content}
                 </NavLink>
               );
             })}
+
           </div>
         </div>
       </div>

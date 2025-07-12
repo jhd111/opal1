@@ -24,6 +24,11 @@ import WhatsAppFloatButton from "./Components/FloatingWhatsapp";import { QueryCl
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/Termsconditions";
 import RefundPolicy from "./Pages/Refund";
+import BuyScoredPracticeMockTests from "./Pages/BuyScoredPracticeMockTests";
+import BuyPearsonpte from "./Pages/BuyPearsonpte";
+import Pearsonptevoucher from "./Pages/Pearsonptevoucher";
+import GetAlfaPTPortal from "./Pages/GetAlfaPTPortal";
+import GetAPEUniPractice from "./Pages/GetAPEUniPractice";
 
 const queryClient = new QueryClient();
 const ScrollToTop = () => {
@@ -65,6 +70,15 @@ const App = () => {
             <Route path="/terms-conditions" element={<TermsAndConditions/>}/>
 
             <Route path="/refund-policy" element={<RefundPolicy/>}/>
+
+            <Route path="/BuyScoredPracticeMockTests" element={<BuyScoredPracticeMockTests/>}/>
+
+            <Route path="/BuyPearsonpte" element={<BuyPearsonpte/>}/>
+
+            <Route path="/BuyPearsonptevoucherfromus" element={<Pearsonptevoucher/>} />
+
+            <Route path="/GetAlfaPTPortal" element={<GetAlfaPTPortal/>} />
+            <Route path="/GetAPEUniPractice" element={<GetAPEUniPractice/>}/>
           </Routes>
         </main>
         <MainFooter />

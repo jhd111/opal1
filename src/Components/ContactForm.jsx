@@ -20,7 +20,7 @@
 //     message:"",
 //     phone:""
 //   })
-  
+
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
 //     setFormData(prev => ({
@@ -66,7 +66,7 @@
 //                 required
 //               />
 //               <textarea
-                
+
 //                 id=""
 //                 cols={4}
 //                 rows={4}
@@ -260,31 +260,37 @@ const ContactForm = () => {
         {/* Contact Info & Map */}
         <div>
           <div className="flex flex-col md:flex-row gap-10 lg:gap-20 items-start">
-            <div className="flex flex-col justify-center w-52">
-              <p className="flex justify-center text-primary">
+            <div className="flex flex-col items-center justify-center w-1/2 lg:w-52">
+              <div className="flex justify-center text-primary">
                 <FiMapPin />
-              </p>
-              <p>
+              </div>
+              <div className="flex justify-center">
                 55PJ + 4FG, SERVICE Rd, Shaheenabad, Gujranwala, 52290, Pakistan
-              </p>
+              </div>
             </div>
-            <div className="flex flex-col justify-center w-32">
-              <p className="text-primary flex justify-center">
-                <IoMdPhonePortrait />
-              </p>
-              <p>
+            <div className="flex flex-col justify-center w-1/2 lg:w-32 ">
+              {/* <p className="text-primary flex "> */}
+              <div className="flex justify-center">
+                <IoMdPhonePortrait className="text-primary" />
+              </div>
+
+              {/* </p> */}
+              {/* <p> */}
+              <div className="flex justify-center">
                 <a href="tel:+923301646951">+92 330 1646951</a>
-              </p>
+              </div>
+
+              {/* </p> */}
             </div>
-            <div className="flex flex-col justify-center w-48">
-              <p className="text-primary flex justify-center">
+            <div className="flex flex-col justify-center w-1/2 lg:w-48 ">
+              <div className="text-primary flex justify-center">
                 <IoIosMail />
-              </p>
-              <p>
+              </div>
+              <div>
                 <a href="mailto:info@opalinstitute.com">
                   info@opalinstitute.com
                 </a>
-              </p>
+              </div>
             </div>
           </div>
           <div className="mt-8">
