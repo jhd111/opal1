@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import img from "../assets/logo-2.png";
 import { useLocation } from "react-router-dom";
 
-const CheckoutcardDetails = ({name}) => {
+const CheckoutcardDetails = ({name,type}) => {
 console.log("name",name)
   const location = useLocation();
   const path = location.pathname;
@@ -22,6 +22,12 @@ console.log("name",name)
         <div className="  my-4 text-2xl font-semibold">
           {name}
         </div>
+        {
+          type &&
+          <p className="font-medium mb-4">{type}</p> 
+
+        }
+
         <div className="">
           <p className="font-medium mb-4">Order Summary</p>
           <div className="bg-white text-gray-400 rounded-md p-6">

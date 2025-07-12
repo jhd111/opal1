@@ -288,6 +288,7 @@ const CheckOut = () => {
     product_name: name?.name,
     product_price: selectedPrice,
     product_quantity: quantity,
+    product_type:name?.test_type
     
   });
 
@@ -358,6 +359,7 @@ const CheckOut = () => {
           </div>
         </div>
         <div className="mb-10">
+        {selectedPayment !== 2 && (
           <div className="gap-2 text-[10px] font-semibold flex items-center">
             <div
               className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${selectedPayment === "bank"
@@ -397,7 +399,9 @@ const CheckOut = () => {
               </div>
             </div>
           </div>
+          )}
         </div>
+        
         {selectedPayment === "card" && (
           <div className="flex">
             <div className="w-full">
@@ -543,7 +547,7 @@ const CheckOut = () => {
               </div>
             </div>
             <div className="w-full hidden lg:block">
-              <CheckoutcardDetails name={name.name} />
+              <CheckoutcardDetails name={name.name} type={name.test_type} />
             </div>
           </div>
         )}

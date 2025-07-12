@@ -547,7 +547,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
     submitData.append("product_name", dealData?.name);
     submitData.append("product_price", selectedPrice);
     submitData.append("product_quantity", quantity);
-    submitData.append("product_type", SelectedTYPE);
+    submitData.append("product_type", dealData?.test_type);
 
     mutation.mutate(submitData, {
       onSuccess: (data) => {
@@ -800,7 +800,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
       )}
 
       <div className="w-full hidden lg:block">
-        <CheckoutcardDetails name={name} />
+        <CheckoutcardDetails name={name} type={dealData?.test_type}/>
       </div>
     </div>
   );

@@ -36,10 +36,15 @@ console.log("object",object)
           <img src={object.image} alt="" className="w-full" />
         </div>
         <div className="w-full">
-          <div className=" space-y-8 border-b pb-4">
+          <div className=" space-y-5 lg:space-y-8  border-b pb-4">
             <p className="text-xl font-semibold lg:text-3xl lg:font-bold dm-sans">
               {object.name}
             </p>
+            {object?.test_type && 
+             <p className="text-sm font-semibold lg:text-3xl lg:font-bold dm-sans">
+             {object?.test_type}
+           </p>
+            }
             <p className="text-2xl font-semibold text-[#39B856] poppins">
             RS {""} {Math.floor(object.price)}
             </p>

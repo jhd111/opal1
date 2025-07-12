@@ -774,6 +774,7 @@ const CheckOut = () => {
           </div>
         </div>
         <div className="mb-10">
+        {selectedPayment !== 2 && (
           <div className="gap-2 text-[10px] font-semibold flex items-center">
             <div
               className={`px-4 py-2 border-2 rounded-[5px] cursor-pointer ${selectedPayment === "bank"
@@ -813,6 +814,8 @@ const CheckOut = () => {
               </div>
             </div>
           </div>
+        )
+              }
         </div>
         {selectedPayment === "card" && (
           <div className="flex">

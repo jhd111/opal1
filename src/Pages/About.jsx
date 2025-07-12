@@ -131,15 +131,26 @@ const About = () => {
           At Opal Institute, we are proud of our accomplishments. Together we
           can shape the way how English Test Preparation is done.
         </p>
-        <div className="hidden lg:flex  items-center justify-center">
-          <div className="mx-auto -bottom-10 flex  items-center absolute">
-            <div className="h-32 w-40 shadow bg-white"></div>
-            <div className="h-36 w-40 shadow bg-white"></div>
-            <div className="h-40 w-40 shadow bg-white"></div>
-            <div className="h-36 w-40 shadow bg-white"></div>
-            <div className="h-32 w-40 shadow bg-white"></div>
-          </div>
-        </div>
+        <div className="hidden lg:flex items-center justify-center">
+  <div className="mx-auto -bottom-10 flex items-center absolute">
+    <div className="h-32 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+      No. 1 in Pakistan 2024-25
+    </div>
+    <div className="h-36 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+      No.1 in Gujranwala 2024-25
+    </div>
+    <div className="h-40 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+      1000+ happy students
+    </div>
+    <div className="h-36 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+      No.1 in Punjab Province
+    </div>
+    <div className="h-32 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+      No.1 Platinum PTE Partner
+    </div>
+  </div>
+</div>
+
       </div>
       <div className=" mt-20">
         <MediaGallery />
