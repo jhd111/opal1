@@ -23,7 +23,7 @@ console.log("name",name)
           {name}
         </div>
         {
-          type &&
+         name?. type &&
           <p className="font-medium mb-4">{type}</p> 
 
         }

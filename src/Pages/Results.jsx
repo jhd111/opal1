@@ -158,9 +158,7 @@ const Results = () => {
         <div className="space-y-4">
           <p className="text-2xl lg:text-3xl be-vietnam font-semibold">Our Results</p>
           <p className="plus-jakarta">
-            Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
-            elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
-            eget habitasse in velit fringilla feugiat senectus in.
+          Our students’ PTE results speak volumes — consistently achieving top scores that open doors to global opportunities.
           </p>
         </div>
         

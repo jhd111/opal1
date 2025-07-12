@@ -103,8 +103,8 @@ const PrivacyPolicy = () => {
             <p>
               For any queries or privacy concerns, reach out to: <br />
               Email:{" "}
-              <a href="mailto:privacy@opalinstitute.pk" className="text-blue-600 underline">
-                privacy@opalinstitute.pk
+              <a href="mailto:info@opalinstitute.com" className="text-blue-600 underline">
+              info@opalinstitute.com
               </a>
             </p>
           </section>

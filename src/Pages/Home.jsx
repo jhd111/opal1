@@ -20,13 +20,12 @@ import ContactForm from "../Components/ContactForm";
 import Sliders from "../Components/Slider";
 import Hero from "../Components/Hero";
 import MediaGallery from "../Components/MediaGallery";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { fetchResults } from "../Services/HomeResults";
 const Home = () => {
+  const { data: Results, isLoading, error } = fetchResults();
 
-    const { data: Results, isLoading, error } = fetchResults();
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const OPTIONS = { loop: true };
   const SLIDE_COUNT = 5;
@@ -39,7 +38,7 @@ const Home = () => {
     message
   )}`;
 
-   const scrollToMockTest = () => {
+  const scrollToMockTest = () => {
     navigate("/buy-pte-voucher");
     setTimeout(() => {
       const element = document.getElementById("practicemocktests");
@@ -164,9 +163,12 @@ const Home = () => {
               >
                 Buy Now
               </NavLink> */}
-              <button onClick={scrollToMockTest} className="px-8 py-3 bg-primary rounded-3xl text-white">
-                    Buy Now
-                  </button>
+              <button
+                onClick={scrollToMockTest}
+                className="px-8 py-3 bg-primary rounded-3xl text-white"
+              >
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
@@ -209,7 +211,7 @@ const Home = () => {
           <div className="w-[90%] md:w-[80%] bg-white relative  md:absolute   rounded-md  md:left-[10%]   mt-10   bottom-1 grid grid-cols-3  md:grid-cols-5  gap-4 shadow-md mx-auto">
             {[p1, p4, p2, p3, comptia].map((val, i) => (
               <div className="">
-                <img src={val} alt="" className="w-[140px]"/>
+                <img src={val} alt="" className="w-[140px]" />
               </div>
             ))}
           </div>
@@ -223,11 +225,10 @@ const Home = () => {
               <NavLink
                 // to="/results"
 
-                  to={{
-                    pathname: "/results",
-                  }}
-                  state={{ object: Results?.data[0] }} // Pass the full object here
-                
+                to={{
+                  pathname: "/results",
+                }}
+                state={{ object: Results?.data[0] }} // Pass the full object here
                 className="px-6 py-2 bg-primary text-white rounded-md"
               >
                 View More
@@ -269,9 +270,8 @@ const Home = () => {
             About Us
           </p>
           <p className="mt-2 be-vietnam text-xs lg:text-sm">
-            Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
-            elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
-            eget habitasse in velit fringilla feugiat senectus in.
+            Founded in 2021 with the aim to help thousands of students
+            achieve their goals.
           </p>
           {/* <div className="flex  md:w-[80%] mx-auto flex-col md:flex-row  gap-10 md:gap-0 mt-10 rounded-4xl">
             <div className="   ">
@@ -308,41 +308,44 @@ const Home = () => {
             </div>
           </div> */}
 
-<div className="flex flex-col md:flex-row md:h-[600px] w-full md:w-[90%] mx-auto mt-10 rounded-4xl overflow-hidden shadow-lg">
-  {/* Image Section */}
-  <div className="w-full md:w-1/2 h-[300px] md:h-full">
-    <img
-      src={h}
-      alt="Pearson VUE"
-      className="w-full h-full object-cover"
-    />
-  </div>
+          <div className="flex flex-col md:flex-row md:h-[600px] w-full md:w-[90%] mx-auto mt-10 rounded-4xl overflow-hidden shadow-lg">
+            {/* Image Section */}
+            <div className="w-full md:w-1/2 h-[300px] md:h-full">
+              <img
+                src={h}
+                alt="Pearson VUE"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-  {/* Text Section */}
-  <div className="w-full md:w-1/2 bg-[#F6982817] p-6 md:p-10 flex flex-col justify-between">
-    <h2 className="text-2xl md:text-4xl font-bold mb-6">Discover our History</h2>
-    <p className="text-sm md:text-base leading-relaxed mb-6">
-      Opal Institute was founded in 2003 with the aim to help thousands of
-      students achieve their goals. We have expanded our operations and work
-      globally in multiple countries. Opal Institute was founded in 2003 with
-      the aim to help thousands of students achieve their goals. We have
-      expanded our operations and work globally in multiple countries.
-      <br />
-      <br />
-      Opal Institute was founded in 2003 with the aim to help thousands of
-      students achieve their goals. We have expanded our operations and work
-      globally in multiple countries.
-    </p>
-    <div>
-      <NavLink
-        to="/about"
-        className="bg-primary text-white px-6 py-3 rounded-md text-center inline-block"
-      >
-        Explore more
-      </NavLink>
-    </div>
-  </div>
-</div>
+            {/* Text Section */}
+            <div className="w-full md:w-1/2 bg-[#F6982817] p-6 md:p-10 flex flex-col justify-between">
+              <h2 className="text-2xl md:text-4xl font-bold mb-6">
+                Discover our History
+              </h2>
+              <p className="text-sm md:text-base leading-relaxed mb-6">
+                Established in 2021, our PTE Training Institute has quickly
+                become a leading name in the field of English proficiency test
+                preparation. As a proud Platinum Partner of PTE, we are
+                committed to delivering the highest quality training and support
+                to help our students achieve their desired scores. 
+                <br />
+                <br />
+                Over the years, our dedication to excellence has been recognized with
+                numerous prestigious awards from PTE, affirming our position as
+                one of the top institutes in the industry. Join us and take the
+                first step toward your success in the PTE exam!
+              </p>
+              <div>
+                <NavLink
+                  to="/about"
+                  className="bg-primary text-white px-6 py-3 rounded-md text-center inline-block"
+                >
+                  Explore more
+                </NavLink>
+              </div>
+            </div>
+          </div>
 
           <div className="py-10">
             <MediaGallery />

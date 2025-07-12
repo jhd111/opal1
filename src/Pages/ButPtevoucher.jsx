@@ -227,7 +227,7 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                         </p>
                         <ul className="text-sm text-gray-700 space-y-2">
                           {deal.key_features
-                            .split("\r\n")
+                            ?.split("\r\n")
                             .map((feature, index) => (
                               <li
                                 key={index}

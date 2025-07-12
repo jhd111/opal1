@@ -222,8 +222,8 @@ const TermsConditions = () => {
       {/* Closing Statement */}
       <p className="mt-10 text-sm italic text-gray-600">
         For any questions regarding these Terms & Conditions, contact us at{" "}
-        <a href="mailto:help@opalnstitute.com" className="text-blue-600 underline">
-          help@opalnstitute.com
+        <a href="mailto:info@opalinstitute.com" className="text-blue-600 underline">
+        info@opalinstitute.com
         </a>
       </p>
     </div>

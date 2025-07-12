@@ -29,7 +29,7 @@ const RefundPolicy = () => {
           <h2 className="text-xl font-semibold text-[#1D237E]">2. How to Request a Refund</h2>
           <p className="mb-2">To initiate a refund request:</p>
           <ol className="list-decimal ml-6 space-y-1">
-            <li>Email us at <strong>support@opalinstitute.pk</strong> with:
+            <li>Email us at <strong>info@opalinstitute.com</strong> with:
               <ul className="ml-6 mt-1 list-disc">
                 <li>Your full name</li>
                 <li>Order Details</li>
@@ -57,8 +57,8 @@ const RefundPolicy = () => {
           <p>
             If you have any questions about this policy, please contact us at: <br />
             Email:{" "}
-            <a href="mailto:support@opalinstitute.pk" className="text-blue-600 underline">
-              support@opalinstitute.pk
+            <a href="mailto:info@opalinstitute.com" className="text-blue-600 underline">
+            info@opalinstitute.com
             </a>
           </p>
         </section>
