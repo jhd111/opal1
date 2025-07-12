@@ -1,6 +1,7 @@
 {
   "name": "opal-institute",
   "private": true,
+  "homepage": "https://opal1.vercel.app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
