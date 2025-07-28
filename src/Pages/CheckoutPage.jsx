@@ -16,7 +16,9 @@ const [selectedType, setSelectedType] = useState("");
 
 
   const deal = location.state?.object1;
+  const pathh=location.state?.path
   console.log(deal)
+  console.log("pathh",pathh)
   localStorage.setItem("price1", deal.price)
 
   const faqs = [
@@ -86,7 +88,7 @@ const [selectedType, setSelectedType] = useState("");
             <div className="">
               <NavLink
                 to="/checkout-pte-user"
-                state={{ name: deal,SelectedTYPE:selectedType }}
+                state={{ name: deal,SelectedTYPE:selectedType, pathh:pathh}}
                 className="bg-primary rounded-full block text-center text-white w-full py-3 p-2"
               >
                 Proceed to Checkout

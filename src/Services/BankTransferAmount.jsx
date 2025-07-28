@@ -3,19 +3,21 @@ import axios from "axios";
 import BaseUrl from "../Base_url/Base_url"; // Replace with your actual Base URL
 
 // Function to send POST request
-const postPaymentDetails = async (payload) => {
+const postPaymentDetails = async ({payload, path}) => {
+  
   const response = await axios.post(
-    `${BaseUrl}/api/get-payment-detail/`,
+    `${BaseUrl}/api/${path}`,
     payload,
     {
       headers: {
-        "Content-Type": "multipart/form-data", // Set content type
-        "ngrok-skip-browser-warning": "true", // Optional for ngrok
+        "Content-Type": "multipart/form-data",
+        "ngrok-skip-browser-warning": "true",
       },
     }
   );
   return response.data;
 };
+
 
 // Custom Hook for Mutation (React Query v5 syntax)
 export const usePostPaymentDetails = () => {

@@ -9,7 +9,7 @@ const GetAPEUniPractice = () => {
 
 
   const location = useLocation();
-  const { name } = location.state || {}; // Retrieve the passed object
+  const { name,path } = location.state || {}; // Retrieve the passed object
   
 
 console.log(name)
@@ -32,7 +32,7 @@ console.log(name)
               </span>
             </p>
           </div>
-          <img src={name?.image} alt="" className="w-full" />
+          <img src={name?.image_url} alt="" className="w-full" />
         </div>
         <div className="w-full">
           <div className=" space-y-8 border-b pb-4">
@@ -57,7 +57,7 @@ console.log(name)
               </span>
             </div>
             <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out" state={{ name: name }}
+              <NavLink to="/check-out" state={{ name: name,pathh:path }}
               >Proceed to Checkout</NavLink>
             </div>
           </div>

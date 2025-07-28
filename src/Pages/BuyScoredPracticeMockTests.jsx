@@ -9,7 +9,7 @@ const BuyScoredPracticeMockTests = () => {
 
 
   const location = useLocation();
-  const { object } = location.state || {}; // Retrieve the passed object
+  const { object,path } = location.state || {}; // Retrieve the passed object
   
   
 
@@ -33,7 +33,7 @@ console.log("object",object)
               </span>
             </p>
           </div>
-          <img src={object.image} alt="" className="w-full" />
+          <img src={object.image_url} alt="" className="w-full" />
         </div>
         <div className="w-full">
           <div className=" space-y-5 lg:space-y-8  border-b pb-4">
@@ -63,7 +63,7 @@ console.log("object",object)
               </span>
             </div>
             <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out" state={{ name: object }}
+              <NavLink to="/check-out" state={{ name: object,pathh:path }}
               >Proceed to Checkout</NavLink>
             </div>
           </div>

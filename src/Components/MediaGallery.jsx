@@ -156,7 +156,6 @@ import { Media_gallery } from "../Services/MediaGalleryApi";
 
 const MediaGallery = () => {
   const { data: gallery, isLoading: galleryLoading, isError: galleryError } = Media_gallery();
-
   const swiperRef = useRef(null);
   
   useEffect(() => {
@@ -262,7 +261,7 @@ const MediaGallery = () => {
               <div key={item.id || index} className="swiper-slide">
                 <div className="item-content shadow-lg rounded-xl overflow-hidden">
                   <img 
-                    src={item.image_url} 
+                    src={item.image} 
                     alt={`Gallery image ${item.id || index + 1}`} 
                     className="w-full h-full object-cover" 
                   />

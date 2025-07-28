@@ -5,7 +5,7 @@ import BaseUrl from "../Base_url/Base_url";
 // Function to fetch data from the API
 const  Pearson_Pte = async () => {
   const response = await axios.get(
-    `${BaseUrl}/api/pearson-pte-voucher/`,
+    `${BaseUrl}/api/vouchers-detail/?category_id=${6}`,
     {
         headers: {
           "ngrok-skip-browser-warning": "true", // Add ngrok header

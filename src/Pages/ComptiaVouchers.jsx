@@ -10,8 +10,9 @@ import Loader from "../Components/Loader"
 const ComptiaVouchers = () => {
 
    const location = useLocation();
-  const { object } = location.state || {}; // Retrieve the passed object
+  const { object,path } = location.state || {}; // Retrieve the passed object
 console.log("object",object)
+console.log("path",path)
   const category_id = object?.id ; // Fallback to 1 if `object.id` is undefined
 
    const { data: Vouchers, isLoading, error } = VoucherDetails(category_id);
@@ -68,7 +69,7 @@ console.log("object",object)
                       to={{
                     pathname: "/buy-voucher",
                   }}
-                  state={{ object: val }} // Pass the full object here
+                  state={{ object: val,pathh:path }} // Pass the full object here
                     className="bg-[#F1F1F3] text-center py-2 px-10 rounded-md font-semibold"
                   >
                     Order Now

@@ -418,7 +418,7 @@ import toast from "react-hot-toast";
 
 import { useLocation } from "react-router-dom";
 
-const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
+const CheckOutBankTransfer = ({ set, name,setorderID1,pathh }) => {
   const [block, setblock] = useState(1);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -431,7 +431,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
 
   const { name: dealData, SelectedTYPE } = location.state || {};
 
-  console.log("object checout", name)
+  console.log("object checout1", dealData)
 
   const quantity = localStorage.getItem("count")
   const ItemPrice = localStorage.getItem("price")
@@ -441,7 +441,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
   const selectedPrice = path.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
 
   const [formData, setFormData] = useState({
-    type: "bank transfer", // Default type
+    type: "bank_transfer", // Default type
     full_name: "",
     email: "",
     phone_number: "",
@@ -472,6 +472,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
   };
 
   console.log("selectedFile", selectedFile)
+  console.log("CheckOutBankTransfer pathh",pathh)
 
   // Handle form submission
   // const handleSubmit = (e) => {
@@ -547,9 +548,15 @@ const CheckOutBankTransfer = ({ set, name,setorderID1 }) => {
     submitData.append("product_name", dealData?.name);
     submitData.append("product_price", selectedPrice);
     submitData.append("product_quantity", quantity);
-    submitData.append("product_type", dealData?.test_type);
+    submitData.append("product_type", dealData?.test_type||SelectedTYPE);
+    submitData.append("deal_id",dealData?.id)
 
-    mutation.mutate(submitData, {
+    mutation.mutate(
+      {
+        path: pathh,
+        payload: submitData
+      },
+      {
       onSuccess: (data) => {
         toast.success("Submitted successfully!", {
           position: "top-center"

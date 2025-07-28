@@ -128,7 +128,7 @@ const BuyVouchers = () => {
                     to={{
                     pathname: "/all-vouchers",
                   }}
-                  state={{ object: val }} // Pass the full object here
+                  state={{ object: val,path: "get-payment-detail/" }} // Pass the full object here
                   className="bg-[#F1F1F3]  text-center rounded-md py-2 px-10 font-semibold"
                 >
                   View Voucher

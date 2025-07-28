@@ -12,6 +12,7 @@ import { Alfa_PTE_Portal_Access } from "../Services/Get_Alfa_PTE_Portal_Access";
 import { Pearson_Pte_voucher } from "../Services/Pearson_pte_voucher";
 
 import { Score_Practice_Mock_Test } from "../Services/Score_Practice_Mock_Test";
+import { Products } from "../Services/Products";
 
 import { Our_Deals } from "../Services/Our_Deals";
 import image from "../assets/images/Image.png";
@@ -22,7 +23,10 @@ import BuyVouchers from "./BuyVouchers";
 const ButPtevoucher = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data: ApeVoucher, isLoading, isError } = ApeUniVoucher();
+  const { data: Product, isLoading: productsLoading } = Products();
+  console.log("Products", Product);
+
+  // const { data: ApeVoucher, isLoading, isError } = ApeUniVoucher();
 
   const {
     data: Alfa_PTE_Portal,
@@ -30,18 +34,18 @@ const ButPtevoucher = () => {
     isError: portal_error,
   } = Alfa_PTE_Portal_Access();
 
-  const {
-    data: Buy_Peasrson_Pte_Voucher,
-    isLoading: Buy_Peasrson_Pte_Voucher_loading,
-    isError: Buy_Peasrson_Pte_Voucher_error,
-  } = Pearson_Pte_voucher();
+  // const {
+  //   data: Buy_Peasrson_Pte_Voucher,
+  //   isLoading: Buy_Peasrson_Pte_Voucher_loading,
+  //   isError: Buy_Peasrson_Pte_Voucher_error,
+  // } = Pearson_Pte_voucher();
 
   const {
     data: Pearson_Scored_Practice_Mock,
     isLoading: Pearson_Scored_Practice_Mock_loading,
     isError: Pearson_Scored_Practice_Mock_error,
   } = Score_Practice_Mock_Test();
-console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
+  console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock);
   const {
     data: Deals,
     isLoading: Deals_loading,
@@ -91,15 +95,21 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
     },
   ];
   // const fullRows = Math.floor(mockTests.length / 3);
-  const remainder = Pearson_Scored_Practice_Mock?.data?.length % 3;
-  const lastRowItems = remainder === 0 ? [] : Pearson_Scored_Practice_Mock?.data?.slice(-remainder);
-  const otherItems =
-    remainder === 0 ? Pearson_Scored_Practice_Mock?.data : Pearson_Scored_Practice_Mock?.data.slice(0, -remainder);
+  // const remainder = Pearson_Scored_Practice_Mock?.data?.length % 3;
+  // const lastRowItems =
+  //   remainder === 0
+  //     ? []
+  //     : Pearson_Scored_Practice_Mock?.data?.slice(-remainder);
+  // const otherItems =
+  //   remainder === 0
+  //     ? Pearson_Scored_Practice_Mock?.data
+  //     : Pearson_Scored_Practice_Mock?.data.slice(0, -remainder);
   return (
     <>
-      {isLoading &&
+      {
+      // isLoading &&
       Portal_loading &&
-      Buy_Peasrson_Pte_Voucher_loading &&
+      // Buy_Peasrson_Pte_Voucher_loading &&
       Pearson_Scored_Practice_Mock_loading &&
       Deals_loading ? (
         <Loader />
@@ -121,52 +131,67 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                 {Deals?.slice(0, 3).map((deal) => (
                   <div
                     key={deal.id}
-                    className={`relative flex flex-col justify-between rounded-3xl p-6 md:p-8 lg:p-10 h-full transition-all ${
+                    className={`relative flex flex-col rounded-3xl p-6 md:p-8 lg:p-10 h-full transition-all ${
                       deal.id % 2 === 0 ? "bg-[#EFF2FF]" : "bg-white shadow"
                     }`}
                   >
-                    {/* Top content */}
-                    <div>
-                      <p className="text-xl font-semibold md:text-3xl md:font-bold">
-                        {deal.name}
-                      </p>
+                    {/* Header Section - Fixed height */}
+                    <div className="mb-4">
+                      <div className=" lg:min-h-[5rem] flex items-center">
+                        <p className="text-xl font-semibold md:text-3xl md:font-bold leading-tight">
+                          {deal.name}
+                        </p>
+                      </div>
                       <p className="text-sm text-gray-500 mt-1">
                         Order Now & Save Big
                       </p>
-                      <div className="flex items-center gap-x-2 mb-2">
-                        <p className="my-4 text-2xl font-light">
+                    </div>
+
+                    {/* Price Section - Fixed height */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-x-2">
+                        <p className="text-2xl font-light">
                           Rs. {Math.floor(deal.price)}/-
                         </p>
                         <p className="text-sm text-gray-600 font-medium rounded-2xl px-2 py-1 bg-[#D5DFFF]">
                           Save Rs. {Math.floor(deal.save_rs)}
                         </p>
                       </div>
+                    </div>
+
+                    {/* Button Section - Fixed height */}
+                    <div className="mb-6">
                       <NavLink
                         to={`/checkout-PTE/`}
-                        state={{ object1: deal }}
+                        state={{ object1: deal, path: "deals-payment/" }}
                         className="bg-[#3F51B5] hover:bg-[#2f3aa0] w-full text-center text-white text-sm font-semibold px-6 py-3 rounded-full inline-block transition-all"
                       >
                         Order Now
                       </NavLink>
-                      <hr className="my-6 border-[#D1D1F7]" />
-                      <p className="font-semibold text-black mb-2">
+                    </div>
+
+                    {/* Divider */}
+                    <hr className="mb-6 border-[#D1D1F7]" />
+
+                    {/* Features Section - Flexible height */}
+                    <div className="flex-grow">
+                      <p className="font-semibold text-black mb-4">
                         Key Features
                       </p>
-                      <ul className="text-sm text-gray-700 space-y-2">
+                      <ul className="text-sm text-gray-700 space-y-2 mb-6">
                         {deal.key_features
                           .split("\r\n")
                           .map((feature, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <FaCheck className="text-green-500 mt-1" />
-                              {feature}
+                              <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+                              <span>{feature}</span>
                             </li>
                           ))}
                       </ul>
                     </div>
 
-                    {/* Logos at bottom */}
-                    {/* Logos at bottom */}
-                    <div className="flex gap-2 mt-6 flex-wrap">
+                    {/* Logos Section - Always at bottom */}
+                    <div className="flex gap-2 flex-wrap mt-auto">
                       {[deal.image_1, deal.image_2, deal.image_3, deal.image_4]
                         .filter(Boolean) // filter out null/undefined
                         .map((img, index) => (
@@ -216,7 +241,7 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                         </div>
                         <NavLink
                           to={`/checkout-PTE/`}
-                          state={{ object1: deal }}
+                          state={{ object1: deal, path: "deals-payment/" }}
                           className="bg-[#3F51B5] hover:bg-[#2f3aa0] text-white text-sm font-semibold px-6 py-3 rounded-full inline-block transition-all"
                         >
                           Order Now
@@ -273,27 +298,32 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
             className="bg-gradient-to-b from-[rgba(54,81,191,0.07)] to-[rgba(255,255,255,0)] min-h-screen p-8 mt-10 "
           >
             {/* Header */}
-            <div className="max-w-6xl mx-auto mb-8">
-              <h1 className="text-xl font-semibold lg:text-3xl be-vietnam lg:font-bold text-center mb-2">
-                Buy Scored Practice Mock Tests
-              </h1>
-              <p className="text-center text-gray-600">
-                We offer Pearson Scored Practice Mock Tests A, B, C, D, E to
-                take your exam preparation to a next level.
-              </p>
-            </div>
+            
+            {Product?.data?.[2] && (
+  <div className="max-w-6xl mx-auto mb-8">
+    <h1 className="text-xl font-semibold lg:text-3xl be-vietnam lg:font-bold text-center mb-2">
+      {Product.data[2].category.name}
+    </h1>
+    {/* <p className="text-center text-gray-600">
+      We offer Pearson Scored Practice Mock Tests A, B, C, D, E to
+      take your exam preparation to a next level.
+    </p> */}
+  </div>
+)}
+
 
             {/* Cards Grid */}
             <div className="max-w-6xl mx-auto">
+            
               {/* Grid for full rows */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {otherItems?.map((test) => (
+                {Product?.data[2]?.vouchers?.map((test) => (
                   <div
                     key={test.id}
                     className="bg-white rounded-lg shadow-md overflow-hidden p-5"
                   >
                     <img
-                      src={test?.image}
+                      src={test?.image_url}
                       alt={test?.name}
                       className="w-full h-48 object-cover"
                     />
@@ -302,13 +332,17 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                         {test?.name}
                       </h3>
                       <p className="text-md">{test?.description}</p>
-                      <p className="text-md text-black">Test Type :{test?.test_type}</p>
-                        <p className="text-green-500">RS {Math.floor(test?.price)}</p>
+                      <p className="text-md text-black">
+                        Test Type :{test?.test_type}
+                      </p>
+                      <p className="text-green-500">
+                        RS {Math.floor(test?.price)}
+                      </p>
                     </div>
                     <div className="px-4 py-2">
                       <NavLink
                         to="/BuyScoredPracticeMockTests"
-                        state={{ object: test }}
+                        state={{ object: test, path: "get-payment-detail/" }}
                         className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded"
                       >
                         Buy Now
@@ -319,7 +353,7 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
               </div>
 
               {/* Centered last row */}
-              {lastRowItems?.length > 0 && (
+              {/* {lastRowItems?.length > 0 && (
                 <div className="flex justify-center gap-4 mt-4 flex-wrap">
                   {lastRowItems?.map((test) => (
                     <div
@@ -333,16 +367,20 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                       />
                       <div className="mt-2">
                         <h3 className="text-lg be-vietnam font-medium">
-                         {test?.name}
+                          {test?.name}
                         </h3>
                         <p className="text-sm">{test?.description}</p>
-                        <p className="text-md text-black">Test Type :{test?.test_type}</p>
-                        <p className="text-green-500">RS {Math.floor(test?.price)}</p>
+                        <p className="text-md text-black">
+                          Test Type :{test?.test_type}
+                        </p>
+                        <p className="text-green-500">
+                          RS {Math.floor(test?.price)}
+                        </p>
                       </div>
                       <div className="px-4 py-2">
                         <NavLink
                           to="/BuyScoredPracticeMockTests"
-                          state={{ object: test }}
+                          state={{ object: test, path: "get-payment-detail/" }}
                           className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded"
                         >
                           Buy Now
@@ -351,14 +389,15 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                     </div>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 
+          {/*------------------------ Buy_Peasrson_Pte_Voucher -----------------------*/}
           <div className="w-[85%] poppins   mx-auto py-14">
             <div className="my-8">
               <div className="flex gap-10 flex-col md:flex-row">
-                {Buy_Peasrson_Pte_Voucher?.data?.map((voucher) => (
+                {Product?.data[1]?.vouchers?.map((voucher) => (
                   <div
                     key={voucher.id}
                     className="flex gap-10 flex-col md:flex-row"
@@ -370,8 +409,7 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                         </span>
                       </p>
                       <p className="text-xs">
-                        Opal Institute is a Pearson VUE Authorised Test Center
-                        and offers Pearson PTE Voucher for our students.
+                       {voucher.description}
                       </p>
                       <p className="text-2xl font-semibold">
                         RS {Math.floor(voucher.price)}/-
@@ -387,7 +425,7 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
 
                         <NavLink
                           to="/BuyPearsonptevoucherfromus"
-                          state={{ name: voucher }}
+                          state={{ name: voucher, path: "get-payment-detail/" }}
                           className="block bg-gray-100 text-center text-sm font-medium text-black w-full p-2 rounded"
                         >
                           Buy Now
@@ -395,12 +433,16 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                       </div>
                     </div>
                     <div className="w-full">
-                      <img src={voucher.image} alt={voucher.name} width={500} />
+                      <img
+                        src={voucher.image_url}
+                        alt={voucher.name}
+                        width={500}
+                      />
                     </div>
                   </div>
                 ))}
               </div>
-
+              {/* ------------------Get Alfa PTE Portal Access------------------- */}
               <div className="my-10">
                 <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
                   Get Alfa PTE Portal Access
@@ -448,7 +490,10 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                             </a> */}
                           <NavLink
                             to="/GetAlfaPTPortal"
-                            state={{ name: voucher }}
+                            state={{
+                              name: voucher,
+                              path: "aplha-pte-payment/",
+                            }}
                             className="block bg-gray-100 text-center text-sm font-medium text-black w-full p-2 rounded"
                           >
                             Buy Now
@@ -459,69 +504,74 @@ console.log(" Pearson_Scored_Practice_Mock", Pearson_Scored_Practice_Mock)
                   </div>
                 </div>
               </div>
-              <div className=" my-10 w-[100%]">
-                <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
-                  Get APE Uni Practice Vouchers.
-                </p>
-                <p className="text-xs text-gray-500 mb-10 mt-4">
-                  We offer APE Uni Practice Vouchers too. for 30, 60 and 90
-                  days. Choose a plan that suits you best.
-                </p>
-                <div className="my-4">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-8 w-full mx-auto">
-                    {ApeVoucher?.data?.map((voucher) => (
-                      <div
-                        key={voucher.id}
-                        className="relative border p-4 flex flex-col rounded-md h-[420px]" // ✅ Fixed height for consistent alignment
-                      >
-                        {/* Ribbon */}
-                        <div className="absolute -left-6 top-5 w-32 transform -rotate-45 bg-gradient-to-r from-[#E49F3E] to-[#E49F3E] shadow-md z-10">
-                          <p className="text-center text-xs font-bold text-black py-1">
-                            {`VALIDITY: ${voucher.validity} DAYS`}
-                          </p>
-                        </div>
+              {/* ------------------------Get APE Uni Practice Vouchers.-------------*/}
+              {Product?.data?.[0] && (
+                <div className="my-10 w-[100%]">
+                  {/* Category Name */}
+                  <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
+                    Get {Product.data[0].category.name} Vouchers
+                  </p>
 
-                        {/* Image wrapper */}
-                        <div className="flex items-center justify-center">
-                          <img
-                            src={voucher.image}
-                            alt={voucher.name}
-                            className="w-[300px] object-fill h-[200px]"
-                          />
-                        </div>
+                  {/* Optional description */}
+                  {/* <p className="text-xs text-gray-500 mb-10 mt-4">
+      We offer {Product.data[0].category.name} vouchers. Choose a plan that suits you best.
+    </p> */}
 
-                        {/* Text section with consistent height */}
-                        <div className="flex flex-col flex-grow mt-5 justify-start">
-                          <div className="text-[12px] lg:text-xs text-gray-500">
-                            {voucher.title}
+                  <div className="my-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-8 w-full mx-auto">
+                      {Product.data[0].vouchers.map((voucher) => (
+                        <div
+                          key={voucher.id}
+                          className="relative border p-4 flex flex-col rounded-md h-[420px]"
+                        >
+                          {/* Ribbon */}
+                          <div className="absolute -left-6 top-5 w-32 transform -rotate-45 bg-gradient-to-r from-[#E49F3E] to-[#E49F3E] shadow-md z-10">
+                            <p className="text-center text-xs font-bold text-black py-1">
+                              {voucher.validity
+                                ? `VALIDITY: ${voucher.validity} DAYS`
+                                : "NO VALIDITY"}
+                            </p>
                           </div>
-                          <p className="text-primary text-[12px] lg:text-sm font-normal lg:font-semibold mt-2">
-                            {voucher.name}
-                          </p>
-                          <p className="text-xs mt-2 line-clamp-2">
-                            {voucher.description}
-                          </p>
 
-                          {/* CTA Button pushed to bottom */}
-                          {/* <a
-                              href={whatsappLink}
+                          {/* Image */}
+                          <div className="flex items-center justify-center">
+                            <img
+                              src={voucher.image_url}
+                              alt={voucher.name}
+                              className="w-[300px] object-fill h-[200px]"
+                            />
+                          </div>
+
+                          {/* Details */}
+                          <div className="flex flex-col flex-grow mt-5 justify-start">
+                            <div className="text-[12px] lg:text-xs text-gray-500">
+                              {Product.data[0].category.name}
+                            </div>
+                            <p className="text-primary text-[12px] lg:text-sm font-normal lg:font-semibold mt-2">
+                              {voucher.name}
+                            </p>
+                            <p className="text-xs mt-2 line-clamp-2">
+                              {voucher.description}
+                            </p>
+
+                            {/* Buy Now button */}
+                            <NavLink
+                              to="/GetAPEUniPractice"
+                              state={{
+                                name: voucher,
+                                path: "get-payment-detail/",
+                              }}
                               className="bg-gray-100 text-center mt-auto p-2 font-medium text-sm"
                             >
                               Buy Now
-                            </a> */}
-                          <NavLink
-                            to="/GetAPEUniPractice"
-                            state={{ name: voucher }}
-                            className="bg-gray-100 text-center mt-auto p-2 font-medium text-sm"
-                          >
-                            Buy Now
-                          </NavLink>
+                            </NavLink>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           <BuyVouchers />

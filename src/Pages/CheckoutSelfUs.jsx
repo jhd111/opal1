@@ -668,7 +668,7 @@ const CheckOut = () => {
   const location = useLocation();
 
    const path = location.pathname;
-  const { name, SelectedTYPE } = location.state || {};
+  const { name, SelectedTYPE,pathh } = location.state || {};
 
   console.log("object checout", name)
 
@@ -704,7 +704,8 @@ const CheckOut = () => {
     product_name: name?.name,
     product_price: selectedPrice,
     product_quantity: quantity,
-    product_type: SelectedTYPE
+    product_type: SelectedTYPE,
+    deal_id:name?.id
   });
 
   const handleChange = (e) => {
@@ -740,15 +741,34 @@ const CheckOut = () => {
     }
 
     try {
-      mutation.mutate(formData, {
-        onSuccess: (data) => {
-          console.log("Payment details submitted successfully:", data);
-          toast.success("Payment processed successfully!", {
-            position: "top-center"
-          });
-          setorderID(data.order_id)
-          setSelectedPayment(2); // Show success page
+      mutation.mutate(
+        {
+          path: pathh,
+          payload: formData
         },
+         {
+        onSuccess: (data) => {
+          if (data?.payfast_url) {
+            window.location.href = data?.payfast_url;
+            localStorage.setItem("payfast_url",data?.payfast_url)
+            localStorage.setItem("orderidd",data?.order_id)
+            // Redirect to PayFast with return/cancel URLs
+            // const returnUrl = `${window.location.origin}/checkout?payment_status=COMPLETE&order_id=${data?.order_id}`;
+            // const cancelUrl = `${window.location.origin}/checkout?payment_status=CANCELLED`;
+            // window.location.href = `${data.payfast_url}&return_url=${encodeURIComponent(
+              // returnUrl
+            // )}&cancel_url=${encodeURIComponent(cancelUrl)}`;
+          } else {
+            // Fallback to success page if no PayFast URL (non-PayFast flow)
+            navigate("/payment-success", {
+              state: {
+                orderID: data?.order_id,
+                message: "You'll receive an email shortly.",
+              }}
+         );
+         
+        }
+      },
         onError: (error) => {
           console.error("Error submitting payment details:", error);
           toast.error("Failed to process payment.", {
@@ -967,7 +987,7 @@ const CheckOut = () => {
           </div>
         )}
         {selectedPayment === "bank" && (
-          <CheckOutBankTransfer name1={name.name} setorderID1={setorderID} set={setSelectedPayment} />
+          <CheckOutBankTransfer name1={name} setorderID1={setorderID} set={setSelectedPayment} pathh={pathh}/>
         )}
         {selectedPayment === 2 && (
           <Successfullpayment

@@ -5,7 +5,7 @@ import BaseUrl from "../Base_url/Base_url";
 // Function to fetch data from the API
 const ApeUni = async () => {
   const response = await axios.get(
-    `${BaseUrl}/api/ape-uni-practice-voucher/`,
+    `${BaseUrl}/api/vouchers-detail/?category_id=${5}`,
     {
         headers: {
           "ngrok-skip-browser-warning": "true", // Add ngrok header

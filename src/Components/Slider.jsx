@@ -16,6 +16,7 @@ import { CertificationImages } from "../Services/Certificationsimages";
 
 const Sliders = () => {
   const {data:CertificationImagesData,isLoading,isError}=CertificationImages()
+  console.log(CertificationImagesData)
   var settings = {
     dots: false,
     infinite: false,
@@ -78,7 +79,7 @@ const Sliders = () => {
               <div className="">
                 <div className="bg-white p-2 py-4 rounded-md shadow-lg ">
                   <img
-                    src={val.image_url}
+                    src={val.image}
                     alt=""
                     className="mx-auto  rounded-md border h-80  "
                   />

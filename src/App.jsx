@@ -20,7 +20,8 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import CheckoutSelfUs from "./Pages/CheckoutSelfUs";
 import Otp from "./Components/Otp";
 import Successfullpayment from "./Pages/Successfullpayment";
-import WhatsAppFloatButton from "./Components/FloatingWhatsapp";import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import WhatsAppFloatButton from "./Components/FloatingWhatsapp";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/Termsconditions";
 import RefundPolicy from "./Pages/Refund";
@@ -29,6 +30,8 @@ import BuyPearsonpte from "./Pages/BuyPearsonpte";
 import Pearsonptevoucher from "./Pages/Pearsonptevoucher";
 import GetAlfaPTPortal from "./Pages/GetAlfaPTPortal";
 import GetAPEUniPractice from "./Pages/GetAPEUniPractice";
+import PayFastSuccessful from "./Pages/PayFastSuccessful";
+// import NotFound from "./Pages/NoRoutePage";
 
 const queryClient = new QueryClient();
 const ScrollToTop = () => {
@@ -79,6 +82,11 @@ const App = () => {
 
             <Route path="/GetAlfaPTPortal" element={<GetAlfaPTPortal/>} />
             <Route path="/GetAPEUniPractice" element={<GetAPEUniPractice/>}/>
+            <Route
+          path="/payment-success"
+          element={<PayFastSuccessful />}
+        />
+        {/* <Route path="*" element={<NotFound />} /> Fallback route for unmatched paths */}
           </Routes>
         </main>
         <MainFooter />

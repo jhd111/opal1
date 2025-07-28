@@ -9,8 +9,8 @@ const BuyVoucher = () => {
 
 
   const location = useLocation();
-  const { object } = location.state || {}; // Retrieve the passed object
-  
+  const { object,pathh } = location.state || {}; // Retrieve the passed object
+  console.log("pathh",pathh)
 
 console.log(object)
 
@@ -57,7 +57,7 @@ console.log(object)
               </span>
             </div>
             <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out" state={{ name: object }}
+              <NavLink to="/check-out" state={{ name: object,pathh:pathh }}
               >Proceed to Checkout</NavLink>
             </div>
           </div>

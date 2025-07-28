@@ -9,10 +9,11 @@ const GetAlfaPTPortal = () => {
 
 
   const location = useLocation();
-  const { name } = location.state || {}; // Retrieve the passed object
+  const { name ,path} = location.state || {}; // Retrieve the passed object
   
 
 console.log(name)
+console.log("path",path)
 
   const [isOpen, setIsOpen] = useState(false);
   const [count, setcount] = useState(1);
@@ -57,7 +58,7 @@ console.log(name)
               </span>
             </div>
             <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out" state={{ name: name }}
+              <NavLink to="/check-out" state={{ name: name,pathh:path }}
               >Proceed to Checkout</NavLink>
             </div>
           </div>
