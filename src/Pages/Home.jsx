@@ -158,47 +158,45 @@ const Home = () => {
 
 
       <div className=" ">
-        <div className=" relative">
-          <div className="flex bg-blue-star flex-col md:flex-row min-h-screen">
-            <div className="md:w-[60%] text-white p-5 md:p-20  mt-20 space-y-9">
-              <p className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta ">
-                PEARSON VUE AUTHORISED TESTING CENTER
-              </p>
-              <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
-                Opal Institute is a Pearson VUE Authorised Testing Center
-              </p>
-              <div className="flex gap-4">
-                <NavLink
-                   to="/buy-pte-voucher"
-                  className="bg-white text-black flex items-center gap-2 px-8 py-3 rounded-md"
-                >
-                  Buy Vouchers <MdOutlineArrowRightAlt />
-                </NavLink>
-                {/* <NavLink
-                  to="/buy-pte-voucher"
-                  className="flex items-center gap-2 text-white"
-                >
-                  Buy Vouchers <MdOutlineArrowRightAlt />
-                </NavLink> */}
-              </div>
-            </div>
-            <div className="md:w-[40%]   pt-0">
-              <img
-                src={auth}
-                alt=""
-                className="relative w-40  md:w-52 top-20 -left-3 md:-left-11"
-              />
-              <img src={g} alt="" className=" w-75 md:w-72" />
-            </div>
-          </div>
-          <div className="w-[90%] md:w-[80%] bg-white relative  md:absolute   rounded-md  md:left-[10%]   mt-10   bottom-1 grid grid-cols-3  md:grid-cols-5  gap-4 shadow-md mx-auto">
-            {[p1, p4, p2, p3, comptia].map((val, i) => (
-              <div className="">
-                <img src={val} alt="" className="w-[140px]" />
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="relative">
+  <div className="flex bg-blue-star flex-col md:flex-row min-h-screen">
+    <div className="md:w-[60%] text-white p-5 md:p-20 xl:p-24 2xl:p-28 mt-20 space-y-9">
+      <p className="text-xl font-semibold lg:text-3xl xl:text-3xl 2xl:text-3xl lg:font-bold plus-jakarta">
+        PEARSON VUE AUTHORISED TESTING CENTER
+      </p>
+      <p className="text-xl font-semibold lg:text-3xl xl:text-3xl 2xl:text-3xl lg:font-bold">
+        Opal Institute is a Pearson VUE Authorised Testing Center
+      </p>
+      <div className="flex gap-4">
+        <NavLink
+          to="/buy-pte-voucher"
+          className="bg-white text-black flex items-center gap-2 px-8 py-3 rounded-md"
+        >
+          Buy Vouchers <MdOutlineArrowRightAlt />
+        </NavLink>
+      </div>
+    </div>
+    <div className="md:w-[40%] pt-0">
+      <img
+        src={auth}
+        alt=""
+        className="relative w-40 md:w-52 xl:w-52 2xl:w-52 top-20 -left-3 md:-left-11"
+      />
+      <img 
+        src={g} 
+        alt="" 
+        className="w-75 md:w-72 xl:w-72 2xl:w-72" 
+      />
+    </div>
+  </div>
+  <div className="w-[90%] md:w-[80%] xl:w-[80%] 2xl:w-[80%] bg-white relative md:absolute rounded-md md:left-[10%] xl:left-[10%] 2xl:left-[10%] mt-10 bottom-1 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto">
+    {[p1, p4, p2, p3, comptia].map((val, i) => (
+      <div key={i} className="">
+        <img src={val} alt="" className="w-[140px]" />
+      </div>
+    ))}
+  </div>
+</div>
         <div className="bg-[#3651BF0D]">
           <div className="md:w-[80%]  mt-10   py-20 mx-auto">
             <div className="">
