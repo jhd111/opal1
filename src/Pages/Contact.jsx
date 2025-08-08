@@ -198,7 +198,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row mt-32 p-4 gap-16">
+      <div className="flex flex-col md:flex-row md:justify-between mt-32 lgg:p-4 xl:p-8 gap-16">
         <div className="bg-[#F1F4FF] md:w-[40%] py-10">
           <div className="w-[80%] mx-auto">
             <p className="text-2xl text-center p-4 font-semibold">

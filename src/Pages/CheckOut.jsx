@@ -257,7 +257,6 @@ const CheckOut = () => {
   const ItemPrice = localStorage.getItem("price");
   const ptevoucher = localStorage.getItem("price1");
   const selectedPrice = location.pathname.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
-
   const mutation = usePostPaymentDetails();
 
   const [formData, setFormData] = useState({

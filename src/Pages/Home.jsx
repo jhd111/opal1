@@ -52,7 +52,7 @@ const Home = () => {
     <>
       <Hero />
 
-      <div className="bg-blues flex  flex-col md:flex-row items-center  p-10  text-white">
+      {/* <div className="bg-blues flex  flex-col md:flex-row items-center  p-10  text-white">
         <div className="w-full flex justify-center items-center">
           <img src={happy} alt="" />
         </div>
@@ -94,14 +94,14 @@ const Home = () => {
             Book Your Exam
           </a>
         </div>
-      </div>
+      </div> */}
       <section id="mocktest" className="w-[90%] md:w-[80%] mx-auto">
         <div className="">
           <p className="text-xl font-semibold lg:text-3xl lg:font-bold text-center inter mt-20 ">
             Take your preparation a step further
           </p>
         </div>
-        <div className="flex  flex-col md:flex-row items-center mt-2 gap-10">
+        <div className="flex  flex-col md:flex-row items-center mt-2 gap-10 md:gap-0">
           <div className="w-full space-y-6">
             <div className=" text-xl font-semibold lg:text-3xl lg:font-bold">
               <p className="plus-jakarta">
@@ -176,7 +176,7 @@ const Home = () => {
 
       <div className=" ">
         <div className=" relative">
-          <div className="flex bg-blue-star flex-col md:flex-row md:h-screen">
+          <div className="flex bg-blue-star flex-col md:flex-row min-h-screen">
             <div className="md:w-[60%] text-white p-5 md:p-20  mt-20 space-y-9">
               <p className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta ">
                 PEARSON VUE AUTHORISED TESTING CENTER
@@ -185,18 +185,18 @@ const Home = () => {
                 Opal Institute is a Pearson VUE Authorised Testing Center
               </p>
               <div className="flex gap-4">
-                <a
-                  href={whatsappLink}
-                  className="bg-white text-black px-8 py-3 rounded-md"
-                >
-                  Book Exams
-                </a>
                 <NavLink
+                   to="/buy-pte-voucher"
+                  className="bg-white text-black flex items-center gap-2 px-8 py-3 rounded-md"
+                >
+                  Buy Vouchers <MdOutlineArrowRightAlt />
+                </NavLink>
+                {/* <NavLink
                   to="/buy-pte-voucher"
                   className="flex items-center gap-2 text-white"
                 >
                   Buy Vouchers <MdOutlineArrowRightAlt />
-                </NavLink>
+                </NavLink> */}
               </div>
             </div>
             <div className="md:w-[40%]   pt-0">
@@ -239,7 +239,7 @@ const Home = () => {
         <div className="w-[90%] md:w-[70%] mx-auto py-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="w-full space-y-6">
-              <div className="  text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
+              <div className="text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
                 <p className="plus-jakarta">
                   Buy <span className="text-primary">IT EXAM VOUCHERS</span>{" "}
                   &nbsp; From Us Give

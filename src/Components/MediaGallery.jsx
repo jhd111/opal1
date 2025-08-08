@@ -156,6 +156,8 @@ import { Media_gallery } from "../Services/MediaGalleryApi";
 
 const MediaGallery = () => {
   const { data: gallery, isLoading: galleryLoading, isError: galleryError } = Media_gallery();
+  
+  console.log("gallery",gallery)
   const swiperRef = useRef(null);
   
   useEffect(() => {
