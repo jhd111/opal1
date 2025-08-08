@@ -268,7 +268,7 @@ const ContactForm = () => {
                 55PJ + 4FG, SERVICE Rd, Shaheenabad, Gujranwala, 52290, Pakistan
               </div>
             </div>
-            <div className="flex flex-col justify-center w-1/2 lg:w-32 ">
+            <div className="flex flex-col justify-center w-1/2 lg:w-36 ">
               {/* <p className="text-primary flex "> */}
               <div className="flex justify-center">
                 <IoMdPhonePortrait className="text-primary" />

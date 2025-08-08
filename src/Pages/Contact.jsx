@@ -198,8 +198,8 @@ const ContactForm = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:justify-between mt-32 lgg:p-4 xl:p-8 gap-16">
-        <div className="bg-[#F1F4FF] md:w-[40%] py-10">
+      <div className="flex flex-col md:flex-row md:justify-between mt-32 p-14 gap-16">
+        <div className="bg-[#F1F4FF] md:w-[50%] py-10">
           <div className="w-[80%] mx-auto">
             <p className="text-2xl text-center p-4 font-semibold">
               Contact Our Team Now For Any Queries
@@ -268,7 +268,7 @@ const ContactForm = () => {
                 55PJ + 4FG, SERVICE Rd, Shaheenabad, Gujranwala, 52290, Pakistan
               </p>
             </div>
-            <div className="flex flex-col justify-center w-32">
+            <div className="flex flex-col justify-center w-36">
               <p className="text-primary flex justify-center">
                 <IoMdPhonePortrait />
               </p>

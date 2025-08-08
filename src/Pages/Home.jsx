@@ -96,83 +96,66 @@ const Home = () => {
         </div>
       </div> */}
       <section id="mocktest" className="w-[90%] md:w-[80%] mx-auto">
-        <div className="">
-          <p className="text-xl font-semibold lg:text-3xl lg:font-bold text-center inter mt-20 ">
-            Take your preparation a step further
-          </p>
-        </div>
-        <div className="flex  flex-col md:flex-row items-center mt-2 gap-10 md:gap-0">
-          <div className="w-full space-y-6">
-            <div className=" text-xl font-semibold lg:text-3xl lg:font-bold">
-              <p className="plus-jakarta">
-                Give <span className="text-primary">Practice Tests</span> in
-                Real Exam Like Environment
-              </p>
-            </div>
-            <div className=" space-y-6">
-              <p className="plus-jakarta text-xs lg:text-sm">
-                At Opal Institute, we offer real exam environment to our
-                students to practice PTE Tests to gain confidence and be fully
-                prepared for their big exam. We have very limited spots and take
-                exam on the announced dates each month. Book your spot now with
-                us to take your PTE Exam preparation to a step further.
-              </p>
-              <br />
-              <a
-                href={whatsappLink}
-                className="px-8 py-3 bg-primary   rounded-3xl text-white"
-              >
-                Reserve your Spot Now
-              </a>
-            </div>
-          </div>
-          <div className="w-full flex justify-center md:justify-end">
-            <div className="h-[600px] w-[400px] overflow-hidden">
-              <img
-                src={room}
-                alt=""
-                className=" w-full h-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row items-center pb-20 gap-10">
-          <div className="w-full">
-            <img src={img} alt="" className="w-full md:w-3/4" />
-          </div>
-          <div className="w-full space-y-6">
-            <div className="text-xl font-semibold lg:text-3xl lg:font-bold">
-              <p className="plus-jakarta">
-                Get
-                <span className="text-primary px-1">
-                  Pearson Scored Practice Mock Tests
-                </span>
-                From Us to Step Up Your Prep
-              </p>
-            </div>
-            <div className=" space-y-6">
-              <p className="plus-jakarta text-xs lg:text-sm">
-                At Opal Institute, we offer practice mock tests as well as pte
-                and apeuni portals access to our students so they can prepare
-                for their big day and be a step ahead in their exam preparation.
-              </p>
-              <br />
-              {/* <NavLink
-                to="/buy-pte-voucher"
-                className="px-8 py-3 bg-primary rounded-3xl text-white"
-              >
-                Buy Now
-              </NavLink> */}
-              <button
-                onClick={scrollToMockTest}
-                className="px-8 py-3 bg-primary rounded-3xl text-white"
-              >
-                Buy Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+  {/* Heading */}
+  <div className="mb-5">
+    <p className="text-xl font-semibold lg:text-3xl lg:font-bold text-center plus-jakarta mt-20">
+      Take your preparation a step further
+    </p>
+  </div>
+
+  {/* Practice Test Section */}
+  <div className="flex flex-col md:flex-row items-center justify-between mt-10 gap-10 md:gap-20">
+    {/* Text */}
+    <div className="w-full md:w-1/2 space-y-6">
+      <h2 className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
+        Give <span className="text-primary">Practice Tests</span> in Real Exam Like Environment
+      </h2>
+      <p className="plus-jakarta text-sm text-gray-700">
+        At Opal Institute, we offer real exam environment to our students to practice PTE Tests to gain confidence and be fully prepared for their big exam. We have very limited spots and take exam on the announced dates each month. Book your spot now with us to take your PTE Exam preparation to a step further.
+      </p>
+      <a
+        href={whatsappLink}
+        className="inline-block px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold plus-jakarta"
+      >
+        Reserve your Spot Now
+      </a>
+    </div>
+
+    {/* Image */}
+    <div className="w-full md:w-[350px] flex justify-center md:justify-end">
+      <img
+        src={room}
+        alt="PTE Exam Room"
+        className="w-[350px] h-[250px] object-cover  shadow-lg"
+      />
+    </div>
+  </div>
+
+  {/* Pearson Mock Test Section */}
+  <div className="flex flex-col md:flex-row items-center pb-20 gap-10 mt-16">
+    {/* Image */}
+    <div className="w-full md:w-1/2 flex justify-center md:justify-start">
+      <img src={img} alt="Pearson Mock Test" className="w-full md:w-[400px] " />
+    </div>
+
+    {/* Text */}
+    <div className="w-full md:w-1/2 space-y-6">
+      <h2 className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
+        Get <span className="text-primary">Pearson Scored Practice Mock Tests</span> From Us to Step Up Your Prep
+      </h2>
+      <p className="plus-jakarta text-sm text-gray-700">
+        At Opal Institute, we offer practice mock tests as well as PTE and APEUni portals access to our students so they can prepare for their big day and be a step ahead in their exam preparation.
+      </p>
+      <button
+        onClick={scrollToMockTest}
+        className="px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold plus-jakarta"
+      >
+        Buy Practice Mock Tests
+      </button>
+    </div>
+  </div>
+</section>
+
 
       <div className=" ">
         <div className=" relative">
@@ -237,7 +220,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-[90%] md:w-[70%] mx-auto py-10">
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className=" flex flex-col md:flex-row items-center gap-10">
             <div className="w-full space-y-6">
               <div className="text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
                 <p className="plus-jakarta">
@@ -260,8 +243,8 @@ const Home = () => {
                 </NavLink>
               </div>
             </div>
-            <div className="w-full">
-              <img src={onee} alt="" />
+            <div >
+              <img src={onee} alt="" className="object-contain" />
             </div>
           </div>
         </div>

@@ -1,23 +1,38 @@
 import React from "react";
 import Slider from "react-slick";
-import img1 from "../assets/images/pictures/1.png";
-import img2 from "../assets/images/pictures/2.png";
-import img3 from "../assets/images/pictures/3.png";
-import img4 from "../assets/images/pictures/4.png";
-import img5 from "../assets/images/pictures/5.png";
-import img6 from "../assets/images/pictures/6.png";
-import img7 from "../assets/images/pictures/7.png";
-import img8 from "../assets/images/pictures/8.png";
-import img9 from "../assets/images/pictures/9.png";
-import img10 from "../assets/images/pictures/10.png";
-import img11 from "../assets/images/pictures/11.png";
-
+import { MdKeyboardArrowLeft ,MdKeyboardArrowRight  } from "react-icons/md";
 import { CertificationImages } from "../Services/Certificationsimages";
 
+const CustomPrevArrow = (props) => {
+  const { className, onClick } = props;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="!w-12 !h-12  !rounded-full  !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 absolute -left-6 top-1/2 transform -translate-y-1/2"
+    >
+      <MdKeyboardArrowLeft  Circle className="!w-6 !h-6" />
+    </button>
+  );
+};
+
+const CustomNextArrow = (props) => {
+  const { className, onClick } = props;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="!w-12 !h-12  !rounded-full  !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 absolute -right-6 top-1/2 transform -translate-y-1/2"
+    >
+      <MdKeyboardArrowRight  className="!w-6 !h-6" />
+    </button>
+  );
+};
+
 const Sliders = () => {
-  const {data:CertificationImagesData,isLoading,isError}=CertificationImages()
-  console.log(CertificationImagesData)
-  var settings = {
+  const { data: CertificationImagesData, isLoading, isError } = CertificationImages();
+
+  const settings = {
     dots: false,
     infinite: false,
     speed: 500,
@@ -25,7 +40,8 @@ const Sliders = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: true,
-
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -53,43 +69,25 @@ const Sliders = () => {
       },
     ],
   };
+
   return (
-    <div className="">
-      <div className="text-xl font-semibold lg:text-3xl lg:font-bold poppins my-5 lg:my-10 text-center ">
+    <div>
+      <div className="text-xl font-semibold lg:text-3xl lg:font-bold poppins my-5 lg:my-10 text-center">
         CERTIFICATIONS & AWARDS
       </div>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[80%] mx-auto relative">
         <Slider {...settings}>
-          {
-          // [
-          //   img1,
-          //   img2,
-          //   img3,
-          //   img4,
-          //   img5,
-          //   img6,
-          //   img7,
-          //   img8,
-          //   img9,
-          //   img10,
-          //   img11,
-          // ]
-          CertificationImagesData?.data?.map((val, i) => {
-            return (
-              <div className="">
-                <div className="bg-white p-2 py-4 rounded-md shadow-lg ">
-                  <img
-                    src={val.image}
-                    alt=""
-                    className="mx-auto  rounded-md border h-80  "
-                  />
-                </div>
+          {CertificationImagesData?.data?.map((val, i) => (
+            <div key={i}>
+              <div className="bg-white p-2 py-4 rounded-md shadow-lg">
+                <img
+                  src={val.image}
+                  alt=""
+                  className="mx-auto rounded-md border h-80 object-contain"
+                />
               </div>
-            );
-          })}
-          {/* <div className="bg-white p-2  ">
-            <img src={img1} alt="" className="mx-auto" />
-          </div> */}
+            </div>
+          ))}
         </Slider>
       </div>
     </div>

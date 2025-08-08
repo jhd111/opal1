@@ -144,7 +144,7 @@
 
 
 
-
+{/* <IoIosArrowDropleftCircle /> */}
 import React from "react";
 import { useEffect, useRef } from "react";
 import Swiper from "swiper";
@@ -152,6 +152,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDroprightCircle,IoIosArrowDropleftCircle  } from "react-icons/io";
 import { Media_gallery } from "../Services/MediaGalleryApi";
 
 const MediaGallery = () => {
@@ -174,12 +175,18 @@ const MediaGallery = () => {
       spaceBetween: 20,
       initialSlide: 0,
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".custom-swiper-next",
+  prevEl: ".custom-swiper-prev",
       },
       speed: 800,
       effect: "slide",
       on: {
+        init(swiper) {
+          swiper.params.navigation.prevEl = ".custom-swiper-prev";
+          swiper.params.navigation.nextEl = ".custom-swiper-next";
+          swiper.navigation.init();
+          swiper.navigation.update();
+        },
         progress(e) {
           const t = e.slides.length;
           for (let r = 0; r < t; r++) {
@@ -257,34 +264,38 @@ const MediaGallery = () => {
         MEDIA GALLERY
       </div>
       <div className="my-10 relative">
-        <div className="swiper carousel-slider" ref={swiperRef}>
-          <div className="swiper-wrapper">
-            {gallery?.data?.map((item, index) => (
-              <div key={item.id || index} className="swiper-slide">
-                <div className="item-content shadow-lg rounded-xl overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={`Gallery image ${item.id || index + 1}`} 
-                    className="w-full h-full object-cover" 
-                  />
-                </div>
-              </div>
-            ))}
+  <div className="swiper carousel-slider" ref={swiperRef}>
+    <div className="swiper-wrapper">
+      {gallery?.data?.map((item, index) => (
+        <div key={item.id || index} className="swiper-slide">
+          <div className="item-content shadow-lg rounded-xl overflow-hidden">
+            <img
+              src={item.image}
+              alt={`Gallery image ${item.id || index + 1}`}
+              className="w-full h-full object-cover"
+            />
           </div>
-          <button
-            type="button"
-            className="swiper-button-prev !w-12 !h-12 !bg-white !rounded-full !shadow-lg !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 !left-4"
-          >
-            <IoIosArrowBack className="!w-6 !h-6" />
-          </button>
-          <button
-            type="button"
-            className="swiper-button-next !w-12 !h-12 !bg-white !rounded-full !shadow-lg !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 !right-4"
-          >
-            <IoIosArrowForward className="!w-6 !h-6" />
-          </button>
         </div>
-      </div>
+      ))}
+    </div>
+
+    {/* Custom navigation buttons — now inside swiper container */}
+    <button
+      type="button"
+      className="custom-swiper-prev absolute top-1/2 -translate-y-1/2 left-4 !w-12 !h-12  !rounded-full !shadow-lg !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50"
+    >
+      <IoIosArrowDropleftCircle className="!w-6 !h-6" />
+    </button>
+    <button
+      type="button"
+      className="custom-swiper-next absolute top-1/2 -translate-y-1/2 right-4 !w-12 !h-12 !bg-white !rounded-full !shadow-lg !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50"
+    >
+      <IoIosArrowDroprightCircle className="!w-6 !h-6" />
+    </button>
+  </div>
+</div>
+
+
     </div>
   );
 };
