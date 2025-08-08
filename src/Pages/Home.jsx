@@ -184,14 +184,14 @@ const Home = () => {
         <img
           src={auth}
           alt=""
-          className="relative w-40 md:w-52 lg:w-48 xl:w-48 top-10 md:top-20 lg:top-16 xl:-top-4 2xl:-top-44 -left-3 md:-left-11 lg:-left-16 xl:-left-20"
+          className="relative w-40 md:w-52 lg:w-48 xl:w-48 top-10 md:top-20 lg:top-16 xl:-top-4 2xl:-top-42 -left-3 md:-left-11 lg:-left-16 xl:-left-20"
         />
       </div>
       {/* Background curve image */}
       <img 
         src={g} 
         alt="" 
-        className="w-75 md:w-72 lg:w-80 xl:w-80 -top-10 relative  2xl:-top-48 -mt-10 md:-mt-16 lg:-mt-20" 
+        className="w-75 md:w-72 lg:w-80 xl:w-80 -top-10 relative   -mt-10 md:-mt-16 lg:-mt-20" 
       />
     </div>
   </div>
