@@ -160,11 +160,11 @@ const Home = () => {
       <div className=" ">
       <div className="relative">
   <div className="flex bg-blue-star flex-col md:flex-row min-h-screen">
-    <div className="md:w-[60%] text-white p-5 md:p-20 xl:p-24 2xl:p-28 mt-20 space-y-9">
-      <p className="text-xl font-semibold lg:text-3xl xl:text-3xl 2xl:text-3xl lg:font-bold plus-jakarta">
+    <div className="md:w-[60%] text-white p-5 md:p-20 mt-20 space-y-9">
+      <p className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
         PEARSON VUE AUTHORISED TESTING CENTER
       </p>
-      <p className="text-xl font-semibold lg:text-3xl xl:text-3xl 2xl:text-3xl lg:font-bold">
+      <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
         Opal Institute is a Pearson VUE Authorised Testing Center
       </p>
       <div className="flex gap-4">
@@ -176,23 +176,31 @@ const Home = () => {
         </NavLink>
       </div>
     </div>
-    <div className="md:w-[40%] pt-0">
-      <img
-        src={auth}
-        alt=""
-        className="relative w-40 md:w-52 xl:w-52 2xl:w-52 top-20 -left-3 md:-left-11"
-      />
+    
+    {/* Right section with proper positioning */}
+    <div className="md:w-[40%] relative flex flex-col items-center justify-center pt-0">
+      {/* Certificate positioned at the blue-white intersection */}
+      <div className="relative z-10">
+        <img
+          src={auth}
+          alt=""
+          className="relative w-40 md:w-52 lg:w-48 xl:w-48 top-10 md:top-20 lg:top-16 xl:-top-4 2xl:-top-44 -left-3 md:-left-11 lg:-left-16 xl:-left-20"
+        />
+      </div>
+      {/* Background curve image */}
       <img 
         src={g} 
         alt="" 
-        className="w-75 md:w-72 xl:w-72 2xl:w-72" 
+        className="w-75 md:w-72 lg:w-80 xl:w-80 -top-10 relative  2xl:-top-48 -mt-10 md:-mt-16 lg:-mt-20" 
       />
     </div>
   </div>
-  <div className="w-[90%] md:w-[80%] xl:w-[80%] 2xl:w-[80%] bg-white relative md:absolute rounded-md md:left-[10%] xl:left-[10%] 2xl:left-[10%] mt-10 bottom-1 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto">
+  
+  {/* Partner logos positioned along the diagonal curve */}
+  <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[70%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[12.5%] xl:left-[8%] 2xl:left-[8%] mt-10 md:bottom-8 lg:bottom-12 xl:-bottom-8 2xl:bottom-20 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
     {[p1, p4, p2, p3, comptia].map((val, i) => (
-      <div key={i} className="">
-        <img src={val} alt="" className="w-[140px]" />
+      <div key={i} className="flex justify-center items-center">
+        <img src={val} alt="" className="w-[100px] md:w-[120px] lg:w-[130px] xl:w-[140px] object-contain" />
       </div>
     ))}
   </div>

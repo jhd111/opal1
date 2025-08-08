@@ -151,11 +151,11 @@ const ButPtevoucher = () => {
               <div className="mx-auto my-10">
                 {/* Deals Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {Deals?.slice(0, 3).map((deal) => (
+  {Deals?.slice(0, 3).map((deal,index) => (
     <div
       key={deal.id}
       className={`flex flex-col justify-between rounded-3xl p-6 md:p-8 lg:p-10 bg-${
-        deal.id % 2 === 0 ? '[#EFF2FF]' : 'white shadow'
+        index % 2 === 0 ? ' white shadow' : '[#EFF2FF]'
       } min-h-[400px] sm:min-h-[450px] lg:min-h-[500px] xl:min-h-[550px] max-h-[600px] sm:max-h-[650px] lg:max-h-[700px] overflow-y-auto transition-all`}
     >
       {/* Header Section */}
@@ -299,18 +299,18 @@ const ButPtevoucher = () => {
               </div>
             </div>
             {/* </div> */}
-            {/* Static  */}
-
+           
+            {/* practice mock tests */}
             <div
               id="practicemocktests"
               className="bg-gradient-to-b from-[rgba(54,81,191,0.07)] to-[rgba(255,255,255,0)] min-h-screen p-8 mt-10 "
             >
               {/* Header */}
 
-              {Product?.data?.[2] && (
+              {Product?.data?.[1] && (
                 <div className="max-w-6xl mx-auto mb-8">
                   <h1 className="text-xl font-semibold lg:text-3xl be-vietnam lg:font-bold text-center mb-2">
-                    {Product.data[2].category.name}
+                    {Product.data[1].category.name} 
                   </h1>
                   {/* <p className="text-center text-gray-600">
       We offer Pearson Scored Practice Mock Tests A, B, C, D, E to
@@ -323,7 +323,7 @@ const ButPtevoucher = () => {
               <div className="max-w-6xl mx-auto">
                 {/* Grid for full rows */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {Product?.data[2]?.vouchers?.map((test) => (
+                  {Product?.data[1]?.vouchers?.map((test) => (
                     <div
                       key={test.id}
                       className="bg-white rounded-lg shadow-md overflow-hidden p-5"
@@ -338,8 +338,8 @@ const ButPtevoucher = () => {
                           {test?.name}
                         </h3>
                         <p className="text-md">{test?.description}</p>
-                        <p className="text-md text-black">
-                          Test Type :{test?.test_type}
+                        <p className="text-md font-medium inter text-black">
+                          Test Type :{test?.type}
                         </p>
                         <p className="text-green-500">
                           RS {Math.floor(test?.price)}
@@ -402,19 +402,19 @@ const ButPtevoucher = () => {
             {/*------------------------ Buy_Peasrson_Pte_Voucher -----------------------*/}
             <div className="w-[85%] poppins   mx-auto py-14">
               <div className="my-8">
-                <div className="flex gap-10 flex-col md:flex-row">
-                  {Product?.data[1]?.vouchers?.map((voucher) => (
+                <div className="flex gap-10 flex-col md:flex-row md:justify-center">
+                  {Product?.data[0]?.vouchers?.map((voucher) => (
                     <div
                       key={voucher.id}
-                      className="flex gap-10 flex-col md:flex-row"
+                      className="flex gap-10 flex-col md:flex-row items-center md:justify-center"
                     >
-                      <div className="w-full mt-6 space-y-4">
+                      <div className="w-full mt-6 space-y-6">
                         <p className="text-xl font-semibold lg:text-4xl lg:font-bold">
                           <span className="text-primary text-xl font-semibold lg:text-4xl lg:font-bold">
                             {voucher.name}
                           </span>
                         </p>
-                        <p className="text-xs">{voucher.description}</p>
+                        <p className="text-xs">{voucher.description || "We offer Alfa PTE Portal Access for 30, 60 and 90 days. Choose a plan that suits you best."}</p>
                         <p className="text-2xl font-semibold">
                           RS {Math.floor(voucher.price)}/-
                         </p>
@@ -443,7 +443,7 @@ const ButPtevoucher = () => {
                         <img
                           src={voucher.image_url}
                           alt={voucher.name}
-                          width={500}
+                          
                         />
                       </div>
                     </div>
@@ -470,7 +470,7 @@ const ButPtevoucher = () => {
                               {`VALIDITY: ${voucher.validity} DAYS`}
                             </p>
                           </div>
-                          <div className="flex item-center">
+                          <div className="flex justify-center">
                             <img
                               src={voucher.image}
                               alt={voucher.name}
@@ -512,12 +512,15 @@ const ButPtevoucher = () => {
                   </div>
                 </div>
                 {/* ------------------------Get APE Uni Practice Vouchers.-------------*/}
-                {Product?.data?.[0] && (
+                {Product?.data?.[3] && (
                   <div className="my-10 w-[100%]">
                     {/* Category Name */}
-                    <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
-                      Get {Product.data[0].category.name} Vouchers
+                    <p className="text-xl font-semibold lg:text-3xl lg:font-bold mb-2 ">
+                       Get APE Uni Practice Vouchers
                     </p>
+                    <p className="mb-8 be-vietnam text-gray-400 text-sm">We offer  APE Uni Practice. Choose a plan that suits you best.
+
+</p>
 
                     {/* Optional description */}
                     {/* <p className="text-xs text-gray-500 mb-10 mt-4">
@@ -526,7 +529,7 @@ const ButPtevoucher = () => {
 
                     <div className="my-4">
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-8 w-full mx-auto">
-                        {Product.data[0].vouchers.map((voucher) => (
+                        {Product.data[3].vouchers.map((voucher) => (
                           <div
                             key={voucher.id}
                             className="relative border p-4 flex flex-col rounded-md h-[420px]"
@@ -541,7 +544,7 @@ const ButPtevoucher = () => {
                             </div>
 
                             {/* Image */}
-                            <div className="flex items-center justify-center">
+                            <div className="flex  justify-center">
                               <img
                                 src={voucher.image_url}
                                 alt={voucher.name}

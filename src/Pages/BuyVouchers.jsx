@@ -119,7 +119,7 @@ const BuyVouchers = () => {
           {Vouchers?.map((val, i) => {
             return (
               <div className=" flex flex-col justify-between p-4 shadow">
-                <div className="flex items-center">
+                <div className="flex justify-center">
                 <img src={val.voucher_image_url} alt=""  />
                 </div>
                 <p className="text-center  my-2 text-lg font-semibold">
