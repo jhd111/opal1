@@ -13,9 +13,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   const scrollToMockTest = () => {
-    navigate("/");
+    navigate("/buy-pte-voucher");
     setTimeout(() => {
-      const element = document.getElementById("mocktest");
+      const element = document.getElementById("practicemocktests");
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }

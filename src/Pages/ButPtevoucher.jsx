@@ -326,18 +326,20 @@ const ButPtevoucher = () => {
                   {Product?.data[1]?.vouchers?.map((test) => (
                     <div
                       key={test.id}
-                      className="bg-white rounded-lg shadow-md overflow-hidden p-5"
+                      className="bg-white  rounded-lg shadow-md overflow-hidden p-5"
                     >
+                      <div className="flex justify-center">
                       <img
                         src={test?.image_url}
                         alt={test?.name}
                         className="w-full h-48 object-cover"
                       />
+                      </div>
                       <div className="mt-2">
                         <h3 className="text-lg be-vietnam font-medium">
                           {test?.name}
                         </h3>
-                        <p className="text-md text-green-400">{test?.description}</p>
+                        <p className="text-md text-gray-300">{test?.description}</p>
                         <p className="text-md font-medium inter text-black">
                           Test Type :{test?.type}
                         </p>
