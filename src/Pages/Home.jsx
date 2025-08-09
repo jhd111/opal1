@@ -95,13 +95,22 @@ const Home = () => {
           </a>
         </div>
       </div> */}
-      <section id="mocktest" className="w-[90%] md:w-[80%] mx-auto">
+    <section id="mocktest" className="w-[90%] md:w-[100%] mx-auto p-2" 
+     style={{
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 30%, rgba(54, 81, 191, 0.15) 70%, rgba(54, 81, 191, 0.25) 100%)'
+    }}
+
+      >
   {/* Heading */}
+  <div className="flex justify-center mb-10">
+  <div className="w-[80%]">
+    
   <div className="mb-5">
-    <p className="text-xl font-semibold lg:text-3xl lg:font-bold text-center plus-jakarta mt-20">
+    <p className="text-xl font-semibold lg:text-4xl lg:font-bold text-center inter mt-20">
       Take your preparation a step further
     </p>
   </div>
+  
 
   {/* Practice Test Section */}
   <div className="flex flex-col md:flex-row items-center justify-between mt-10 gap-10 md:gap-20">
@@ -110,12 +119,12 @@ const Home = () => {
       <h2 className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
         Give <span className="text-primary">Practice Tests</span> in Real Exam Like Environment
       </h2>
-      <p className="plus-jakarta text-sm text-gray-700">
+      <p className="poppins text-sm text-gray-700">
         At Opal Institute, we offer real exam environment to our students to practice PTE Tests to gain confidence and be fully prepared for their big exam. We have very limited spots and take exam on the announced dates each month. Book your spot now with us to take your PTE Exam preparation to a step further.
       </p>
       <a
         href={whatsappLink}
-        className="inline-block px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold plus-jakarta"
+        className="inline-block px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold inter"
       >
         Reserve your Spot Now
       </a>
@@ -130,8 +139,21 @@ const Home = () => {
       />
     </div>
   </div>
+  </div>
+  </div>
 
+  
+</section>
+
+<section id="mocktest" className="w-[90%] md:w-[100%] mx-auto p-2" 
+     style={{
+      background: 'linear-gradient(135deg, rgba(54, 81, 191, 0.25) 0%, rgba(54, 81, 191, 0.15) 30%, rgba(54, 81, 191, 0.05) 60%, transparent 100%)'
+    }}
+      >
+  
   {/* Pearson Mock Test Section */}
+  <div className="flex justify-center">
+  <div className="w-[80%]">
   <div className="flex flex-col md:flex-row items-center pb-20 gap-10 mt-16">
     {/* Image */}
     <div className="w-full md:w-1/2 flex justify-center md:justify-start">
@@ -143,16 +165,18 @@ const Home = () => {
       <h2 className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
         Get <span className="text-primary">Pearson Scored Practice Mock Tests</span> From Us to Step Up Your Prep
       </h2>
-      <p className="plus-jakarta text-sm text-gray-700">
+      <p className="poppins text-sm text-gray-700">
         At Opal Institute, we offer practice mock tests as well as PTE and APEUni portals access to our students so they can prepare for their big day and be a step ahead in their exam preparation.
       </p>
       <button
         onClick={scrollToMockTest}
-        className="px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold plus-jakarta"
+        className="px-8 py-3 bg-primary rounded-3xl text-white text-sm font-semibold inter"
       >
         Buy Practice Mock Tests
       </button>
     </div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -197,7 +221,7 @@ const Home = () => {
   </div>
   
   {/* Partner logos positioned along the diagonal curve */}
-  <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[70%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[12.5%] xl:left-[8%] 2xl:left-[8%] mt-10 md:bottom-8 lg:bottom-12 xl:-bottom-8 2xl:bottom-20 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
+  <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[83%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[12.5%] xl:left-[8%] 2xl:left-[8%] mt-10 md:bottom-8 lg:bottom-12 xl:-bottom-8 2xl:bottom-20 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
     {[p1, p4, p2, p3, comptia].map((val, i) => (
       <div key={i} className="flex justify-center items-center">
         <img src={val} alt="" className="w-[100px] md:w-[120px] lg:w-[130px] xl:w-[140px] object-contain" />
@@ -231,7 +255,7 @@ const Home = () => {
               <div className="text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
                 <p className="plus-jakarta">
                   Buy <span className="text-primary">IT EXAM VOUCHERS</span>{" "}
-                  &nbsp; From Us Give
+                  &nbsp; From Us 
                 </p>
               </div>
               <div className=" space-y-6">

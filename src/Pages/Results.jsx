@@ -139,7 +139,7 @@ const Results = () => {
                 to="/buy-pte-voucher"
                 className="bg-primary text-white rounded-full px-8 py-3"
               >
-                Book Exam
+                Buy Voucher
               </NavLink>
               <NavLink
                 to="/contact"

@@ -303,7 +303,7 @@ const ButPtevoucher = () => {
             {/* practice mock tests */}
             <div
               id="practicemocktests"
-              className="bg-gradient-to-b from-[rgba(54,81,191,0.07)] to-[rgba(255,255,255,0)] min-h-screen p-8 mt-10 "
+              className="bg-gradient-to-b from-[rgba(54,81,191,0.07)] to-[rgba(255,255,255,0)]  p-8  "
             >
               {/* Header */}
 
@@ -337,7 +337,7 @@ const ButPtevoucher = () => {
                         <h3 className="text-lg be-vietnam font-medium">
                           {test?.name}
                         </h3>
-                        <p className="text-md">{test?.description}</p>
+                        <p className="text-md text-green-400">{test?.description}</p>
                         <p className="text-md font-medium inter text-black">
                           Test Type :{test?.type}
                         </p>
@@ -403,6 +403,7 @@ const ButPtevoucher = () => {
             <div className="w-[85%] poppins   mx-auto py-14">
               <div className="my-8">
                 <div className="flex gap-10 flex-col md:flex-row md:justify-center">
+                  <div className="xl:w-[80%] 2xl:w-[70%]">
                   {Product?.data[0]?.vouchers?.map((voucher) => (
                     <div
                       key={voucher.id}
@@ -410,11 +411,11 @@ const ButPtevoucher = () => {
                     >
                       <div className="w-full mt-6 space-y-6">
                         <p className="text-xl font-semibold lg:text-4xl lg:font-bold">
-                          <span className="text-primary text-xl font-semibold lg:text-4xl lg:font-bold">
+                          <span className="text-primary text-xl font-semibold plus-jakarta lg:text-3xl lg:font-bold">
                             {voucher.name}
                           </span>
                         </p>
-                        <p className="text-xs">{voucher.description || "We offer Alfa PTE Portal Access for 30, 60 and 90 days. Choose a plan that suits you best."}</p>
+                        <p className="text-xs poppins">{voucher.description || "We offer Alfa PTE Portal Access for 30, 60 and 90 days. Choose a plan that suits you best."}</p>
                         <p className="text-2xl font-semibold">
                           RS {Math.floor(voucher.price)}/-
                         </p>
@@ -433,21 +434,23 @@ const ButPtevoucher = () => {
                               name: voucher,
                               path: "get-payment-detail/",
                             }}
-                            className="block bg-gray-100 text-center text-sm font-medium text-black w-full p-2 rounded"
+                            className="block bg-[#3651BF] text-center text-sm font-medium text-white w-[30%] p-2 px-4 rounded-3xl"
                           >
                             Buy Now
                           </NavLink>
                         </div>
                       </div>
-                      <div className="w-full">
+                      <div className="w-2/3">
                         <img
                           src={voucher.image_url}
                           alt={voucher.name}
-                          
+                          width={400}
+                          className="w-full h-auto object-contain"
                         />
                       </div>
                     </div>
                   ))}
+                  </div>
                 </div>
                 {/* ------------------Get Alfa PTE Portal Access------------------- */}
                 <div className="my-10">

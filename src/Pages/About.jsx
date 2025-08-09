@@ -152,8 +152,10 @@ const About = () => {
 </div>
 
       </div>
-      <div className=" mt-20">
+      <div className="flex justify-center">
+      <div className="xl:w-[80%] 2xl:w-[70%] mt-20">
         <MediaGallery />
+      </div>
       </div>
       <div className="">
         <div className="slider-container about mt-10 lg:mt-32  w-[80%] mx-auto text-center ">

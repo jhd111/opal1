@@ -4,30 +4,48 @@ import { MdKeyboardArrowLeft ,MdKeyboardArrowRight  } from "react-icons/md";
 import { CertificationImages } from "../Services/Certificationsimages";
 
 const CustomPrevArrow = (props) => {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
     <button
       type="button"
       onClick={onClick}
-      className="!w-12 !h-12  !rounded-full  !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 absolute -left-6 top-1/2 transform -translate-y-1/2"
+      className="!w-12 !h-12 !rounded-full !text-primary hover:!bg-primary hover:!text-white 
+                 transition-all duration-300 !flex !items-center !justify-center !z-50 
+                 absolute -left-8 top-1/2 transform -translate-y-1/2"
     >
-      <MdKeyboardArrowLeft  Circle className="!w-6 !h-6" />
+      <MdKeyboardArrowLeft className="!w-6 !h-6" />
     </button>
   );
 };
 
 const CustomNextArrow = (props) => {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
     <button
       type="button"
       onClick={onClick}
-      className="!w-12 !h-12  !rounded-full  !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 absolute -right-6 top-1/2 transform -translate-y-1/2"
+      className="!w-12 !h-12 !rounded-full !text-primary hover:!bg-primary hover:!text-white 
+                 transition-all duration-300 !flex !items-center !justify-center !z-50 
+                 absolute -right-8 top-1/2 transform -translate-y-1/2"
     >
-      <MdKeyboardArrowRight  className="!w-6 !h-6" />
+      <MdKeyboardArrowRight className="!w-6 !h-6" />
     </button>
   );
 };
+
+
+// const CustomNextArrow = (props) => {
+//   const { className, onClick } = props;
+//   return (
+//     <button
+//       type="button"
+//       onClick={onClick}
+//       className="!w-12 !h-12  !rounded-full  !text-primary hover:!bg-primary hover:!text-white transition-all duration-300 !flex !items-center !justify-center !z-50 absolute -right-6 top-1/2 transform -translate-y-1/2"
+//     >
+//       <MdKeyboardArrowRight  className="!w-6 !h-6" />
+//     </button>
+//   );
+// };
 
 const Sliders = () => {
   const { data: CertificationImagesData, isLoading, isError } = CertificationImages();
