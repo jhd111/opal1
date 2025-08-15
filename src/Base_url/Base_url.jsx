@@ -1,4 +1,4 @@
-// const BaseUrl="https://97be2633e319.ngrok-free.app"
+// const BaseUrl="https://c301de1ae76d.ngrok-free.app"
 
 const BaseUrl="https://backend.opalinstitute.pk"
 

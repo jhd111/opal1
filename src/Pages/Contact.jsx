@@ -175,7 +175,7 @@ const ContactForm = () => {
     const formPayload = new FormData();
     formPayload.append("name", formData.name);
     formPayload.append("email", formData.email);
-    formPayload.append("phone", formData.phone);
+    formPayload.append("phone_number", formData.phone);
     formPayload.append("message", formData.message);
 
     mutate(formPayload, {

@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import img from "../assets/voc.svg";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import CollapsRow from "../Components/Collapsrow";
 import { GoCheck } from "react-icons/go";
 // import { NavLink } from "react-router-dom";
 import { NavLink,useLocation } from "react-router-dom";
+import { CheckVoucherAvailabilty } from "../Services/CheckVoucherAvailabilty";
+
+import { toast } from "react-toastify";
+
 const BuyScoredPracticeMockTests = () => {
 
-
+  const mutation = CheckVoucherAvailabilty();
+  
   const location = useLocation();
   const { object,path } = location.state || {}; // Retrieve the passed object
   
-  
+  const [maxCount, setMaxCount] = useState(0);
+
+  const [vouchersAvailable, setVouchersAvailable] = useState(false);
+  const [isCheckingVouchers, setIsCheckingVouchers] = useState(true);
 
 console.log("object",object)
 
@@ -20,6 +28,59 @@ console.log("object",object)
 
   localStorage.setItem('count',count)
   localStorage.setItem("price",object?.price)
+
+   // Function to check voucher availability
+   function VoucherAvailabilty() {
+    setIsCheckingVouchers(true);
+    
+    // Try with JSON payload instead of FormData
+    const payload = {
+      product_name: object.name
+    };
+   
+    mutation.mutate(
+      {
+        payload: payload,
+        path: "check-voucher-availability/",
+        queryKey: "our-inventory",
+      },
+      {
+        onSuccess: (data) => {
+          console.log("Voucher availability response:", data);
+          
+          // Check if vouchers are present
+          if (data.vouchers_present === true) {
+            setMaxCount(data?.details?.[0]?.count || 0);
+            setVouchersAvailable(true);
+            toast.success(data.message || "Vouchers are available");
+          } else {
+            setVouchersAvailable(false);
+            toast.error("Vouchers are not present");
+          }
+          setIsCheckingVouchers(false);
+        },
+        onError: (error) => {
+          console.error('Voucher check error:', error);
+          setVouchersAvailable(false);
+          setIsCheckingVouchers(false);
+          
+          // Better error handling
+          const errorMessage = error.response?.data?.error || 
+                              error.response?.data?.message || 
+                              error.message || 
+                              "Error checking voucher availability";
+          toast.error(errorMessage);
+        },
+      }
+    );
+  }
+
+  // Run voucher availability check when component mounts
+  useEffect(() => {
+    if (object?.name) {
+      VoucherAvailabilty();
+    }
+  }, [object?.name]);
 
   return (
     <div>
@@ -52,6 +113,26 @@ console.log("object",object)
           <p className="text-xs  poppins py-4 ">
             {object.detail}
           </p>
+
+ {/* Voucher Status Indicator */}
+ <div className="mb-4">
+            {isCheckingVouchers ? (
+              <div className="text-yellow-600 text-sm font-medium">
+                Checking voucher availability...
+              </div>
+            ) : vouchersAvailable ? (
+              <div className="text-green-600 text-sm font-medium flex items-center gap-2">
+                <GoCheck className="text-green-600" />
+                Vouchers Available
+              </div>
+            ) : (
+              <div className="text-red-600 text-sm font-medium">
+                ❌ Vouchers Not Available
+              </div>
+            )}
+          </div>
+
+
           <div className="flex gap-5 mt-5">
             <div className=" flex items-center gap-5 rounded-3xl px-4 py-3 bg-slate-100">
               <span className="text-xs">
@@ -59,12 +140,40 @@ console.log("object",object)
               </span>
               {count}
               <span className="text-xs">
-                <FaPlus onClick={() => setcount((e) => e + 1)} />
+              <FaPlus 
+  onClick={() => 
+    setcount((prev) => {
+      if (prev < maxCount) {
+        return prev + 1;
+      } else {
+        toast.error(`You can only buy up to ${maxCount} vouchers`);
+        return prev;
+      }
+    })
+  } 
+/>
+
               </span>
             </div>
-            <div className="bg-primary text-white rounded-3xl w-full text-center py-3">
-              <NavLink to="/check-out" state={{ name: object,pathh:path }}
-              >Proceed to Checkout</NavLink>
+             {/* Conditional Proceed Button */}
+             <div className={`rounded-3xl w-full text-center py-3 transition-all duration-300 ${
+              vouchersAvailable && !isCheckingVouchers
+                ? 'bg-primary text-white cursor-pointer hover:bg-primary/90' 
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}>
+              {vouchersAvailable && !isCheckingVouchers ? (
+                <NavLink 
+                  to="/check-out" 
+                  state={{ name: object, pathh: path }}
+                  className="block w-full h-full"
+                >
+                  Proceed to Checkout
+                </NavLink>
+              ) : (
+                <span>
+                  {isCheckingVouchers ? 'Checking...' : 'Proceed to Checkout'}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex items-center text-xs gap-2 mt-6 poppins font-medium">
