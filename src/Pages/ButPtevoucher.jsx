@@ -102,6 +102,107 @@ const ButPtevoucher = () => {
     if (current.trim()) result.push(current.trim());
     return result;
   }
+  const Deals1 = [
+    {
+      id: 1,
+      name: "PTE + ApeUni",
+      price: 68500,
+      save_rs: 15300,
+      key_features: [
+        "PTE Voucher (Eligible for Academic, UKVI, Core)",
+        
+      ],
+      image_1: image,
+      image_2: image,
+      image_3:image,
+      image_4: image,
+      main_image:image
+    },
+    {
+      id: 2,
+      name: "PTE + ApeUni Pro",
+      price: 79900,
+      save_rs: 18500,
+      key_features: [
+        "PTE Voucher (Academic, UKVI, Core)",
+       
+      ],
+      image_1: image,
+      image_2: image,
+      image_3:image,
+      image_4: image,
+      main_image:image
+    },
+    {
+      id: 3,
+      name: "PTE + ApeUni Premium",
+      price: 95000,
+      save_rs: 25000,
+      key_features: [
+        "PTE Voucher (All types)",
+        "Three Pearson Scored Mock Tests",
+       
+      ],
+      image_1: image,
+      image_2: image,
+      image_3:image,
+      image_4: image,
+      main_image:image
+    }
+  ];
+  const Product1 = {
+    data: [
+      {
+        category: {
+          id: 1,
+          name: "PTE Vouchers",
+          description: "Get access to official PTE test vouchers and practice materials from top providers."
+        },
+        vouchers: [
+          {
+            id: 1,
+            name: "Pearson PTE | UKVI",
+            image_url: image,
+            price: 60999,
+            discount:1000,
+            // type: "UKVI",
+            // validity: 365,
+            description: "Official Pearson PTE Academic voucher for UKVI applications."
+          },
+          {
+            id: 2,
+            name: "ApeUni Vouchers",
+            image_url: image,
+            price: 60999,
+            discount:1000,
+            // type: "Practice Test",
+            // validity: 30,
+            description: "ApeUni PTE voucher with full access to practice tests and resources."
+          },
+          {
+            id: 3,
+            name: "AlfaPTE Vouchers",
+            image_url: image,
+            price: 60999,
+            discount:1000,
+            // type: "Academic",
+            // validity: 365,
+            description: "AlfaPTE official voucher for PTE Academic exam."
+          },
+          {
+            id: 4,
+            name: "Scored Practice Mock Tests",
+            image_url: image,
+            price: 60999,
+            discount:1000,
+            // type: "Mock Test",
+            // validity: 30,
+            description: "Pearson Scored Practice Mock Test – get real feedback and score report."
+          }
+        ]
+      }
+    ]
+  };
 
   return (
     <>
@@ -116,7 +217,7 @@ const ButPtevoucher = () => {
           <>
             <Hero />
             <div className="flex justify-center">
-            <div className="w-[90%] poppins mx-auto py-14 mt-24 shadow-[0px_2px_15px_0px_rgba(25,33,61,0.1)] rounded-2xl">
+            <div className="w-[90%] poppins mx-auto py-14 mt-24 shadow-[0px_2px_15px_0px_rgba(25,33,61,0.1)] rounded-3xl">
               <p className="text-center mb-2 inter text-2xl lg:text-4xl font-semibold">
                  Our Deals
               </p>
@@ -128,12 +229,12 @@ const ButPtevoucher = () => {
               <div className="mx-auto my-10 ">
                 {/* Deals Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-14">
-                  {Deals?.slice(0, 3).map((deal, index) => (
+                  {Deals1?.slice(0, 3).map((deal, index) => (
                     <div
                       key={deal.id}
                       className={`flex flex-col justify-between rounded-3xl p-6   bg-${
                         index % 2 === 0 ? " white shadow" : "[#EFF2FF]"
-                      } min-h-[430px] sm:min-h-[480px] lg:min-h-[530px] xl:min-h-[580px] max-h-[630px] sm:max-h-[680px] lg:max-h-[730px] overflow-y-auto transition-all`}
+                      } min-h-[430px] sm:min-h-[480px] lg:min-h-[530px] xl:min-h-[580px] 2xl:min-h-[830px] max-h-[630px] sm:max-h-[680px] lg:max-h-[730px] 2xl:max-h-[930px] overflow-y-auto transition-all`}
                     >
                       {/* Header Section */}
                       <div className="mb-3">
@@ -338,7 +439,7 @@ const ButPtevoucher = () => {
   className=" px-2 mt-10"
 >
   {/* Display Categories and Vouchers */}
-  {Product?.data?.map((categoryData, categoryIndex) => (
+  {Product1?.data?.map((categoryData, categoryIndex) => (
     <div key={categoryData.category.id} className="mb-12">
       {/* Category Header */}
       <div className="w-[85%] mx-auto mb-8">
@@ -361,14 +462,14 @@ const ButPtevoucher = () => {
                 <img
                   src={voucher.image_url}
                   alt={voucher.name}
-                  className="w-full h-48 object-cover rounded"
+                  className="w-full h-40 2xl:h-60 object-cover rounded"
                 />
               </div>
               
               {/* Content Container - Grows to fill space */}
               <div className="p-5 pt-3 flex flex-col flex-grow">
                 {/* Title */}
-                <h3 className="text-lg be-vietnam font-medium mb-2">
+                <h3 className="text-md inter font-normal 2xl:text-lg mb-2 ">
                   {voucher.name}
                 </h3>
                 
@@ -378,7 +479,7 @@ const ButPtevoucher = () => {
                 </p> */}
                 
                 {/* Details Container - Only takes needed space */}
-                <div className="mb-3">
+                {/* <div className="mb-3"> */}
                   {voucher.type && (
                     <p className="text-md font-medium inter text-black mb-1">
                       Test Type: {voucher.type}
@@ -389,10 +490,12 @@ const ButPtevoucher = () => {
                       Validity: {voucher.validity} days
                     </p>
                   )}
-                </div>
-                
+                {/* </div> */}
+                <p className="text-[#334155] text-md font-normal mb-2 line-through">
+                  RS {Math.floor(voucher.discount)}
+                </p>
                 {/* Price */}
-                <p className="text-[#0F172A] text-lg font-semibold mb-4">
+                <p className="text-[#0F172A] text-lg inter font-bold mb-2">
                   RS {Math.floor(voucher.price)}
                 </p>
                 
@@ -416,7 +519,7 @@ const ButPtevoucher = () => {
             {/*------------------------ Get Alfa PTE Portal Access -----------------------*/}
             {/* Only show the default "GGet Alfa PTE Portal Access" section when selectedCategory is "all" */}
             
-              <div className="w-[85%] mx-auto py-14">
+              {/* <div className="w-[85%] mx-auto py-14">
                 <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
                   Get Alfa PTE Portal Access
                 </p>
@@ -425,14 +528,14 @@ const ButPtevoucher = () => {
                   Choose a plan that suits you best.
                 </p>
                 <div className="my-4">
-                 {/* HIGHLIGHTED CHANGES START HERE */}
+                 HIGHLIGHTED CHANGES START HERE
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {Alfa_PTE_Portal?.data?.map((voucher) => (
                       <div
                         key={voucher.id}
                         className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
                       >
-                        {/* Image Container */}
+                        Image Container
                         <div className="p-5 pb-0">
                           <img
                             src={voucher.image}
@@ -441,19 +544,19 @@ const ButPtevoucher = () => {
                           />
                         </div>
                         
-                        {/* Content Container - Grows to fill space */}
+                        Content Container - Grows to fill space
                         <div className="p-5 pt-3 flex flex-col flex-grow">
-                          {/* Title */}
+                          Title
                           <h3 className="text-lg be-vietnam font-medium mb-2">
                             {voucher.name}
                           </h3>
                           
-                          {/* Description - Grows to fill available space */}
-                          {/* <p className="text-md text-gray-300 mb-3 flex-grow">
+                          Description - Grows to fill available space
+                          <p className="text-md text-gray-300 mb-3 flex-grow">
                             {voucher.description}
-                          </p> */}
+                          </p>
                           
-                          {/* Details Container - Only takes needed space */}
+                          Details Container - Only takes needed space
                           <div className="mb-3">
                             {voucher.validity && (
                               <p className="text-md font-medium inter text-[#3651BF] mb-1">
@@ -462,12 +565,12 @@ const ButPtevoucher = () => {
                             )}
                           </div>
                           
-                          {/* Price */}
+                          Price
                           <p className="text-[#0F172A] text-lg font-semibold mb-4">
                             RS {Math.floor(voucher.price || 0)}
                           </p>
                           
-                          {/* Button - Always at bottom */}
+                          Button - Always at bottom
                           <NavLink
                             to="/GetAlfaPTPortal"
                             state={{
@@ -482,10 +585,10 @@ const ButPtevoucher = () => {
                       </div>
                     ))}
                   </div>
-                  {/* HIGHLIGHTED CHANGES END HERE */}
+                  HIGHLIGHTED CHANGES END HERE
 
                 </div>
-              </div>
+              </div> */}
           
             
             {/* Only show BuyVouchers when selectedCategory is "all" */}
