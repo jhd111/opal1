@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaCheck, FaMinus, FaPlus } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 import valid from "../assets/images/buypte/valid.png";
@@ -16,7 +17,7 @@ import { Products } from "../Services/Products";
 
 import { Our_Deals } from "../Services/Our_Deals";
 import image from "../assets/images/Image.png";
-import Hero from "../Components/Hero1";
+import Hero from "../Components/BuyPteVoucherHero";
 import BuyVoucher from "./BuyVoucher";
 import BuyVouchers from "./BuyVouchers";
 
@@ -114,44 +115,45 @@ const ButPtevoucher = () => {
         ) : (
           <>
             <Hero />
-            <div className="w-[85%] poppins mx-auto py-14 mt-10">
-              <p className="text-center mb-2 text-2xl lg:text-4xl font-semibold">
-                Choose from our Deals
+            <div className="flex justify-center">
+            <div className="w-[90%] poppins mx-auto py-14 mt-24 shadow-[0px_2px_15px_0px_rgba(25,33,61,0.1)] rounded-2xl">
+              <p className="text-center mb-2 inter text-2xl lg:text-4xl font-semibold">
+                 Our Deals
               </p>
-              <p className="text-xs text-gray-500 text-center">
-                You can choose a plan which suits you best.
+              <p className="text-sm text-[#59595A] be-vietnam text-center">
+              Unlock amazing savings on our  voucher deals! Don’t miss the chance to shop smart and save more.
               </p>
 
               {/* <div className="w-[80%] poppins   mx-auto py-14 mt-10">    */}
-              <div className="mx-auto my-10">
+              <div className="mx-auto my-10 ">
                 {/* Deals Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-14">
                   {Deals?.slice(0, 3).map((deal, index) => (
                     <div
                       key={deal.id}
-                      className={`flex flex-col justify-between rounded-3xl p-6 md:p-8 lg:p-10 bg-${
+                      className={`flex flex-col justify-between rounded-3xl p-6   bg-${
                         index % 2 === 0 ? " white shadow" : "[#EFF2FF]"
                       } min-h-[430px] sm:min-h-[480px] lg:min-h-[530px] xl:min-h-[580px] max-h-[630px] sm:max-h-[680px] lg:max-h-[730px] overflow-y-auto transition-all`}
                     >
                       {/* Header Section */}
                       <div className="mb-3">
-                        <div className="min-h-[7rem] flex items-center">
-                          <p className="text-2xl font-medium md:text-3xl md:font-bold leading-tight">
+                        {/* <div className="min-h-[7rem] flex items-center"> */}
+                          <p className="text-2xl text-[#170F49] font-normal md:text-2xl  leading-tight">
                             {deal.name}
                           </p>
-                        </div>
-                        <p className="text-sm text-gray-500 mt-1">
+                        {/* </div> */}
+                        {/* <p className="text-sm text-gray-500 mt-1">
                           Order Now & Save Big
-                        </p>
+                        </p> */}
                       </div>
 
                       {/* Price Section */}
-                      <div className="mb-4">
-                        <div className="flex items-center gap-x-2">
-                          <p className="text-xl font-light">
+                      <div className="mb-4 mt-2">
+                        <div className="flex flex-col items-start gap-x-2 gap-y-2">
+                          <p className="text-3xl text-[#170F49] font-semibold">
                             Rs. {Math.floor(deal.price)}/-
                           </p>
-                          <p className="text-xs text-gray-600 font-medium rounded-2xl px-2 py-1 bg-[#D5DFFF]">
+                          <p className="text-xs text-[#3651BF] bg-[#F1F0FB] font-medium rounded-2xl px-2 py-1 ">
                             Save Rs. {Math.floor(deal.save_rs)}
                           </p>
                         </div>
@@ -162,19 +164,29 @@ const ButPtevoucher = () => {
                         <NavLink
                           to={`/checkout-PTE/`}
                           state={{ object1: deal, path: "deals-payment/" }}
-                          className="bg-[#3F51B5] hover:bg-[#2f3aa0] w-full text-center text-white text-sm font-semibold px-6 py-3 rounded-full inline-block transition-all"
-                        >
+                         
+                          className={`${index % 2 === 0 
+                            ? "bg-white shadow-[inset_0px_4px_6px_rgba(255,255,255,0.4),inset_0px_-2px_2px_rgba(27,35,85,0.07),0px_3px_6px_rgba(7,0,110,0.03)]" 
+                            : "bg-gradient-to-b from-[#8C82FF] to-[#3651BF] shadow-[inset_0px_3px_4px_rgba(223,239,255,0.1),inset_0px_1px_1px_rgba(255,255,255,0.1),inset_0px_-2px_2px_rgba(0,66,137,0.15),0px_2px_5px_rgba(74,58,175,0.25)]"
+                          }
+                           text-[#170F49] border border-[#D9DBE9]  hover:bg-[#2f3aa0] hover:text-white w-full text-center  text-sm font-medium px-6 py-3 rounded-xl inline-block transition-all`
+                          }
+                           >
                           Order Now
                         </NavLink>
                       </div>
 
-                      <hr className="mb-6 border-[#D1D1F7]" />
+                      <hr className="mb-6 border-[1.3px] border-[#F1F2F9] -mx-6" />
 
                       {/* Features Section */}
-                      <div className="flex-grow max-h-[200px] overflow-y-auto">
-                        <p className="font-semibold text-black mb-4">
-                          Key Features
+                      <p className="font-semibold text-[#170F49] ">
+                        Includes:
                         </p>
+                        <p className="text-[#6F6C8F] font-normal text-sm">
+                        This deal includes following
+                        </p>
+                      <div className="flex-grow max-h-[200px] overflow-y-auto mt-2">
+                        
                         <ul className="text-sm text-gray-700 space-y-2 mb-6">
                           {splitFeatures(deal.key_features).map(
                             (feature, index) => (
@@ -182,7 +194,7 @@ const ButPtevoucher = () => {
                                 key={index}
                                 className="flex items-start gap-1"
                               >
-                                <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+                                <FaCheckCircle className="text-[#3651BF] mt-1 flex-shrink-0" />
                                 <span>{feature.trim()}</span>
                               </li>
                             )
@@ -231,31 +243,48 @@ const ButPtevoucher = () => {
                       >
                         {/* Top content */}
                         <div>
-                          <p className="text-xl font-semibold md:text-3xl lg:font-bold">
+                        <p className="text-2xl text-[#170F49] font-normal md:text-2xl  leading-tight">
                             {deal.name}
                           </p>
-                          <p className="text-sm text-gray-500 mt-1">
+                          {/* <p className="text-sm text-gray-500 mt-1">
                             Order Now & Save Big
+                          </p> */}
+                           <div className="mb-4 mt-2">
+                        <div className="flex flex-col items-start gap-x-2 gap-y-2">
+                          <p className="text-3xl text-[#170F49] font-semibold">
+                            Rs. {Math.floor(deal.price)}/-
                           </p>
-                          <div className="flex items-center gap-x-2 mb-2">
+                          <p className="text-xs text-[#3651BF] bg-[#F1F0FB] font-medium rounded-2xl px-2 py-1 ">
+                            Save Rs. {Math.floor(deal.save_rs)}
+                          </p>
+                        </div>
+                      </div>
+                          {/* <div className="flex items-center gap-x-2 mb-2">
                             <p className="my-4 text-2xl font-light">
                               Rs. {Math.floor(deal.price)} /-
                             </p>
                             <p className="text-sm text-gray-600 font-medium rounded-2xl px-2 py-1 bg-[#D5DFFF]">
                               Save Rs. {Math.floor(deal.save_rs)}
                             </p>
-                          </div>
+                          </div> */}
                           <NavLink
                             to={`/checkout-PTE/`}
                             state={{ object1: deal, path: "deals-payment/" }}
-                            className="bg-[#3F51B5] hover:bg-[#2f3aa0] text-white text-sm font-semibold px-6 py-3 rounded-full inline-block transition-all"
-                          >
+                            className={`${index % 2 === 0 
+                              ? "bg-white shadow-[inset_0px_4px_6px_rgba(255,255,255,0.4),inset_0px_-2px_2px_rgba(27,35,85,0.07),0px_3px_6px_rgba(7,0,110,0.03)]" 
+                              : "bg-gradient-to-b from-[#8C82FF] to-[#3651BF] shadow-[inset_0px_3px_4px_rgba(223,239,255,0.1),inset_0px_1px_1px_rgba(255,255,255,0.1),inset_0px_-2px_2px_rgba(0,66,137,0.15),0px_2px_5px_rgba(74,58,175,0.25)]"
+                            }
+                             text-[#170F49] border border-[#D9DBE9]  hover:bg-[#2f3aa0] hover:text-white w-full text-center  text-sm font-medium px-6 py-3 rounded-xl inline-block transition-all`
+                            }                          >
                             Order Now
                           </NavLink>
-                          <hr className="my-6 border-[#D1D1F7]" />
-                          <p className="font-semibold text-black mb-2">
-                            Key Features
-                          </p>
+                          <hr className="mb-6 border-[1.3px] border-[#F1F2F9] -mx-6" />
+                          <p className="font-semibold text-[#170F49] ">
+                        Includes:
+                        </p>
+                        <p className="text-[#6F6C8F] font-normal text-sm">
+                        This deal includes following
+                        </p>
                           <div className="flex-grow max-h-[200px] overflow-y-auto">
                             <ul className="text-sm text-gray-700 space-y-2">
                               {splitFeatures(deal.key_features).map(
@@ -298,235 +327,95 @@ const ButPtevoucher = () => {
                 {/* </div> */}
               </div>
             </div>
+            </div>
             {/* </div> */}
 
       {/* ------------------------practice mock tests------------------ */}
     
       {/* ------------------------practice mock tests------------------ */}
       <div
-        id="practicemocktests"
-        className="bg-gradient-to-b from-[rgba(54,81,191,0.07)] to-[rgba(255,255,255,0)] px-8"
-      >
-        {/* Category Filter Buttons */}
-        <div className="w-[85%] mx-auto mb-8 pt-8">
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {/* All Products Button */}
-            <button
-              onClick={() => setSelectedCategory("all")}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                selectedCategory === "all"
-                  ? "bg-[#3651BF] text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-              }`}
-            >
-              All Products
-            </button>
-            
-            {/* Alfa PTE Portal Access Button */}
-            <button
-              onClick={() => setSelectedCategory("alfa_pte")}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                selectedCategory === "alfa_pte"
-                  ? "bg-[#3651BF] text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-              }`}
-            >
-              Alfa PTE Portal Access
-            </button>
-
-            {/* Buy It Exam Button */}
-            <button
-              onClick={() => setSelectedCategory("buy_it_exam")}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                selectedCategory === "buy_it_exam"
-                  ? "bg-[#3651BF] text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-              }`}
-            >
-              Buy It Exam
-            </button>
-            
-            {/* Individual Category Buttons */}
-            {Product?.data?.map((categoryData) => (
-              <button
-                key={categoryData.category.id}
-                onClick={() => setSelectedCategory(categoryData.category.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                  selectedCategory === categoryData.category.id
-                    ? "bg-[#3651BF] text-white shadow-lg"
-                    : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-                }`}
-              >
-                {categoryData.category.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Display Categories and Vouchers - ONLY show when not alfa_pte or buy_it_exam */}
-        {selectedCategory !== "alfa_pte" && selectedCategory !== "buy_it_exam" && categoriesToDisplay.map((categoryData, categoryIndex) => (
-          <div key={categoryData.category.id} className="mb-12">
-            {/* Category Header - Only show if "All Products" is selected */}
-            {selectedCategory === "all" && (
-              <div className="w-[85%] mx-auto mb-8">
-                <h1 className="text-xl font-semibold lg:text-3xl be-vietnam lg:font-bold text-start mb-2">
-                  {categoryData.category.name}
-                </h1>
-                <p className="text-[#59595A] text-sm be-vietnam">{categoryData?.category?.description}</p>
-              </div>
-            )}
-
-            {/* Vouchers Grid for this category */}
-            <div className="w-[85%] mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {categoryData.vouchers.map((voucher) => (
-                  <div
-                    key={voucher.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
-                  >
-                    {/* Image Container */}
-                    <div className="p-5 pb-0">
-                      <img
-                        src={voucher.image_url}
-                        alt={voucher.name}
-                        className="w-full h-48 object-cover rounded"
-                      />
-                    </div>
-                    
-                    {/* Content Container - Grows to fill space */}
-                    <div className="p-5 pt-3 flex flex-col flex-grow">
-                      {/* Title */}
-                      <h3 className="text-lg be-vietnam font-medium mb-2">
-                        {voucher.name}
-                      </h3>
-                      
-                      {/* Description - Grows to fill available space */}
-                      <p className="text-md text-gray-300 mb-3 flex-grow">
-                        {voucher.description}
-                      </p>
-                      
-                      {/* Details Container - Only takes needed space */}
-                      <div className="mb-3">
-                        {voucher.type && (
-                          <p className="text-md font-medium inter text-black mb-1">
-                            Test Type: {voucher.type}
-                          </p>
-                        )}
-                        {voucher.validity && (
-                          <p className="text-md font-medium inter text-[#3651BF] mb-1">
-                            Validity: {voucher.validity} days
-                          </p>
-                        )}
-                      </div>
-                      
-                      {/* Price */}
-                      <p className="text-green-500 text-lg font-semibold mb-4">
-                        RS {Math.floor(voucher.price)}
-                      </p>
-                      
-                      {/* Button - Always at bottom */}
-                      <NavLink
-                        to="/BuyScoredPracticeMockTests"
-                        state={{ object: voucher, path: "get-payment-detail/" }}
-                        className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
-                      >
-                        Buy Now
-                      </NavLink>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Show Alfa PTE Portal Access when "alfa_pte" is selected */}
-        {selectedCategory === "alfa_pte" && (
-          <div className="mb-12">
-            {/* Category Header */}
-            <div className="w-[85%] mx-auto mb-8">
-              <h1 className="text-xl font-semibold lg:text-3xl be-vietnam lg:font-bold text-start mb-2">
-                Alfa PTE Portal Access
-              </h1>
-            </div>
-            
-            <div className="w-[85%] mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Alfa_PTE_Portal?.data?.map((voucher) => (
-                  <div
-                    key={voucher.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
-                  >
-                    {/* Image Container */}
-                    <div className="p-5 pb-0">
-                      <img
-                        src={voucher.image}
-                        alt={voucher.name}
-                        className="w-full h-48 object-cover rounded"
-                      />
-                    </div>
-                    
-                    {/* Content Container - Grows to fill space */}
-                    <div className="p-5 pt-3 flex flex-col flex-grow">
-                      {/* Title */}
-                      <h3 className="text-lg be-vietnam font-medium mb-2">
-                        {voucher.name}
-                      </h3>
-                      
-                      {/* Description - Grows to fill available space */}
-                      <p className="text-md text-gray-300 mb-3 flex-grow">
-                        {voucher.description}
-                      </p>
-                      
-                      {/* Details Container - Only takes needed space */}
-                      <div className="mb-3">
-                        {voucher.validity && (
-                          <p className="text-md font-medium inter text-[#3651BF] mb-1">
-                            Validity: {voucher.validity} days
-                          </p>
-                        )}
-                      </div>
-                      
-                      {/* Price */}
-                      <p className="text-green-500 text-lg font-semibold mb-4">
-                        RS {Math.floor(voucher.price || 0)}
-                      </p>
-                      
-                      {/* Button - Always at bottom */}
-                      <NavLink
-                        to="/GetAlfaPTPortal"
-                        state={{
-                          name: voucher,
-                          path: "aplha-pte-payment/",
-                        }}
-                        className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
-                      >
-                        Buy Now
-                      </NavLink>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Show Buy It Exam when "buy_it_exam" is selected */}
-        {selectedCategory === "buy_it_exam" && (
-          <BuyVouchers />
-        )}
-
-        {/* Show message if no vouchers found for regular categories */}
-        {selectedCategory !== "alfa_pte" && selectedCategory !== "buy_it_exam" && categoriesToDisplay.length === 0 && (
-          <div className="w-[85%] mx-auto text-center py-12">
-            <p className="text-gray-500 text-lg">No vouchers found for the selected category.</p>
-          </div>
-        )}
+  id="practicemocktests"
+  className=" px-2 mt-10"
+>
+  {/* Display Categories and Vouchers */}
+  {Product?.data?.map((categoryData, categoryIndex) => (
+    <div key={categoryData.category.id} className="mb-12">
+      {/* Category Header */}
+      <div className="w-[85%] mx-auto mb-8">
+        <h1 className="text-xl text-[#0F172A] inter font-semibold lg:text-3xl lg:font-bold text-start mb-2">
+          {categoryData.category.name}
+        </h1>
+        <p className="text-[#59595A] text-sm be-vietnam">{categoryData?.category?.description}</p>
       </div>
+
+      {/* Vouchers Grid for this category */}
+      <div className="w-[85%] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {categoryData.vouchers.map((voucher) => (
+            <div
+              key={voucher.id}
+              className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
+            >
+              {/* Image Container */}
+              <div className="p-5 pb-0">
+                <img
+                  src={voucher.image_url}
+                  alt={voucher.name}
+                  className="w-full h-48 object-cover rounded"
+                />
+              </div>
+              
+              {/* Content Container - Grows to fill space */}
+              <div className="p-5 pt-3 flex flex-col flex-grow">
+                {/* Title */}
+                <h3 className="text-lg be-vietnam font-medium mb-2">
+                  {voucher.name}
+                </h3>
+                
+                {/* Description - Grows to fill available space */}
+                {/* <p className="text-md text-gray-600 mb-3 flex-grow">
+                  {voucher.description}
+                </p> */}
+                
+                {/* Details Container - Only takes needed space */}
+                <div className="mb-3">
+                  {voucher.type && (
+                    <p className="text-md font-medium inter text-black mb-1">
+                      Test Type: {voucher.type}
+                    </p>
+                  )}
+                  {voucher.validity && (
+                    <p className="text-md font-medium inter text-[#3651BF] mb-1">
+                      Validity: {voucher.validity} days
+                    </p>
+                  )}
+                </div>
+                
+                {/* Price */}
+                <p className="text-[#0F172A] text-lg font-semibold mb-4">
+                  RS {Math.floor(voucher.price)}
+                </p>
+                
+                {/* Button - Always at bottom */}
+                <NavLink
+                  to="/BuyScoredPracticeMockTests"
+                  state={{ object: voucher, path: "get-payment-detail/" }}
+                  className="w-full block text-center bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                >
+                  Buy Now
+                </NavLink>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
             {/*------------------------ Get Alfa PTE Portal Access -----------------------*/}
             {/* Only show the default "GGet Alfa PTE Portal Access" section when selectedCategory is "all" */}
-            {selectedCategory === "all" && (
+            
               <div className="w-[85%] mx-auto py-14">
                 <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
                   Get Alfa PTE Portal Access
@@ -537,11 +426,11 @@ const ButPtevoucher = () => {
                 </p>
                 <div className="my-4">
                  {/* HIGHLIGHTED CHANGES START HERE */}
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {Alfa_PTE_Portal?.data?.map((voucher) => (
                       <div
                         key={voucher.id}
-                        className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
+                        className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
                       >
                         {/* Image Container */}
                         <div className="p-5 pb-0">
@@ -560,9 +449,9 @@ const ButPtevoucher = () => {
                           </h3>
                           
                           {/* Description - Grows to fill available space */}
-                          <p className="text-md text-gray-300 mb-3 flex-grow">
+                          {/* <p className="text-md text-gray-300 mb-3 flex-grow">
                             {voucher.description}
-                          </p>
+                          </p> */}
                           
                           {/* Details Container - Only takes needed space */}
                           <div className="mb-3">
@@ -574,7 +463,7 @@ const ButPtevoucher = () => {
                           </div>
                           
                           {/* Price */}
-                          <p className="text-green-500 text-lg font-semibold mb-4">
+                          <p className="text-[#0F172A] text-lg font-semibold mb-4">
                             RS {Math.floor(voucher.price || 0)}
                           </p>
                           
@@ -585,7 +474,7 @@ const ButPtevoucher = () => {
                               name: voucher,
                               path: "aplha-pte-payment/",
                             }}
-                            className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                            className="w-full block text-center bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
                           >
                             Buy Now
                           </NavLink>
@@ -597,10 +486,10 @@ const ButPtevoucher = () => {
 
                 </div>
               </div>
-            )}
+          
             
             {/* Only show BuyVouchers when selectedCategory is "all" */}
-            {selectedCategory === "all" && <BuyVouchers />}
+             <BuyVouchers />
           </>
         )
       }

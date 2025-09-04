@@ -115,14 +115,14 @@ const BuyVouchers = () => {
         </div>
       </div>
       <div className="mx-auto  mt-10 w-[100%]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {Vouchers?.map((val, i) => {
             return (
               <div className=" flex flex-col justify-between p-4 shadow">
                 <div className="flex justify-center">
                 <img src={val.voucher_image_url} alt=""  />
                 </div>
-                <p className="text-center  my-2 text-lg font-semibold">
+                <p className="text-start  my-2 text-lg font-semibold">
                  {val.name}
                 </p>
                 <NavLink
@@ -133,7 +133,7 @@ const BuyVouchers = () => {
                   state={{ object: val,path: "get-payment-detail/" }} // Pass the full object here
                   className="bg-[#F1F1F3]  text-center rounded-md py-2 px-10 font-semibold"
                 >
-                  View Voucher
+                  Buy Now
                 </NavLink>
               </div>
             );

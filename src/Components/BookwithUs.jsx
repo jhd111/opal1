@@ -49,7 +49,7 @@ const BookExamWith = ({ set }) => {
   }
 };
 
-  console.log("selectedFile",selectedFile)
+  ("selectedFile",selectedFile)
 
   // Handle form submission
   // const handleSubmit = (e) => {
