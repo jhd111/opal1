@@ -9,7 +9,7 @@ const BuyPteVoucherHero = () => {
   return (
     <div className="relative">
       <img src={BuyPteVoucher} alt="" />
-      <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[83%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[13%] xl:left-[8.5%] 2xl:left-[8.5%] mt-10 md:bottom-8 lg:bottom-16 xl:-bottom-14 2xl:bottom-24 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
+      <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[83%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[13%] xl:left-[8.5%] 2xl:left-[8.5%] mt-10 md:bottom-8 lg:-bottom-16 xl:-bottom-14 2xl:bottom-24 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
         {[p1, p4, p2, p3, comptia].map((val, i) => (
           <div key={i} className="flex justify-center items-center">
             <img
