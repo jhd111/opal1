@@ -156,7 +156,7 @@ const BuyVouchers = () => {
       <Loader/>
       :
     
-    <div className="w-[90%] md:w-[84%] mx-auto">
+    <div className="w-[84%] md:w-[84%] 2xl:w-[80%] mx-auto">
       <div className="mt-5">
         <div className="text-start inter">
           <p className="text-xl font-semibold lg:text-3xl lg:font-bold ">IT Exam Vouchers</p>
@@ -174,7 +174,7 @@ const BuyVouchers = () => {
 
       {/* Vouchers Grid for this category */}
       <div className="w-[100%] mx-auto mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
           {categoryData.vouchers.map((voucher) => (
             <div
               key={voucher.id}
@@ -185,7 +185,7 @@ const BuyVouchers = () => {
                 <img
                   src={voucher.image_url}
                   alt={voucher.name}
-                  className="w-full h-40 2xl:h-60 object-cover rounded"
+                  className="w-[100%] lg:w-full 2xl:h-60 object-fill md:object-cover rounded"
                 />
               </div>
               
@@ -214,11 +214,11 @@ const BuyVouchers = () => {
                     </p>
                   )}
                 {/* </div> */}
-                <p className="text-[#334155] text-md font-normal mb-2 line-through">
+                <p className="text-red-200 text-md md:text-lg font-normal mb-2 line-through">
                   RS {Math.floor(voucher.discount)}
                 </p>
                 {/* Price */}
-                <p className="text-[#0F172A] text-lg inter font-bold mb-2">
+                <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
                   RS {Math.floor(voucher.price)}
                 </p>
                 
@@ -228,7 +228,7 @@ const BuyVouchers = () => {
                       pathname: "/all-vouchers",
                     }}
                     state={{ object: voucher,path: "get-payment-detail/" }}
-                  className="w-full block text-center bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                  className="w-full block text-center text-md md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
                 >
                   Buy Now
                 </NavLink>

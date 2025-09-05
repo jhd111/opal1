@@ -217,7 +217,7 @@ const ButPtevoucher = () => {
           <>
             <Hero />
             <div className="flex justify-center">
-            <div className="w-[90%] poppins mx-auto py-14 mt-24 shadow-[0px_2px_15px_0px_rgba(25,33,61,0.1)] rounded-3xl">
+            <div className="w-[90%] 2xl:w-[80%] poppins mx-auto py-14 mt-10 sm:mt-20 xl:mt-20 shadow-[0px_2px_15px_0px_rgba(25,33,61,0.1)] rounded-3xl">
               <p className="text-center mb-2 inter text-2xl lg:text-4xl font-semibold">
                  Our Deals
               </p>
@@ -228,13 +228,13 @@ const ButPtevoucher = () => {
               {/* <div className="w-[80%] poppins   mx-auto py-14 mt-10">    */}
               <div className="mx-auto my-10 ">
                 {/* Deals Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-14">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-14 2xl:px-60">
                   {Deals1?.slice(0, 3).map((deal, index) => (
                     <div
                       key={deal.id}
-                      className={`flex flex-col justify-between rounded-3xl p-6   bg-${
+                      className={`flex flex-col justify-between rounded-3xl p-6  bg-${
                         index % 2 === 0 ? " white shadow" : "[#EFF2FF]"
-                      } min-h-[430px] sm:min-h-[480px] lg:min-h-[530px] xl:min-h-[580px] 2xl:min-h-[830px] max-h-[630px] sm:max-h-[680px] lg:max-h-[730px] 2xl:max-h-[930px] overflow-y-auto transition-all`}
+                      } min-h-[700px] sm:min-h-[700px] lg:min-h-[700px] xl:min-h-[700px] 2xl:min-h-[700px] max-h-[630px] sm:max-h-[680px] lg:max-h-[730px] 2xl:max-h-[930px] overflow-y-auto transition-all`}
                     >
                       {/* Header Section */}
                       <div className="mb-3">
@@ -267,10 +267,10 @@ const ButPtevoucher = () => {
                           state={{ object1: deal, path: "deals-payment/" }}
                          
                           className={`${index % 2 === 0 
-                            ? "bg-white shadow-[inset_0px_4px_6px_rgba(255,255,255,0.4),inset_0px_-2px_2px_rgba(27,35,85,0.07),0px_3px_6px_rgba(7,0,110,0.03)]" 
-                            : "bg-gradient-to-b from-[#8C82FF] to-[#3651BF] shadow-[inset_0px_3px_4px_rgba(223,239,255,0.1),inset_0px_1px_1px_rgba(255,255,255,0.1),inset_0px_-2px_2px_rgba(0,66,137,0.15),0px_2px_5px_rgba(74,58,175,0.25)]"
+                            ? "text-[#170F49] bg-white shadow-[inset_0px_4px_6px_rgba(255,255,255,0.4),inset_0px_-2px_2px_rgba(27,35,85,0.07),0px_3px_6px_rgba(7,0,110,0.03)]" 
+                            : "text-white bg-gradient-to-b from-[#8C82FF] to-[#3651BF] shadow-[inset_0px_3px_4px_rgba(223,239,255,0.1),inset_0px_1px_1px_rgba(255,255,255,0.1),inset_0px_-2px_2px_rgba(0,66,137,0.15),0px_2px_5px_rgba(74,58,175,0.25)]"
                           }
-                           text-[#170F49] border border-[#D9DBE9]  hover:bg-[#2f3aa0] hover:text-white w-full text-center  text-sm font-medium px-6 py-3 rounded-xl inline-block transition-all`
+                            border border-[#D9DBE9]  hover:bg-[#2f3aa0] hover:text-white w-full text-center  text-sm font-medium px-6 py-3 rounded-xl inline-block transition-all`
                           }
                            >
                           Order Now
@@ -317,7 +317,7 @@ const ButPtevoucher = () => {
                               key={index}
                               src={img}
                               alt={`deal-image-${index}`}
-                              className="w-[60px] h-[60px] object-fill rounded"
+                              className=" w-[60px] h-[60px] lg-h-[70px] lg:w-[70px] 2xl:w-[100px] 2xl:h-[100px] object-fill rounded"
                             />
                           ))}
                       </div>
@@ -442,7 +442,7 @@ const ButPtevoucher = () => {
   {Product1?.data?.map((categoryData, categoryIndex) => (
     <div key={categoryData.category.id} className="mb-12">
       {/* Category Header */}
-      <div className="w-[85%] mx-auto mb-8">
+      <div className="w-[85%] 2xl:w-[80%] mx-auto mb-8">
         <h1 className="text-xl text-[#0F172A] inter font-semibold lg:text-3xl lg:font-bold text-start mb-2">
           {categoryData.category.name}
         </h1>
@@ -450,8 +450,8 @@ const ButPtevoucher = () => {
       </div>
 
       {/* Vouchers Grid for this category */}
-      <div className="w-[85%] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="w-[85%] 2xl:w-[80%] mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {categoryData.vouchers.map((voucher) => (
             <div
               key={voucher.id}
@@ -462,7 +462,7 @@ const ButPtevoucher = () => {
                 <img
                   src={voucher.image_url}
                   alt={voucher.name}
-                  className="w-full h-40 2xl:h-60 object-cover rounded"
+                  className="w-[100%] lg:w-full 2xl:h-60 object-contain md:object-cover rounded"
                 />
               </div>
               
@@ -491,11 +491,11 @@ const ButPtevoucher = () => {
                     </p>
                   )}
                 {/* </div> */}
-                <p className="text-[#334155] text-md font-normal mb-2 line-through">
+                <p className="text-red-200 text-md font-normal mb-2 line-through">
                   RS {Math.floor(voucher.discount)}
                 </p>
                 {/* Price */}
-                <p className="text-[#0F172A] text-lg inter font-bold mb-2">
+                <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
                   RS {Math.floor(voucher.price)}
                 </p>
                 
@@ -503,7 +503,7 @@ const ButPtevoucher = () => {
                 <NavLink
                   to="/BuyScoredPracticeMockTests"
                   state={{ object: voucher, path: "get-payment-detail/" }}
-                  className="w-full block text-center bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                  className="w-full block text-center text-md md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
                 >
                   Buy Now
                 </NavLink>
