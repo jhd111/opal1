@@ -228,7 +228,7 @@ const BuyVouchers = () => {
                       pathname: "/all-vouchers",
                     }}
                     state={{ object: voucher,path: "get-payment-detail/" }}
-                  className="w-full block text-center text-md md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                  className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
                 >
                   Buy Now
                 </NavLink>

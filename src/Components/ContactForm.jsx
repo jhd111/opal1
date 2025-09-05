@@ -199,12 +199,12 @@ const ContactForm = () => {
   return (
     <div className="">
       <div className="flex flex-col md:flex-row mt-32 gap-16">
-        <div className="bg-[#F1F4FF] md:w-[90%] py-10">
-          <div className="w-[80%] mx-auto">
-            <p className="text-2xl text-center p-4 font-semibold">
+        <div className="bg-[#F1F4FF] md:w-[90%] 2xl:w-[40%] py-10 2xl:py-16">
+          <div className="w-[80%]  mx-auto">
+            <p className="text-2xl 2xl:text-5xl text-center p-4 font-semibold">
               Contact Our Team Now For Any Queries
             </p>
-            <form className="grid gap-4" onSubmit={handleSubmit}>
+            <form className="grid gap-4 " onSubmit={handleSubmit}>
               <input
                 type="text"
                 className="bg-white p-3 rounded"
@@ -258,7 +258,7 @@ const ContactForm = () => {
         </div>
 
         {/* Contact Info & Map */}
-        <div>
+        <div className="lg:w-1/2 2xl:w-1/2">
           <div className="flex flex-col md:flex-row gap-10 lg:gap-20 items-start">
             <div className="flex flex-col items-center justify-center w-1/2 lg:w-52">
               <div className="flex justify-center text-primary">

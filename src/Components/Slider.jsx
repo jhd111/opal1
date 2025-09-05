@@ -97,7 +97,7 @@ const Sliders = () => {
         <Slider {...settings}>
           {CertificationImagesData?.data?.map((val, i) => (
             <div key={i}>
-              <div className="bg-white p-2 py-4 rounded-md shadow-lg">
+              <div className=" p-2 py-4 rounded-md shadow-lg">
                 <img
                   src={val.image}
                   alt=""

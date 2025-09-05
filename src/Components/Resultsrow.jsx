@@ -13,10 +13,10 @@ const Resultsrow = () => {
   return (
     <div>
       <div className=" space-y-4 mb-10 p-4 ">
-        <p className=" text-xl font-semibold lg:text-3xl lg:font-bold be-vietnam ">
+        <p className=" text-xl font-semibold  2xl:text-6xl 2xl:font-bold lg:text-3xl lg:font-bold be-vietnam ">
           See Our Student’s Results
         </p>
-        <p className="text-xs lg:text-sm plus-jakarta">
+        <p className="text-xs 2xl:text-xl lg:text-sm plus-jakarta">
         Our students’ PTE results speak volumes — consistently achieving top scores that open doors to global opportunities.
         </p>
       </div>
@@ -26,51 +26,51 @@ const Resultsrow = () => {
           Results?.data?.map((val, i) => (
             <div key={i} className="border bg-white rounded-md">
               <div className="px-4 md:px-10 py-4">
-                <p className="text-xl font-semibold lg:text-3xl lg:font-bold my-4 text-gray-700 ">
+                <p className="text-xl font-semibold lg:text-3xl lg:font-bold 2xl:text-5xl 2xl:font-bold my-4 text-gray-700 ">
                   Overall Score: {val.overall_score /* Example dynamic content */}
                 </p>
                 <div className="flex my-2">
                   <div className="flex gap-3 md:gap-3">
                     <div className="">
                       <div className="space-y-2">
-                        <div className="w-16 h-16 rounded-full border-2 relative border-black">
-                          <p className="text-xl font-bold absolute top-[29%] left-[30%]">
+                        <div className="w-16 h-16 2xl:w-24 2xl:h-24 rounded-full border-2 relative border-black">
+                          <p className="text-xl font-bold absolute top-[29%] left-[30%] 2xl:text-2xl 2xl:top-[36%] 2xl:left-[36%]">
                             {val.listening}
                           </p>
                         </div>
-                        <p className="text-center">Listening</p>
+                        <p className="text-center 2xl:text-2xl">Listening</p>
                       </div>
                     </div>
                     <div className="">
                       <div className="space-y-2">
-                        <div className="w-16 h-16 rounded-full border-2 relative border-black">
-                          <p className="text-xl font-bold absolute top-[29%] left-[30%]">
+                        <div className="w-16 h-16 2xl:w-24 2xl:h-24 rounded-full border-2 relative border-black">
+                          <p className="text-xl font-bold absolute top-[29%] left-[30%] 2xl:text-2xl 2xl:top-[36%] 2xl:left-[36%]">
                             {val.reading}
                           </p>
                         </div>
-                        <p className="text-center">Reading</p>
+                        <p className="text-center 2xl:text-2xl ">Reading</p>
                       </div>
                     </div>
 
                     <div className="">
                       <div className="space-y-2">
-                        <div className="w-16 h-16 rounded-full border-2 relative border-green-500">
-                          <p className="text-xl font-bold absolute top-[29%] left-[30%]">
+                        <div className="w-16 h-16 2xl:w-24 2xl:h-24 rounded-full border-2 relative border-green-500">
+                          <p className="text-xl font-bold absolute top-[29%] left-[30%] 2xl:text-2xl 2xl:top-[36%] 2xl:left-[36%]">
                             {val.speaking}
                           </p>
                         </div>
-                        <p className="text-center">Speaking</p>
+                        <p className="text-center 2xl:text-2xl">Speaking</p>
                       </div>
                     </div>
                     <div className="">
                       {/* top-1/3 */}
                       <div className="space-y-2">
-                        <div className="w-16 h-16 rounded-full border-2 relative border-pink-700">
-                          <p className="text-xl font-bold absolute  top-[29%] left-[30%]">
+                        <div className="w-16 h-16 2xl:w-24 2xl:h-24 rounded-full border-2 relative border-pink-700">
+                          <p className="text-xl font-bold absolute  top-[29%] left-[30%] 2xl:text-2xl 2xl:top-[36%] 2xl:left-[36%]">
                             {val.writing}
                           </p>
                         </div>
-                        <p className="text-center">Writing</p>
+                        <p className="text-center 2xl:text-2xl">Writing</p>
                       </div>
                     </div>
                   </div>
@@ -79,7 +79,7 @@ const Resultsrow = () => {
               <div className="flex mt-6 items-center bg-slate-50 px-4 md:px-10 py-2 rounded-md justify-between">
                 <div className="flex items-center gap-2">
                   <img src={val.image} alt={`Result ${i}`} width={50} height={15} />
-                  <span>{val.student_name}</span>
+                  <span className="2xl:text-xl">{val.student_name}</span>
                 </div>
                 <NavLink
                   // to="/results"
@@ -87,7 +87,7 @@ const Resultsrow = () => {
                     pathname: "/results",
                   }}
                   state={{ object: val }} // Pass the full object here
-                  className="bg-gray-100 px-6 py-2 rounded-md text-xs"
+                  className="bg-gray-100 px-6 py-2 rounded-md text-xs 2xl:text-2xl"
                 >
                   Read Full Story
                 </NavLink>

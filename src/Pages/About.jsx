@@ -49,16 +49,16 @@ const About = () => {
         <img src={bg} alt="" className="-z-30  w-full hidden md:block" />
         <div className="flex flex-col md:flex-row items-end md:absolute bottom-0 md:ps-20 ">
           <div className="md:w-3/5 hidden md:block">
-            <p className="be-vietnam text-white text-6xl flex  mb-20 flex-col font-semibold">
+            <p className="be-vietnam text-white text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl flex  mb-20 flex-col font-semibold">
               <span>WHY </span>OPAL INSTITUTE?
             </p>
           </div>
           <div className="md:w-2/5 ">
-            <div className="bg-white  lg:relative top-10 z-10  p-10 lg:pb-32  space-y-4">
-              <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
+            <div className="bg-white  lg:relative top-10 z-10 p-10 lg:p-4 xl:p-10 2xl:p-24 lg:pb-16 xl:pb-32 2xl:pb-44 space-y-4">
+              <p className="text-xl font-semibold lg:text-xl xl:text-3xl 2xl:text-5xl lg:font-bold">
                 Pearson VUE Authorised Test Center
               </p>
-              <p className="text-gray-500 text-xs lg:text-sm">
+              <p className="text-gray-500 text-xs xl:text-sm 2xl:text-3xl">
                 Opal Institute is a Pearson VUE Authorised Testing Center which
                 was established in 2021 and only deal PTE. We are a Pearson VUE
                 Authorised Test Center for PVTC, PVTC-SELECT. Opal Institute has
@@ -68,24 +68,24 @@ const About = () => {
             </div>
             <div className= "flex bg-primary z-20  lg:relative text-white p-6 md:w-[80%] md:ms-auto">
               <div className="text-center border-r border-white">
-                <p className="text-4xl">#1</p>
-                <p className="text-lg">in Punjab Province</p>
+                <p className="text-4xl 2xl:text-5xl">#1</p>
+                <p className="text-lg 2xl:text-5xl">in Punjab Province</p>
               </div>
               <div className="text-center border-r border-white">
-                <p className="text-4xl">1K+</p>
-                <p className="text-lg">Students Enrolled</p>
+                <p className="text-4xl 2xl:text-5xl">1K+</p>
+                <p className="text-lg 2xl:text-5xl">Students Enrolled</p>
               </div>
               <div className="text-center">
-                <p className="text-4xl">#1</p>
-                <p className="text-lg">PTE Platinum Partner</p>
+                <p className="text-4xl 2xl:text-5xl">#1</p>
+                <p className="text-lg 2xl:text-5xl">PTE Platinum Partner</p>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="space-y-6 py-10 lg:py-20 w-[90%] md:w-[80%] mx-auto">
-        <p className="text-xl font-semibold lg:text-3xl lg:font-bold">About Opal Institute</p>
-        <p className="text-xs lg:text-sm">
+        <p className="text-xl font-semibold lg:text-3xl lg:font-bold 2xl:text-6xl">About Opal Institute</p>
+        <p className="text-xs lg:text-sm 2xl:text-3xl">
           Established in 2021, our PTE Training Institute has quickly become a
           leading name in the field of English proficiency test preparation. As
           a proud Platinum Partner of PTE, we are committed to delivering the
@@ -98,9 +98,9 @@ const About = () => {
       </div>
       <div className="flex  flex-col md:flex-row gap-10 lg:gap-20 w-[90%] md:w-[80%] mb-10 mx-auto">
         <div className="w-full flex flex-col text-center items-center justify-center">
-          <img src={ceo} alt="" width="400px" height="400px" />
+          <img src={ceo} alt=""  />
           <div className="text-center  mt-4 plus-jakarta space-y-2 w-full">
-            <p className="text-4xl text-primary font-semibold">
+            <p className="text-4xl 2xl:text-5xl text-primary font-semibold">
               M. Fahad Nawaz
             </p>
             <p className="text-sm  ">FOUNDER & CEO Opal Institute</p>
@@ -114,7 +114,7 @@ const About = () => {
           >
             CEO Message
           </p>
-          <p className="textt-xs text-xl Poppins text-gray-500">
+          <p className="textt-xs text-xl 2xl:text-3xl Poppins text-gray-500">
             I firmly believe that education is the key to unlocking countless
             opportunities, and at our institute, we are here to guide and
             support you every step of the way. We are proud of the achievements
@@ -126,26 +126,26 @@ const About = () => {
         </div>
       </div>
       <div className="bg-primary relative p-20 pb-44 text-center text-white space-y-6">
-        <p className="text-4xl font-semibold plus-jakarta">QUICK FACTS</p>
-        <p className="inter">
+        <p className="text-4xl 2xl:text-5xl font-semibold plus-jakarta">QUICK FACTS</p>
+        <p className="inter 2xl:text-3xl">
           At Opal Institute, we are proud of our accomplishments. Together we
           can shape the way how English Test Preparation is done.
         </p>
         <div className="hidden lg:flex items-center justify-center">
   <div className="mx-auto -bottom-10 flex items-center absolute">
-    <div className="h-32 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+    <div className=" h-32 w-40 2xl:h-44 2xl:w-52 2xl:text-3xl shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
       No. 1 in Pakistan 2024-25
     </div>
-    <div className="h-36 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+    <div className="h-36 w-40 2xl:h-48 2xl:w-52 2xl:text-3xl shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
       No.1 in Gujranwala 2024-25
     </div>
-    <div className="h-40 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+    <div className="h-40 w-40 2xl:h-52 2xl:w-52 2xl:text-3xl shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
       1000+ happy students
     </div>
-    <div className="h-36 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+    <div className="h-36 w-40 2xl:h-48 2xl:w-56 2xl:text-3xl shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
       No.1 in Punjab Province
     </div>
-    <div className="h-32 w-40 shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
+    <div className="h-32 w-40 2xl:h-44 2xl:w-52 2xl:text-3xl shadow text-black bg-white flex items-center justify-center text-center p-2 text-sm font-medium">
       No.1 Platinum PTE Partner
     </div>
   </div>
@@ -153,9 +153,9 @@ const About = () => {
 
       </div>
       <div className="flex justify-center">
-      <div className="xl:w-[80%] 2xl:w-[70%] mt-20">
+      {/* <div className="xl:w-[80%] 2xl:w-[70%] mt-20">
         <MediaGallery />
-      </div>
+      </div> */}
       </div>
       <div className="">
         <div className="slider-container about mt-10 lg:mt-32  w-[80%] mx-auto text-center ">

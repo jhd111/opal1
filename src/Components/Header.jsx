@@ -35,11 +35,11 @@ const Header = () => {
       </div>
 
       {/* ----------- navbar   ---------- */}
-      <div className="shadow hidden md:block">
+      <div className="shadow hidden md:block ">
         <div className="flex align-center justify-between w-[100%] mx-auto p-5">
           <div className="flex justify-between items-center gap-6">
             {" "}
-            <img src={logo} alt="" className="w-[20%]" />
+            <img src={logo} alt="" className="w-[20%] lg:w-[10%] xl:w-[20%]" />
             <nav>
               <ul className="flex items-center   be-vietnam">
                 <li>

@@ -228,7 +228,7 @@ const ButPtevoucher = () => {
               {/* <div className="w-[80%] poppins   mx-auto py-14 mt-10">    */}
               <div className="mx-auto my-10 ">
                 {/* Deals Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-14 2xl:px-60">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 sm:px-14 2xl:px-72">
                   {Deals1?.slice(0, 3).map((deal, index) => (
                     <div
                       key={deal.id}
@@ -503,7 +503,7 @@ const ButPtevoucher = () => {
                 <NavLink
                   to="/BuyScoredPracticeMockTests"
                   state={{ object: voucher, path: "get-payment-detail/" }}
-                  className="w-full block text-center text-md md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                  className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
                 >
                   Buy Now
                 </NavLink>

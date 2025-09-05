@@ -36,44 +36,81 @@ const Hero = () => {
       link: "/buy-it-vouchers",
     },
   ];
+  // var settings = {
+  //   dots: true,
+  //   infinite: false,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  //   arrows: true,
+  //   nextArrow: <IoMdArrowDropright className="text-gray-800 " />,
+  //   prevArrow: <IoMdArrowDropleft />,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         infinite: true,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         initialSlide: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
   var settings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1, // default everywhere
     slidesToScroll: 1,
-    initialSlide: 0,
     arrows: true,
     nextArrow: <IoMdArrowDropright className="text-gray-800 " />,
     prevArrow: <IoMdArrowDropleft />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280, // <1280px
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024, // <1024px
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600, // <600px
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // <480px
+        settings: {
+          slidesToShow: 1,
         },
       },
     ],
   };
-
+  
   const scrollToMockTest = () => {
     navigate("/buy-pte-voucher");
     setTimeout(() => {
@@ -100,7 +137,7 @@ const Hero = () => {
     <div>
       <div className="w-[90%] md:w-[80%] mx-auto ">
         <div className="flex flex-col md:flex-row be-vietnam  ">
-          <div className="w-full  md:w-[70%] hero-slider">
+          <div className="w-full lg:w-[65%] xl:w-[70%] hero-slider">
             <Slider {...settings}>
               {/* {[hero, hero, hero].map((val, i) => {
                 return (
@@ -120,12 +157,12 @@ const Hero = () => {
             </Slider>
             {/* <img src={hero} alt="" /> */}
           </div>
-          <div className="w-full md:w-[30%] md:pt-20">
+          <div className="w-full lg:w-[35%] xl:w-[30%] md:pt-20">
             <div
-              className="space-y-5 lg:space-y-14 border p-6 bg-slate-100  py-10 relative md:right-52 md:w-[600px] 
+              className="space-y-5 lg:space-y-14 border p-6 bg-slate-100  py-10 relative lg:right-44 xl:right-52 lg:w-[500px] xl:w-[600px] 2xl:w-[800px]
                 bg-white/50 backdrop-blur-sm backdrop-saturate-50 rounded shadow-md"
             >
-              <p className="text-xl font-bold md:text-5xl lg:font-semibold leading-snug">
+              <p className="text-xl font-bold lg:text-2xl xl:text-5xl lg:font-semibold leading-snug">
                 Top Pearson Testing Center in Pakistan
               </p>
               <p className="text-[#909090]">

@@ -95,7 +95,7 @@ const Home = () => {
           </a>
         </div>
       </div> */}
-    <section id="mocktest" className="w-[90%] md:w-[100%] mx-auto p-2" 
+    <section id="mocktest" className="w-[90%] md:w-[100%] xl:w-full mx-auto p-2" 
      style={{
       background: 'linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 30%, rgba(54, 81, 191, 0.15) 70%, rgba(54, 81, 191, 0.25) 100%)'
     }}
@@ -103,7 +103,7 @@ const Home = () => {
       >
   {/* Heading */}
   <div className="flex justify-center mb-10">
-  <div className="w-[80%]">
+  <div className="w-[80%] 2xl:w-[50%]">
     
   <div className="mb-5">
     <p className="text-xl font-semibold lg:text-4xl lg:font-bold text-center inter mt-20">
@@ -145,7 +145,7 @@ const Home = () => {
   
 </section>
 
-<section id="mocktest" className="w-[90%] md:w-[100%] mx-auto p-2" 
+<section id="mocktest" className="w-[90%] md:w-[100%]  xl:w-full mx-auto p-2" 
      style={{
       background: 'linear-gradient(135deg, rgba(54, 81, 191, 0.25) 0%, rgba(54, 81, 191, 0.15) 30%, rgba(54, 81, 191, 0.05) 60%, transparent 100%)'
     }}
@@ -153,7 +153,7 @@ const Home = () => {
   
   {/* Pearson Mock Test Section */}
   <div className="flex justify-center">
-  <div className="w-[80%]">
+  <div className="w-[80%] 2xl:w-[50%]">
   <div className="flex flex-col md:flex-row items-center pb-20 gap-10 mt-16">
     {/* Image */}
     <div className="w-full md:w-1/2 flex justify-center md:justify-start">
@@ -183,12 +183,12 @@ const Home = () => {
 
       <div className=" ">
       <div className="relative">
-  <div className="flex bg-blue-star flex-col md:flex-row min-h-screen">
-    <div className="md:w-[60%] text-white p-5 md:p-20 mt-20 space-y-9">
-      <p className="text-xl font-semibold lg:text-3xl lg:font-bold plus-jakarta">
+  <div className="flex bg-blue-star flex-col md:flex-row min-h-screen xl:w-full">
+    <div className="md:w-[60%] text-white p-5 lg:p-7 xl:p-20 2xl:p-48 mt-20 space-y-9">
+      <p className="text-xl font-semibold lg:text-xl lg:text-bold xl:text-3xl xl:font-bold 2xl:text-6xl 2xl:font-bold plus-jakarta">
         PEARSON VUE AUTHORISED TESTING CENTER
       </p>
-      <p className="text-xl font-semibold lg:text-3xl lg:font-bold">
+      <p className="text-xl font-semibold lg:text-xl lg:text-bold  xl:text-3xl xl:font-bold 2xl:text-4xl 2xl:font-bold">
         Opal Institute is a Pearson VUE Authorised Testing Center
       </p>
       <div className="flex gap-4">
@@ -208,20 +208,20 @@ const Home = () => {
         <img
           src={auth}
           alt=""
-          className="relative w-40 md:w-52 lg:w-48 xl:w-48 top-10 md:top-20 lg:top-16 xl:-top-4 2xl:-top-42 -left-3 md:-left-11 lg:-left-16 xl:-left-20"
+          className="relative w-40 2xl:w-80 md:w-52 lg:w-28 xl:w-48 top-10 md:top-20 lg:-top-16 xl:-top-4 2xl:-top-42 -left-3 md:-left-11 lg:-left-12 xl:-left-20 2xl:-left-28"
         />
       </div>
       {/* Background curve image */}
       <img 
         src={g} 
         alt="" 
-        className="w-75 md:w-72 lg:w-80 xl:w-80 -top-10 relative   -mt-10 md:-mt-16 lg:-mt-20" 
+        className="w-75 md:w-72 lg:w-48 xl:w-80 2xl:w-[50%] -top-10 relative   -mt-10 md:-mt-16 lg:-mt-20" 
       />
     </div>
   </div>
   
   {/* Partner logos positioned along the diagonal curve */}
-  <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[83%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[12.5%] xl:left-[8%] 2xl:left-[8%] mt-10 md:bottom-8 lg:bottom-12 xl:-bottom-8 2xl:bottom-20 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
+  <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[83%] bg-white relative md:absolute rounded-md md:left-[10%] lg:left-[12.5%] xl:left-[8%] 2xl:left-[8%] mt-10 md:bottom-8 lg:bottom-6 xl:-bottom-8 2xl:bottom-20 grid grid-cols-3 md:grid-cols-5 gap-4 shadow-md mx-auto py-4 px-2">
     {[p1, p4, p2, p3, comptia].map((val, i) => (
       <div key={i} className="flex justify-center items-center">
         <img src={val} alt="" className="w-[100px] md:w-[120px] lg:w-[130px] xl:w-[140px] object-contain" />
@@ -242,24 +242,24 @@ const Home = () => {
                   pathname: "/results",
                 }}
                 state={{ object: Results?.data[0] }} // Pass the full object here
-                className="px-6 py-2 bg-primary text-white rounded-md"
+                className="px-6 py-2 bg-primary text-white rounded-md 2xl:text-2xl"
               >
                 View More
               </NavLink>
             </div>
           </div>
         </div>
-        <div className="w-[90%] md:w-[70%] mx-auto py-10">
+        <div className="w-[90%] md:w-[70%] 2xl:w-[60%] mx-auto py-10">
           <div className=" flex flex-col md:flex-row items-center gap-10">
             <div className="w-full space-y-6">
-              <div className="text-xl  lg:text-3xl lg:font-bold md:text-4xl font-semibold">
+              <div className="text-xl  lg:text-3xl lg:font-bold 2xl:text-6xl 2xl:text-bold md:text-4xl font-semibold">
                 <p className="plus-jakarta">
                   Buy <span className="text-primary">IT EXAM VOUCHERS</span>{" "}
                   &nbsp; From Us 
                 </p>
               </div>
               <div className=" space-y-6">
-                <p className="plus-jakarta text-xs lg:text-sm">
+                <p className="plus-jakarta text-xs lg:text-sm 2xl:text-xl">
                   At Opal Institute, we offer Authentic IT Exam Vouchers from a
                   Number of Different Vendors at Discounted Prices. Order your
                   required Exam Voucher Now.
@@ -267,22 +267,22 @@ const Home = () => {
                 <br />
                 <NavLink
                   to="/buy-it-vouchers"
-                  className="px-8 py-3 bg-primary rounded-3xl text-white"
+                  className="px-8 py-3 bg-primary rounded-3xl text-white 2xl:text-xl"
                 >
                   Buy IT Vouchers
                 </NavLink>
               </div>
             </div>
-            <div >
+            <div className="2xl:w-2/3">
               <img src={onee} alt="" className="object-contain" />
             </div>
           </div>
         </div>
         <div className="w-[90%] md:w-[80%] mx-auto">
-          <p className="text-xl  lg:font-bold lg:text-4xl font-serif be-vietnam font-semibold">
+          <p className="text-xl  lg:font-bold lg:text-4xl 2xl:text-6xl font-serif be-vietnam font-semibold">
             About Us
           </p>
-          <p className="mt-2 be-vietnam text-xs lg:text-sm">
+          <p className="mt-2 be-vietnam text-xs lg:text-sm 2xl:text-xl">
             Founded in 2021 with the aim to help thousands of students
             achieve their goals.
           </p>
@@ -332,11 +332,11 @@ const Home = () => {
             </div>
 
             {/* Text Section */}
-            <div className="w-full md:w-1/2 bg-[#F6982817] p-6 md:p-10 flex flex-col justify-between">
-              <h2 className="text-2xl md:text-4xl font-bold mb-6">
+            <div className="w-full  md:w-1/2 bg-[#F6982817] p-6 md:p-10 flex flex-col justify-between">
+              <h2 className="text-2xl 2xl:text-5xl md:text-4xl font-bold mb-6">
                 Discover our History
               </h2>
-              <p className="text-sm md:text-base leading-relaxed mb-6">
+              <p className="text-sm md:text-base 2xl:text-2xl leading-relaxed mb-6">
                 Established in 2021, our PTE Training Institute has quickly
                 become a leading name in the field of English proficiency test
                 preparation. As a proud Platinum Partner of PTE, we are
@@ -352,7 +352,7 @@ const Home = () => {
               <div>
                 <NavLink
                   to="/about"
-                  className="bg-primary text-white px-6 py-3 rounded-md text-center inline-block"
+                  className="bg-primary 2xl:text-3xl text-white px-6 py-3 rounded-md text-center inline-block"
                 >
                   Explore more
                 </NavLink>

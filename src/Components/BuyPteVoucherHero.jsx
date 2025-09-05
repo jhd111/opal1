@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 
-import BuyPteVoucher from "../assets/BuyPteVoucher.png";
+import BuyPteVoucher from "../assets/BuyPteVoucherHero.webp";
 import p1 from "../assets/images/home/p1.png";
 import p2 from "../assets/images/home/p2.png";
 import p3 from "../assets/images/home/p3.png";
