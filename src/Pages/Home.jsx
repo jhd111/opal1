@@ -321,7 +321,7 @@ const Home = () => {
             </div>
           </div> */}
 
-          <div className="flex flex-col md:flex-row md:h-[600px] w-full md:w-[90%] mx-auto mt-10 rounded-4xl overflow-hidden shadow-lg">
+          <div className="flex flex-col md:flex-row md:h-[600px] w-full md:w-[90%] 2xl:h-[800px]  mx-auto mt-10 rounded-4xl overflow-hidden shadow-lg">
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-[300px] md:h-full">
               <img
@@ -336,7 +336,7 @@ const Home = () => {
               <h2 className="text-2xl 2xl:text-5xl md:text-4xl font-bold mb-6">
                 Discover our History
               </h2>
-              <p className="text-sm md:text-base 2xl:text-2xl leading-relaxed mb-6">
+              <p className="text-sm md:text-base 2xl:text-3xl leading-relaxed mb-6">
                 Established in 2021, our PTE Training Institute has quickly
                 become a leading name in the field of English proficiency test
                 preparation. As a proud Platinum Partner of PTE, we are
