@@ -54,7 +54,7 @@ const About = () => {
             </p>
           </div>
           <div className="md:w-2/5 ">
-            <div className="bg-white  lg:relative top-10 z-10 p-10 lg:p-4 xl:p-10 2xl:p-24 lg:pb-16 xl:pb-32 2xl:pb-44 space-y-4">
+            <div className="bg-white  lg:relative top-10 z-10 p-10 lg:p-4 xl:p-10 2xl:p-24 lg:pb-16 xl:pb-28 2xl:pb-44 space-y-1">
               <p className="text-xl font-semibold lg:text-xl xl:text-3xl 2xl:text-5xl lg:font-bold">
                 Pearson VUE Authorised Test Center
               </p>
@@ -68,16 +68,16 @@ const About = () => {
             </div>
             <div className= "flex bg-primary z-20  lg:relative text-white p-6 md:w-[80%] md:ms-auto">
               <div className="text-center border-r border-white">
-                <p className="text-4xl 2xl:text-5xl">#1</p>
+                <p className="text-2xl 2xl:text-5xl">#1</p>
                 <p className="text-lg 2xl:text-5xl">in Punjab Province</p>
               </div>
               <div className="text-center border-r border-white">
-                <p className="text-4xl 2xl:text-5xl">1K+</p>
-                <p className="text-lg 2xl:text-5xl">Students Enrolled</p>
+                <p className="text-2xl 2xl:text-5xl">1K+</p>
+                <p className="text-lg  2xl:text-5xl">Students Enrolled</p>
               </div>
               <div className="text-center">
-                <p className="text-4xl 2xl:text-5xl">#1</p>
-                <p className="text-lg 2xl:text-5xl">PTE Platinum Partner</p>
+                <p className="text-2xl 2xl:text-5xl">#1</p>
+                <p className="text-lg lg:text-md 2xl:text-5xl">PTE Platinum Partner</p>
               </div>
             </div>
           </div>
