@@ -271,7 +271,7 @@ const CheckOut = () => {
     product_name: name?.name,
     product_price: selectedPrice,
     product_quantity: quantity,
-    product_type: name?.test_type,
+    product_type: name?.test_type || name?.type,
   });
 
   const [cardType, setCardType] = useState("");
@@ -576,7 +576,7 @@ const CheckOut = () => {
               </div>
             </div>
             <div className="w-full hidden lg:block">
-              <CheckoutcardDetails name={name?.name} type={name?.test_type} />
+              <CheckoutcardDetails name={name?.name} type={ name?.type} />
             </div>
           </div>
         )}

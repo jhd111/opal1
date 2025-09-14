@@ -168,14 +168,14 @@ const BuyVouchers = () => {
           </p>
         </div>
       </div>
-      {Product1?.data?.map((categoryData, categoryIndex) => (
-    <div key={categoryData.category.id} className="mb-12">
+      {/* {Product1?.data?.map((categoryData, categoryIndex) => (
+    <div key={categoryData.category.id} className="mb-12"> */}
      
 
       {/* Vouchers Grid for this category */}
       <div className="w-[100%] mx-auto mt-8">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
-          {categoryData.vouchers.map((voucher) => (
+          {Vouchers.map((voucher) => (
             <div
               key={voucher.id}
               className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
@@ -183,7 +183,7 @@ const BuyVouchers = () => {
               {/* Image Container */}
               <div className="p-5 pb-0">
                 <img
-                  src={voucher.image_url}
+                  src={voucher.voucher_image_url}
                   alt={voucher.name}
                   className="w-[100%] lg:w-full 2xl:h-60 object-fill md:object-cover rounded"
                 />
@@ -203,7 +203,7 @@ const BuyVouchers = () => {
                 
                 {/* Details Container - Only takes needed space */}
                 {/* <div className="mb-3"> */}
-                  {voucher.type && (
+                  {/* {voucher.type && (
                     <p className="text-md font-medium inter text-black mb-1">
                       Test Type: {voucher.type}
                     </p>
@@ -212,15 +212,15 @@ const BuyVouchers = () => {
                     <p className="text-md font-medium inter text-[#3651BF] mb-1">
                       Validity: {voucher.validity} days
                     </p>
-                  )}
+                  )} */}
                 {/* </div> */}
-                <p className="text-red-200 text-md md:text-lg font-normal mb-2 line-through">
+                {/* <p className="text-red-200 text-md md:text-lg font-normal mb-2 line-through">
                   RS {Math.floor(voucher.discount)}
-                </p>
+                </p> */}
                 {/* Price */}
-                <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
+                {/* <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
                   RS {Math.floor(voucher.price)}
-                </p>
+                </p> */}
                 
                 {/* Button - Always at bottom */}
                 <NavLink
@@ -237,8 +237,8 @@ const BuyVouchers = () => {
           ))}
         </div>
       </div>
-    </div>
-  ))}
+    {/* </div>
+  ))} */}
     </div>
         }
         </>

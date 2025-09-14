@@ -5,8 +5,11 @@ import CollapsRow from "../Components/Collapsrow";
 import { GoCheck } from "react-icons/go";
 // import { NavLink } from "react-router-dom";
 import { NavLink,useLocation } from "react-router-dom";
-const GetAlfaPTPortal = () => {
 
+import { Products } from "../Services/Products";
+
+const GetAlfaPTPortal = () => {
+const { data: Product, isLoading: productsLoading } = Products();
 
   const location = useLocation();
   const { name ,path} = location.state || {}; // Retrieve the passed object
@@ -21,10 +24,12 @@ console.log("path",path)
   localStorage.setItem('count',count)
   localStorage.setItem("price",name?.price)
 
+  
+
   return (
     <div>
-      <div className=" flex flex-col md:flex-row w-[90%] md:w-[60%] mx-auto mt-10 gap-10 ">
-        <div className="w-full space-y-10">
+      <div className=" flex flex-col md:flex-row w-[90%] md:w-[70%] mx-auto mt-10 gap-10 ">
+        <div className="w-full lg:sticky lg:top-10 lg:h-fit  space-y-10">
           <div className="">
             <p className="text-sm text-gray-500">
               Home / CompTIA /{" "}
@@ -76,6 +81,65 @@ console.log("path",path)
           <CollapsRow />
         </div>
       </div>
+      {!productsLoading  ? (
+          <div className="w-[90%] md:w-[70%] mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {Product?.data?.map((categoryData, categoryIndex) => (
+                <div
+                  key={categoryData.category.id}
+                  className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
+                >
+                  {/* Category Image - using first voucher's image as category representative */}
+                  <div className="p-5 pb-0">
+                    <img
+                      src={categoryData.vouchers[0]?.image_url}
+                      alt={categoryData.category.name}
+                      className="w-[100%] lg:w-full lg:h-36 2xl:h-60 object-contain md:object-cover rounded"
+                    />
+                  </div>
+
+                  {/* Category Content */}
+                  <div className="p-5 pt-3 flex flex-col flex-grow">
+                    {/* Category Title */}
+                    <h3 className="text-md inter font-normal 2xl:text-lg mb-2">
+                      {categoryData.category.name}
+                    </h3>
+
+                    {/* Original Price (strikethrough) */}
+                    <p className="text-red-500 text-md font-normal mb-2 line-through">
+                      Rs. 70,199
+                    </p>
+
+                    {/* Current Price */}
+                    <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
+                      Rs. 60,999
+                    </p>
+
+                    {/* Buy Now Button */}
+                    <NavLink
+                      to="/BuyScoredPracticeMockTests"
+                      state={{
+                        object: categoryData.vouchers,
+                        path: "get-payment-detail/",
+                      }}
+                      className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                    >
+                      Buy Now
+                    </NavLink>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : productsLoading ? (
+          <div className="mt-6 text-center text-gray-500">
+            Loading related categories...
+          </div>
+        ) : (
+          <div className="mt-6 text-center text-gray-500">
+            No other categories available.
+          </div>
+        )}
     </div>
   );
 };

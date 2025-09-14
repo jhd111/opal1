@@ -548,7 +548,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1,pathh }) => {
     submitData.append("product_name", dealData?.name);
     submitData.append("product_price", selectedPrice);
     submitData.append("product_quantity", quantity);
-    submitData.append("product_type", dealData?.test_type||SelectedTYPE);
+    submitData.append("product_type", dealData?.type||SelectedTYPE);
     submitData.append("deal_id",dealData?.id)
 
     mutation.mutate(

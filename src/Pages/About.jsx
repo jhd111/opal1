@@ -73,7 +73,7 @@ const About = () => {
               </div>
               <div className="text-center border-r border-white">
                 <p className="text-2xl 2xl:text-5xl">1K+</p>
-                <p className="text-lg  2xl:text-5xl">Students Enrolled</p>
+                <p className="text-lg 2xl:text-5xl">Students Enrolled</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl 2xl:text-5xl">#1</p>

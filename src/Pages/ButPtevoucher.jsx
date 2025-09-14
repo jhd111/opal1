@@ -27,19 +27,19 @@ const ButPtevoucher = () => {
 
   const { data: Product, isLoading: productsLoading } = Products();
   console.log("Products", Product);
-  const getCategoriesToDisplay = () => {
-    if (!Product?.data) return [];
+  // const getCategoriesToDisplay = () => {
+  //   if (!Product?.data) return [];
     
-    if (selectedCategory === "all") {
-      return Product.data;
-    }
+  //   if (selectedCategory === "all") {
+  //     return Product.data;
+  //   }
     
-    return Product.data.filter(categoryData => 
-      categoryData.category.id === selectedCategory
-    );
-  };
+  //   return Product.data.filter(categoryData => 
+  //     categoryData.category.id === selectedCategory
+  //   );
+  // };
 
-  const categoriesToDisplay = getCategoriesToDisplay();
+  // const categoriesToDisplay = getCategoriesToDisplay();
 
   // const { data: ApeVoucher, isLoading, isError } = ApeUniVoucher();
 
@@ -229,7 +229,7 @@ const ButPtevoucher = () => {
               <div className="mx-auto my-10 ">
                 {/* Deals Section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 sm:px-14 2xl:px-72">
-                  {Deals1?.slice(0, 3).map((deal, index) => (
+                  {Deals?.slice(0, 3).map((deal, index) => (
                     <div
                       key={deal.id}
                       className={`flex flex-col justify-between rounded-3xl p-6  bg-${
@@ -439,81 +439,106 @@ const ButPtevoucher = () => {
   className=" px-2 mt-10"
 >
   {/* Display Categories and Vouchers */}
-  {Product1?.data?.map((categoryData, categoryIndex) => (
-    <div key={categoryData.category.id} className="mb-12">
-      {/* Category Header */}
-      <div className="w-[85%] 2xl:w-[80%] mx-auto mb-8">
-        <h1 className="text-xl text-[#0F172A] inter font-semibold lg:text-3xl lg:font-bold text-start mb-2">
-          {categoryData.category.name}
-        </h1>
-        <p className="text-[#59595A] text-sm be-vietnam">{categoryData?.category?.description}</p>
-      </div>
+  
 
-      {/* Vouchers Grid for this category */}
-      <div className="w-[85%] 2xl:w-[80%] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {categoryData.vouchers.map((voucher) => (
-            <div
-              key={voucher.id}
-              className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
-            >
-              {/* Image Container */}
-              <div className="p-5 pb-0">
-                <img
-                  src={voucher.image_url}
-                  alt={voucher.name}
-                  className="w-[100%] lg:w-full 2xl:h-60 object-contain md:object-cover rounded"
-                />
-              </div>
-              
-              {/* Content Container - Grows to fill space */}
-              <div className="p-5 pt-3 flex flex-col flex-grow">
-                {/* Title */}
-                <h3 className="text-md inter font-normal 2xl:text-lg mb-2 ">
-                  {voucher.name}
-                </h3>
-                
-                {/* Description - Grows to fill available space */}
-                {/* <p className="text-md text-gray-600 mb-3 flex-grow">
-                  {voucher.description}
-                </p> */}
-                
-                {/* Details Container - Only takes needed space */}
-                {/* <div className="mb-3"> */}
-                  {voucher.type && (
-                    <p className="text-md font-medium inter text-black mb-1">
-                      Test Type: {voucher.type}
-                    </p>
-                  )}
-                  {voucher.validity && (
-                    <p className="text-md font-medium inter text-[#3651BF] mb-1">
-                      Validity: {voucher.validity} days
-                    </p>
-                  )}
-                {/* </div> */}
-                <p className="text-red-200 text-md font-normal mb-2 line-through">
-                  RS {Math.floor(voucher.discount)}
-                </p>
-                {/* Price */}
-                <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
-                  RS {Math.floor(voucher.price)}
-                </p>
-                
-                {/* Button - Always at bottom */}
-                <NavLink
-                  to="/BuyScoredPracticeMockTests"
-                  state={{ object: voucher, path: "get-payment-detail/" }}
-                  className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
-                >
-                  Buy Now
-                </NavLink>
-              </div>
-            </div>
-          ))}
+  {/* Categories displayed as product cards */}
+<div className="w-[85%] 2xl:w-[80%] mx-auto">
+
+        <h1 className="text-xl text-[#0F172A] inter font-semibold lg:text-3xl lg:font-bold text-start mb-2">
+        PTE Vouchers
+        </h1>
+        <p className="text-[#59595A] text-sm be-vietnam mb-6">Get access to official PTE test vouchers and practice materials from top providers.
+</p>
+    
+  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {Product?.data?.map((categoryData, categoryIndex) => (
+      <div
+        key={categoryData.category.id}
+        className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
+      >
+        {/* Category Image - using first voucher's image as category representative */}
+        <div className="p-5 pb-0">
+          <img
+            src={categoryData.vouchers[0]?.image_url}
+            alt={categoryData.category.name}
+            className="w-[100%] lg:w-full lg:h-36 2xl:h-60 object-contain md:object-cover rounded"
+          />
+        </div>
+        
+        {/* Category Content */}
+        <div className="p-5 pt-3 flex flex-col flex-grow">
+          {/* Category Title */}
+          <h3 className="text-md inter font-normal 2xl:text-lg mb-2">
+            {categoryData.category.name}
+          </h3>
+          
+          {/* Original Price (strikethrough) */}
+          <p className="text-red-500 text-md font-normal mb-2 line-through">
+            Rs. 70,199
+          </p>
+          
+          {/* Current Price */}
+          <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
+            Rs. 60,999
+          </p>
+          
+          {/* Buy Now Button */}
+          <NavLink
+            to="/BuyScoredPracticeMockTests"
+            state={{ object: categoryData.vouchers, path: "get-payment-detail/" }}
+            // state={{ category: categoryData.category, vouchers: categoryData.vouchers }}
+            className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+          >
+            Buy Now
+          </NavLink>
         </div>
       </div>
-    </div>
-  ))}
+    ))}
+    {Alfa_PTE_Portal?.data?.map((voucher) => (
+                  <div
+                    key={voucher.id}
+                    className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
+                  >
+                    {/* Image Container */}
+                    <div className="p-5 pb-0">
+                      <img
+                        src={voucher.image}
+                        alt={voucher.name}
+                        className="w-full lg:h-36 2xl:h-60 object-cover rounded"
+                      />
+                    </div>
+                    
+                    {/* Content Container - Grows to fill space */}
+                    <div className="p-5 pt-3 flex flex-col flex-grow">
+                      {/* Title */}
+                      <h3 className="text-md inter font-normal 2xl:text-lg mb-2">
+                        {voucher.name}
+                      </h3>
+                      
+                      {/* Description - Grows to fill available space */}
+                    
+                      
+                      {/* Price */}
+                      <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
+                        RS {Math.floor(voucher.price || 0)}
+                      </p>
+                      
+                      {/* Button - Always at bottom */}
+                      <NavLink
+                        to="/GetAlfaPTPortal"
+                        state={{
+                          name: voucher,
+                          path: "aplha-pte-payment/",
+                        }}
+                        className="w-full block text-center bg-[#F1F1F3] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                      >
+                        Buy Now
+                      </NavLink>
+                    </div>
+                  </div>
+                ))}
+  </div>
+</div>
 </div>
 
             {/*------------------------ Get Alfa PTE Portal Access -----------------------*/}

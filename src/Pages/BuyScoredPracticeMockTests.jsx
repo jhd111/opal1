@@ -3,75 +3,157 @@ import img from "../assets/voc.svg";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import CollapsRow from "../Components/Collapsrow";
 import { GoCheck } from "react-icons/go";
-// import { NavLink } from "react-router-dom";
 import { NavLink, useLocation } from "react-router-dom";
 import { CheckVoucherAvailabilty } from "../Services/CheckVoucherAvailabilty";
-
 import { toast } from "react-toastify";
-import locationicon from "../assets/locationicon.png"
-import pakflag from "../assets/pakflag.png"
-import { FaAngleDown,FaAngleUp  } from "react-icons/fa6";
+import locationicon from "../assets/locationicon.png";
+import ukflag from "../assets/uk.png"
+import pakflag from "../assets/pakflag.png";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { Products } from "../Services/Products";
 
 const BuyScoredPracticeMockTests = () => {
-    const { data: Product, isLoading: productsLoading } = Products();
+  const { data: Product, isLoading: productsLoading } = Products();
 
   const mutation = CheckVoucherAvailabilty();
-  
+
   const location = useLocation();
   const { object, path } = location.state || {}; // Retrieve the passed object
-  
+
+  // Get all vouchers from the passed object
+  const vouchers = Array.isArray(object) ? object : [object];
+
   // All state variables defined at the top
+  const [selectedVoucher, setSelectedVoucher] = useState(vouchers[0] || null);
   const [maxCount, setMaxCount] = useState(0);
   const [vouchersAvailable, setVouchersAvailable] = useState(false);
   const [isCheckingVouchers, setIsCheckingVouchers] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [count, setcount] = useState(1);
   const [selectedCountry, setSelectedCountry] = useState({
-    name: 'Pakistan',
-    flag: 'PK'
+    name: "Pakistan",
+    flag: "PK",
+    key: "pakistan"
   });
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const [isVoucherDropdownOpen, setIsVoucherDropdownOpen] = useState(false);
 
-  // Countries array
-  const countries = [
-    { name: 'Pakistan', flag: 'PK' },
-    { name: 'India', flag: 'IN' },
-    { name: 'Bangladesh', flag: 'BD' },
-    { name: 'Sri Lanka', flag: 'LK' },
-    { name: 'Nepal', flag: 'NP' },
-  ];
+  // Get the current category name
+  const getCurrentCategoryName = () => {
+    if (!Product || !selectedVoucher) return "";
+    
+    const categoryData = Product.data?.find(cat => 
+      cat.vouchers.some(voucher => voucher.id === selectedVoucher.id)
+    );
+    
+    return categoryData?.category?.name || "";
+  };
+
+  // Get available countries from all vouchers in Pearson PTE Voucher category
+  const getAvailableCountriesFromCategory = () => {
+    const currentCategory = getCurrentCategoryName();
+    if (currentCategory !== "Pearson PTE Voucher") return [];
+
+    // Get all vouchers from the Pearson PTE Voucher category
+    const pearsonCategory = Product?.data?.find(cat => cat.category.name === "Pearson PTE Voucher");
+    if (!pearsonCategory) return [];
+
+    // Collect all country pricing data from all vouchers in this category
+    const allCountries = new Map();
+
+    pearsonCategory.vouchers.forEach(voucher => {
+      if (voucher.country_pricing && Object.keys(voucher.country_pricing).length > 0) {
+        Object.entries(voucher.country_pricing).forEach(([countryKey, price]) => {
+          const countryName = countryKey.charAt(0).toUpperCase() + countryKey.slice(1);
+          let flagCode = "PK"; // default
+
+          // Map country names to flag codes
+          switch(countryKey.toLowerCase()) {
+            case "pakistan":
+              flagCode = "PK";
+              break;
+            
+            case "uk":
+              flagCode = "GB";
+              break;
+            default:
+              flagCode = "PK";
+          }
+
+          // Only add if not already exists or if current voucher has this country
+          if (!allCountries.has(countryKey) || voucher.id === selectedVoucher?.id) {
+            allCountries.set(countryKey, {
+              name: countryName,
+              flag: flagCode,
+              key: countryKey,
+              price: voucher.id === selectedVoucher?.id ? price : (allCountries.get(countryKey)?.price || price)
+            });
+          }
+        });
+      }
+    });
+
+    // If no countries found from any voucher, return default countries with current voucher price
+    if (allCountries.size === 0) {
+      return [
+        { name: "Pakistan", flag: "PK", key: "pakistan", price: selectedVoucher?.price || 0 },
+        { name: "India", flag: "IN", key: "india", price: selectedVoucher?.price || 0 },
+        { name: "UK", flag: "GB", key: "uk", price: selectedVoucher?.price || 0 }
+      ];
+    }
+
+    return Array.from(allCountries.values());
+  };
+
+  // Get current price based on selected country and voucher
+  const getCurrentPrice = () => {
+    const currentCategory = getCurrentCategoryName();
+    
+    if (currentCategory === "Pearson PTE Voucher" && selectedVoucher?.country_pricing) {
+      const countryPrice = selectedVoucher.country_pricing[selectedCountry.key];
+      if (countryPrice !== undefined) {
+        return countryPrice;
+      }
+    }
+    
+    return selectedVoucher?.price || 0;
+  };
+
+  // Handle country selection
+  const handleCountrySelect = (country) => {
+    setSelectedCountry(country);
+    setIsCountryDropdownOpen(false);
+  };
 
   console.log("object", object);
+  console.log("vouchers", vouchers);
+  console.log("selectedVoucher", selectedVoucher);
+  console.log("current category:", getCurrentCategoryName());
 
-  localStorage.setItem('count', count);
-  localStorage.setItem("price", object?.price);
+  localStorage.setItem("count", count);
+  localStorage.setItem("price", getCurrentPrice());
 
-  // Function to get related products from the same category
-  const getRelatedProducts = () => {
-    if (!Product || !Array.isArray(Product.data) || !object) return [];
-  
-    // Find the category that matches the current object's category
-    const currentCategory = Product.data.find(
-      (categoryObj) => categoryObj.category.id === object.category
-    );
-  
-    if (!currentCategory) return [];
-  
-    // Return vouchers from the same category, excluding the current product
-    return currentCategory.vouchers.filter(
-      (voucher) => voucher.id !== object.id
+  // Function to get related categories (excluding current category)
+  const getRelatedCategories = () => {
+    if (!Product || !Array.isArray(Product.data) || !selectedVoucher) return [];
+
+    // Filter out the current category and return other categories
+    return Product.data.filter(
+      (categoryObj) => categoryObj.category.id !== selectedVoucher.category
     );
   };
+
   // Function to check voucher availability
   function VoucherAvailabilty() {
-    setIsCheckingVouchers(true);
+    if (!selectedVoucher) return;
     
+    setIsCheckingVouchers(true);
+
     // Try with JSON payload instead of FormData
     const payload = {
-      product_name: object.name
+      product_name: selectedVoucher.name,
     };
-   
+
     mutation.mutate(
       {
         payload: payload,
@@ -81,7 +163,7 @@ const BuyScoredPracticeMockTests = () => {
       {
         onSuccess: (data) => {
           console.log("Voucher availability response:", data);
-          
+
           // Check if vouchers are present
           if (data.vouchers_present === true) {
             setMaxCount(data?.details?.[0]?.count || 0);
@@ -94,64 +176,99 @@ const BuyScoredPracticeMockTests = () => {
           setIsCheckingVouchers(false);
         },
         onError: (error) => {
-          console.error('Voucher check error:', error);
+          console.error("Voucher check error:", error);
           setVouchersAvailable(false);
           setIsCheckingVouchers(false);
-          
+
           // Better error handling
-          const errorMessage = error.response?.data?.error || 
-                              error.response?.data?.message || 
-                              error.message || 
-                              "Error checking voucher availability";
+          const errorMessage =
+            error.response?.data?.error ||
+            error.response?.data?.message ||
+            error.message ||
+            "Error checking voucher availability";
           toast.error(errorMessage);
         },
       }
     );
   }
 
-  // Run voucher availability check when component mounts
+  // Reset selectedVoucher when navigating to a new category
   useEffect(() => {
-    if (object?.name) {
+    // Reset to first voucher of new category when object changes
+    const newFirstVoucher = vouchers[0] || null;
+    if (newFirstVoucher && newFirstVoucher.id !== selectedVoucher?.id) {
+      setSelectedVoucher(newFirstVoucher);
+      setcount(1); // Reset count as well
+      // Reset country selection when changing voucher
+      setSelectedCountry({ name: "Pakistan", flag: "PK", key: "pakistan" });
+    }
+  }, [object]);
+
+  // Run voucher availability check when selectedVoucher changes
+  useEffect(() => {
+    if (selectedVoucher?.name) {
       VoucherAvailabilty();
     }
-  }, [object?.name]);
+  }, [selectedVoucher?.name]);
 
-  const relatedProducts = getRelatedProducts();
+  // Handle voucher selection from dropdown
+  const handleVoucherSelect = (voucher) => {
+    setSelectedVoucher(voucher);
+    setIsVoucherDropdownOpen(false);
+    setcount(1); // Reset count when changing voucher
+    // Reset country selection when changing voucher
+    setSelectedCountry({ name: "Pakistan", flag: "PK", key: "pakistan" });
+  };
 
+  // Check if current voucher is Pearson PTE Voucher (should not show voucher dropdown)
+  const shouldShowVoucherDropdown = getCurrentCategoryName() !== "Pearson PTE Voucher" && vouchers.length > 1;
+  
+  // Check if should show country dropdown
+  const shouldShowCountryDropdown = getCurrentCategoryName() === "Pearson PTE Voucher";
+
+  const relatedCategories = getRelatedCategories();
+  const availableCountries = getAvailableCountriesFromCategory();
+
+  // Add safety check for selectedVoucher
+  if (!selectedVoucher) {
+    return <div>No product data available</div>;
+  }
+  const getFlagImage = (countryKey) => {
+    switch(countryKey.toLowerCase()) {
+      case "pakistan":
+        return pakflag;
+      case "uk":
+        return ukflag;
+      default:
+        return pakflag; // default to Pakistan flag
+    }
+  };
+  
   return (
     <div>
-      <div className=" flex flex-col lg:flex-row w-[90%] lg:w-[60%] mx-auto mt-10 gap-10 ">
+      <div className=" flex flex-col lg:flex-row w-[90%] lg:w-[70%] mx-auto mt-10 gap-10 ">
         {/* Left Section - Static/Sticky on desktop, normal on mobile/tablet */}
         <div className="w-full lg:sticky lg:top-10 lg:h-fit space-y-10">
           <div className="">
             <p className="text-sm text-gray-500">
               Home / CompTIA /{" "}
-              <span className="text-primary">
-                {object.name}
-              </span>
+              <span className="text-primary">{selectedVoucher.name}</span>
             </p>
           </div>
-          <img src={object.image_url} alt="" className="w-full" />
+          <img src={selectedVoucher.image_url} alt="" className="w-full" />
         </div>
-        
+
         {/* Right Section - Scrollable */}
         <div className="w-full">
           <div className=" space-y-5 lg:space-y-8  border-b pb-4">
             <p className="text-xl font-semibold lg:text-3xl lg:font-bold dm-sans">
-              {object.name}
+              {selectedVoucher.name}
             </p>
-            {object?.test_type && 
-             <p className="text-sm font-semibold lg:text-3xl lg:font-bold dm-sans">
-             {object?.test_type}
-           </p>
-            }
             <p className="text-2xl font-semibold text-[#39B856] poppins">
-            RS {""} {Math.floor(object.price)}
+              RS {""} {Math.floor(getCurrentPrice())}
             </p>
           </div>
-          <p className="text-xs  poppins py-4 ">
-            {object.detail}
-          </p>
+          <p className="text-xs  poppins py-4 ">{selectedVoucher.description}</p>
 
           {/* Voucher Status Indicator */}
           <div className="mb-4">
@@ -186,70 +303,162 @@ const BuyScoredPracticeMockTests = () => {
               </div>
             </div>
             <p className="text-gray-600 poppins leading-relaxed mb-6">
-              This voucher is valid for one month only. Please use it within that time period.
+              This voucher is valid for one month only. Please use it within
+              that time period.
             </p>
-            
-            {/* Select Country Section */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full flex items-center justify-center">
-                  <img src={locationicon} alt="" />
+
+            {/* Voucher Type Selector - Only show if not Pearson PTE Voucher and multiple vouchers available */}
+            {shouldShowVoucherDropdown && (
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                    <GoCheck className="text-blue-600" />
+                  </div>
+                  <h5 className="text-lg font-medium text-gray-800 poppins">
+                    Select Type
+                  </h5>
                 </div>
-                <h5 className="text-lg font-medium text-gray-800 poppins">
-                  Select Country
-                </h5>
+
+                {/* Voucher Type Dropdown */}
+                <div className="relative lg:w-[80%] xl:w-[80%] 2xl:w-[50%]">
+                  <div 
+                    className="rounded-full bg-[#F2F4F7] p-4 flex justify-between items-center cursor-pointer"
+                    onClick={() => setIsVoucherDropdownOpen(!isVoucherDropdownOpen)}
+                  >
+                    <span className="text-[#1D2939] font-medium">
+                      {selectedVoucher.type || selectedVoucher.name}
+                    </span>
+                    <div className="flex flex-col">
+                      {isVoucherDropdownOpen ? (
+                        <FaAngleUp className="text-sm" />
+                      ) : (
+                        <FaAngleDown className="text-sm" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Dropdown Menu */}
+                  {isVoucherDropdownOpen && (
+                    <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 z-10">
+                      {vouchers.map((voucher) => (
+                        <div
+                          key={voucher.id}
+                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex justify-between items-center"
+                          onClick={() => handleVoucherSelect(voucher)}
+                        >
+                          <span className="text-[#1D2939] font-medium">
+                            {voucher.type || voucher.name}
+                          </span>
+                          <span className="text-[#39B856] font-semibold">
+                            Rs. {Math.floor(voucher.price)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-              
-              {/* Country Selector */}
-              <div className="rounded-full lg:w-[70%] xl:w-[60%] 2xl:w-[30%] bg-[#F2F4F7] p-4 flex justify-between">
-               <div className="flex gap-2">
-                <img src={pakflag} alt="" className="w-10 h-7 " />
-                <div><FaAngleUp className="text-sm"/> <FaAngleDown className="text-sm"/></div>
-               </div>
-               <span className="text-[#1D2939] font-medium"> Pakistan</span> 
+            )}
+
+            {/* Select Country Section - Only for Pearson PTE Voucher Category */}
+            {shouldShowCountryDropdown && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center">
+                    <img src={locationicon} alt="" />
+                  </div>
+                  <h5 className="text-lg font-medium text-gray-800 poppins">
+                    Select Country
+                  </h5>
+                </div>
+
+                {/* Country Selector Dropdown */}
+                <div className="relative lg:w-[70%] xl:w-[60%] 2xl:w-[30%]">
+                  <div 
+                    className="rounded-full bg-[#F2F4F7] p-4 flex justify-between items-center cursor-pointer"
+                    onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                  >
+                    <div className="flex gap-2 items-center">
+                      <img src={getFlagImage(selectedCountry.key)}  alt="" className="w-10 h-7" />
+                      <div className="flex flex-col">
+                        {isCountryDropdownOpen ? (
+                          <FaAngleUp className="text-sm" />
+                        ) : (
+                          <FaAngleDown className="text-sm" />
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-[#1D2939] font-medium">{selectedCountry.name}</span>
+                  </div>
+
+                  {/* Country Dropdown Menu */}
+                  {isCountryDropdownOpen && (
+                    <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 z-20">
+                      {availableCountries.map((country) => (
+                        <div
+                          key={country.key}
+                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex justify-between items-center"
+                          onClick={() => handleCountrySelect(country)}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-[#1D2939] font-medium">
+                              {country.name}
+                            </span>
+                          </div>
+                          <span className="text-[#39B856] font-semibold">
+                            Rs. {Math.floor(country.price)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="flex gap-5 mt-5">
             <div className=" flex items-center gap-5 rounded-3xl px-4 py-3 bg-slate-100">
               <span className="text-xs">
-                <FaMinus  onClick={() => setcount((e) => (e > 0 ? e - 1 : e))} />
+                <FaMinus onClick={() => setcount((e) => (e > 0 ? e - 1 : e))} />
               </span>
               {count}
               <span className="text-xs">
-              <FaPlus 
-  onClick={() => 
-    setcount((prev) => {
-      if (prev < maxCount) {
-        return prev + 1;
-      } else {
-        toast.error(`You can only buy up to ${maxCount} vouchers`);
-        return prev;
-      }
-    })
-  } 
-/>
-
+                <FaPlus
+                  onClick={() =>
+                    setcount((prev) => {
+                      if (prev < maxCount) {
+                        return prev + 1;
+                      } else {
+                        toast.error(
+                          `You can only buy up to ${maxCount} vouchers`
+                        );
+                        return prev;
+                      }
+                    })
+                  }
+                />
               </span>
             </div>
-             {/* Conditional Proceed Button */}
-             <div className={`rounded-3xl w-full text-center py-3 transition-all duration-300 ${
-              vouchersAvailable && !isCheckingVouchers
-                ? 'bg-primary text-white cursor-pointer hover:bg-primary/90' 
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}>
+            {/* Conditional Proceed Button */}
+            <div
+              className={`rounded-3xl w-full text-center py-3 transition-all duration-300 ${
+                vouchersAvailable && !isCheckingVouchers
+                  ? "bg-primary text-white cursor-pointer hover:bg-primary/90"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
+            >
               {vouchersAvailable && !isCheckingVouchers ? (
-                <NavLink 
-                  to="/check-out" 
-                  state={{ name: object, pathh: path }}
+                <NavLink
+                  to="/check-out"
+                  state={{ name: selectedVoucher, pathh: path }}
                   className="block w-full h-full"
                 >
                   Proceed to Checkout
                 </NavLink>
               ) : (
                 <span>
-                  {isCheckingVouchers ? 'Checking...' : 'Proceed to Checkout'}
+                  {isCheckingVouchers ? "Checking..." : "Proceed to Checkout"}
                 </span>
               )}
             </div>
@@ -268,69 +477,90 @@ const BuyScoredPracticeMockTests = () => {
           <CollapsRow />
         </div>
       </div>
-      
-      {/* Related Products Section */}
-      <div className="w-[90%] lg:w-[60%] mx-auto mt-10">
+
+      {/* Related Categories Section */}
+      <div className="w-[90%] lg:w-[70%] mx-auto mt-10">
         <div className="text-[#0F172A] text-3xl font-medium inter">
           Related Products
         </div>
-        <div className="text-gray-600 text-sm mt-2">
-          People also buy
+        <div className="text-gray-600 text-sm mt-2 mb-4">
+          Other Products you might like
         </div>
-        
-        {/* Related Products Grid */}
-        {!productsLoading && relatedProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            {relatedProducts.map((product) => (
-              <div key={product.id} className="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-lg transition-shadow">
-                <img 
-                  src={product.image_url} 
-                  alt={product.name}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2 poppins">
-                  {product.name}
-                </h3>
-                {product.type && (
-                  <p className="text-sm text-gray-600 mb-2">
-                    {product.type}
-                  </p>
-                )}
-                {/* <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                  {product.description}
-                </p> */}
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-semibold text-[#0F172A] poppins">
-                    RS {Math.floor(product.price)}
-                  </span>
-                  {/* <NavLink
-                    to={`/buy-${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    state={{ object: product, path: path }}
-                    className="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary/90 transition-colors"
-                  >
-                    View Details
-                  </NavLink> */}
-                </div>
-                {product.validity && (
-                  <div className="mt-2 text-xs text-gray-500">
-                    Valid for {product.validity} days
+
+        {/* Related Categories Grid */}
+        {!productsLoading && relatedCategories.length > 0 ? (
+          <div className=" mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {Product?.data?.map((categoryData, categoryIndex) => (
+                <div
+                  key={categoryData.category.id}
+                  className="bg-white rounded-lg border border-[#E2E8F0] shadow-[0_0_8px_rgba(59,130,246,0.12)] overflow-hidden flex flex-col"
+                >
+                  {/* Category Image - using first voucher's image as category representative */}
+                  <div className="p-5 pb-0">
+                    <img
+                      src={categoryData.vouchers[0]?.image_url}
+                      alt={categoryData.category.name}
+                      className="w-[100%] lg:w-full lg:h-36 2xl:h-60 object-contain md:object-cover rounded"
+                    />
                   </div>
-                )}
-              </div>
-            ))}
+
+                  {/* Category Content */}
+                  <div className="p-5 pt-3 flex flex-col flex-grow">
+                    {/* Category Title */}
+                    <h3 className="text-md inter font-normal 2xl:text-lg mb-2">
+                      {categoryData.category.name}
+                    </h3>
+
+                    {/* Original Price (strikethrough) */}
+                    <p className="text-red-500 text-md font-normal mb-2 line-through">
+                      Rs. 70,199
+                    </p>
+
+                    {/* Current Price */}
+                    <p className="text-[#0F172A] text-md md:text-lg inter font-bold mb-2">
+                      Rs. 60,999
+                    </p>
+
+                    {/* Buy Now Button */}
+                    <NavLink
+                      to="/BuyScoredPracticeMockTests"
+                      state={{
+                        object: categoryData.vouchers,
+                        path: "get-payment-detail/",
+                      }}
+                      className="w-full block text-center text-sm md:text-lg bg-[#ECECEC] hover:bg-gray-300 text-black be-vietnam font-semibold py-2 px-4 rounded transition-colors mt-auto"
+                    >
+                      Buy Now
+                    </NavLink>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : productsLoading ? (
           <div className="mt-6 text-center text-gray-500">
-            Loading related products...
+            Loading related categories...
           </div>
         ) : (
           <div className="mt-6 text-center text-gray-500">
-            No related products found in this category.
+            No other categories available.
           </div>
         )}
       </div>
+
+      {/* Click outside to close dropdowns */}
+      {(isVoucherDropdownOpen || isCountryDropdownOpen) && (
+        <div 
+          className="fixed inset-0 z-5" 
+          onClick={() => {
+            setIsVoucherDropdownOpen(false);
+            setIsCountryDropdownOpen(false);
+          }}
+        ></div>
+      )}
     </div>
   );
 };
 
-export default BuyScoredPracticeMockTests
+export default BuyScoredPracticeMockTests;
