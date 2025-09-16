@@ -58,10 +58,10 @@ console.log("path",path)
                 >
                   <img src={val?.image_url} alt="" />
 
-                  <p className="text-center  text-sm   my-2  px-4 font-semibold">
+                  <p className="text-left  text-sm   my-2   font-semibold">
                     {val?.name}
                   </p>
-                  <p className="text-red-500 text-center  text-sm  inter my-2 px-4 font-semibold">
+                  <p className="text-red-500 text-left  text-sm  inter my-2 font-semibold">
                     RS    {" "}{val?.price}
                   </p>
                   <NavLink

@@ -254,7 +254,9 @@ const CheckOut = () => {
   const [orderID, setOrderID] = useState("");
   const { name, pathh } = location.state || {};
   const quantity = localStorage.getItem("count");
-  const ItemPrice = localStorage.getItem("price");
+  // const ItemPrice = localStorage.getItem("price");
+  const ItemPrice = localStorage.getItem("price_pkr");
+ 
   const ptevoucher = localStorage.getItem("price1");
   const selectedPrice = location.pathname.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
   const mutation = usePostPaymentDetails();
@@ -369,6 +371,7 @@ const CheckOut = () => {
               window.location.href = data?.payfast_url;
               localStorage.setItem("payfast_url",data?.payfast_url)
               localStorage.setItem("orderidd",data?.order_id)
+              localStorage.clear();
               // Redirect to PayFast with return/cancel URLs
               // const returnUrl = `${window.location.origin}/checkout?payment_status=COMPLETE&order_id=${data?.order_id}`;
               // const cancelUrl = `${window.location.origin}/checkout?payment_status=CANCELLED`;

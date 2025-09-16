@@ -54,11 +54,11 @@ const About = () => {
             </p>
           </div>
           <div className="md:w-2/5 ">
-            <div className="bg-white  lg:relative top-10 z-10 p-10 lg:p-4 xl:p-10 2xl:p-24 lg:pb-16 xl:pb-28 2xl:pb-44 space-y-1">
-              <p className="text-xl font-semibold lg:text-xl xl:text-3xl 2xl:text-5xl lg:font-bold">
+            <div className="bg-white  lg:relative top-10 z-10 p-10 lg:p-4 xl:p-10 2xl:p-16 lg:pb-16 xl:pb-28 2xl:pb-14 space-y-1">
+              <p className="text-xl font-semibold lg:text-xl xl:text-3xl 2xl:text-3xl lg:font-bold">
                 Pearson VUE Authorised Test Center
               </p>
-              <p className="text-gray-500 text-xs xl:text-sm 2xl:text-3xl">
+              <p className="text-gray-500 text-xs xl:text-sm 2xl:text-2xl">
                 Opal Institute is a Pearson VUE Authorised Testing Center which
                 was established in 2021 and only deal PTE. We are a Pearson VUE
                 Authorised Test Center for PVTC, PVTC-SELECT. Opal Institute has
@@ -68,16 +68,16 @@ const About = () => {
             </div>
             <div className= "flex bg-primary z-20  lg:relative text-white p-6 md:w-[80%] md:ms-auto">
               <div className="text-center border-r border-white">
-                <p className="text-2xl 2xl:text-5xl">#1</p>
-                <p className="text-lg 2xl:text-5xl">in Punjab Province</p>
+                <p className="text-2xl 2xl:text-3xl">#1</p>
+                <p className="text-lg 2xl:text-3xl">in Punjab Province</p>
               </div>
               <div className="text-center border-r border-white">
-                <p className="text-2xl 2xl:text-5xl">1K+</p>
-                <p className="text-lg 2xl:text-5xl">Students Enrolled</p>
+                <p className="text-2xl 2xl:text-3xl">1K+</p>
+                <p className="text-lg 2xl:text-3xl">Students Enrolled</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl 2xl:text-5xl">#1</p>
-                <p className="text-lg lg:text-md 2xl:text-5xl">PTE Platinum Partner</p>
+                <p className="text-2xl 2xl:text-3xl">#1</p>
+                <p className="text-lg lg:text-md 2xl:text-3xl">PTE Platinum Partner</p>
               </div>
             </div>
           </div>

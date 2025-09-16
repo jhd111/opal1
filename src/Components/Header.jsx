@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import img from "../assets/images/peana.svg";
 import star from "../assets/images/t.png";
-import logo from "../assets/logo.svg";
+import logo from "../assets/newlogo.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <div className=" ">
+    <div className=" sticky top-0 z-50 bg-white">
       <div className="py-2  flex w-full items-center justify-center text-white bg-primary">
         <div className="">
           <img src={img} alt="" className=" h-6" />
@@ -36,34 +36,34 @@ const Header = () => {
 
       {/* ----------- navbar   ---------- */}
       <div className="shadow hidden md:block ">
-        <div className="flex align-center justify-between w-[100%] mx-auto p-5">
-          <div className="flex justify-between items-center gap-6">
+        <div className="flex  justify-between w-[100%] mx-auto p-5">
+          <div className="flex justify-center items-center gap-6">
             {" "}
-            <img src={logo} alt="" className="w-[20%] lg:w-[10%] xl:w-[20%]" />
+            <img src={logo} alt="" className="w-[20%] lg:w-[10%] xl:w-[15%] 2xl:w-[23%]" />
             <nav>
               <ul className="flex items-center   be-vietnam">
                 <li>
-                  <NavLink className="p-4 px-5" to="/">
+                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/">
                     Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="p-4 px-5" to="/buy-pte-voucher">
+                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/buy-pte-voucher">
                     Vouchers Store
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="p-4 px-5" to="/buy-it-vouchers">
+                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/buy-it-vouchers">
                     Buy IT Vouchers
                   </NavLink>
                 </li>
                 <li>
-                  <button onClick={scrollToMockTest} className="p-4 px-5">
+                  <button onClick={scrollToMockTest} className="p-4 px-5 2xl:text-2xl">
                     Scored Practice Mock Test
                   </button>
                 </li>
                 <li
-                  className="p-4 px-5 flex items-center gap-2 relative"
+                  className="p-4 px-5 flex items-center gap-2 relative 2xl:text-2xl"
                   onMouseEnter={() => setShowDropdown(true)}
                   onMouseLeave={() => setShowDropdown(false)}
                 >
@@ -123,7 +123,7 @@ const Header = () => {
           <div className="">
             <NavLink
               to="/buy-pte-voucher"
-              className="bg-primary block text-white px-8 py-3 rounded-md"
+              className="bg-primary block text-white px-8 py-3 rounded-md "
             >
               Buy Now
             </NavLink>

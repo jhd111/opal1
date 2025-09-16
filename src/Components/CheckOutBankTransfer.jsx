@@ -434,12 +434,12 @@ const CheckOutBankTransfer = ({ set, name,setorderID1,pathh }) => {
   console.log("object checout1", dealData)
 
   const quantity = localStorage.getItem("count")
-  const ItemPrice = localStorage.getItem("price")
-
-  const ptevoucher = localStorage.getItem('price1')
-
-  const selectedPrice = path.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
-
+   // const ItemPrice = localStorage.getItem("price");
+   const ItemPrice = localStorage.getItem("price_pkr");
+ 
+   const ptevoucher = localStorage.getItem("price1");
+   const selectedPrice = location.pathname.includes("/checkout-pte-user") ? ptevoucher : ItemPrice;
+  
   const [formData, setFormData] = useState({
     type: "bank_transfer", // Default type
     full_name: "",
@@ -561,6 +561,7 @@ const CheckOutBankTransfer = ({ set, name,setorderID1,pathh }) => {
         toast.success("Submitted successfully!", {
           position: "top-center"
         });
+        localStorage.clear();
         setorderID1(data?.order_id)
         if (set) set(2); else setblock(2);
       },
