@@ -43,27 +43,27 @@ const Header = () => {
             <nav>
               <ul className="flex items-center   be-vietnam">
                 <li>
-                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/">
+                  <NavLink className="p-4 px-5 2xl:text-xl" to="/">
                     Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/buy-pte-voucher">
+                  <NavLink className="p-4 px-5 2xl:text-xl" to="/buy-pte-voucher">
                     Vouchers Store
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="p-4 px-5 2xl:text-2xl" to="/buy-it-vouchers">
+                  <NavLink className="p-4 px-5 2xl:text-xl" to="/buy-it-vouchers">
                     Buy IT Vouchers
                   </NavLink>
                 </li>
                 <li>
-                  <button onClick={scrollToMockTest} className="p-4 px-5 2xl:text-2xl">
+                  <button onClick={scrollToMockTest} className="p-4 px-5 2xl:text-xl">
                     Scored Practice Mock Test
                   </button>
                 </li>
                 <li
-                  className="p-4 px-5 flex items-center gap-2 relative 2xl:text-2xl"
+                  className="p-4 px-5 flex items-center gap-2 relative 2xl:text-xl"
                   onMouseEnter={() => setShowDropdown(true)}
                   onMouseLeave={() => setShowDropdown(false)}
                 >

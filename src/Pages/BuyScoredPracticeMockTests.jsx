@@ -332,33 +332,31 @@ const BuyScoredPracticeMockTests = () => {
   };
 
   // 💰 Get display price and symbol based on country and category
-  const getDisplayPriceAndSymbol = () => {
-    const isPearson = isPearsonCategory();
-    const originalPrice = selectedVoucher?.price || 0;
-    const isPakistan =
-      selectedCountry.key === "pk" ||
-      selectedCountry.key === "pakistan" ||
-      selectedCountry.name === "Pakistan";
+ 
+const getDisplayPriceAndSymbol = () => {
+  const isPearson = isPearsonCategory();
+  const originalPrice = selectedVoucher?.price || 0;
 
-    // For non-Pearson → always PKR
-    if (!isPearson) {
-      return { price: Math.floor(originalPrice), symbol: "Rs." };
-    }
-
-    // For Pearson + Pakistan → PKR
-    if (isPakistan) {
-      return { price: Math.floor(originalPrice), symbol: "Rs." };
-    }
-
-    // For Pearson + Non-Pakistan → USD (if rate available)
-    if (usdRate) {
-      const usdPrice = originalPrice * usdRate;
-      return { price: usdPrice.toFixed(2), symbol: "$" };
-    }
-
-    // Fallback
+  // For non-Pearson → always PKR
+  if (!isPearson) {
     return { price: Math.floor(originalPrice), symbol: "Rs." };
-  };
+  }
+
+  // For Pearson → only show USD if user selected NON-PAKISTAN country
+  const isNonPakistanSelected =
+    selectedCountry.name !== "Select Country" &&
+    selectedCountry.name !== "Pakistan" &&
+    selectedCountry.key !== "pk" &&
+    selectedCountry.key !== "pakistan";
+
+  if (isNonPakistanSelected && usdRate) {
+    const usdPrice = originalPrice * usdRate;
+    return { price: usdPrice.toFixed(2), symbol: "$" };
+  }
+
+  // In ALL other cases → show PKR
+  return { price: Math.floor(originalPrice), symbol: "Rs." };
+};
 
   // Handle country selection
   const handleCountrySelect = (country) => {
@@ -682,7 +680,7 @@ const BuyScoredPracticeMockTests = () => {
                 {loadingRate ? (
                   <div className="text-sm text-gray-500 p-4">Loading exchange rate...</div>
                 ) : (
-                  <div className="relative lg:w-[70%] xl:w-[60%] 2xl:w-[30%]">
+                  <div className="relative lg:w-[70%] xl:w-[70%] 2xl:w-[45%]">
                     <div 
                       className="rounded-full bg-[#F2F4F7] p-4 flex justify-between items-center cursor-pointer"
                       onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
